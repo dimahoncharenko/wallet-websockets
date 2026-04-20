@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "paths": {
+      "types": [
+        "types/src/index.ts"
+      ]
+    }
+  },
+  "extends": "..\\..\\..\\server\\tsconfig.app.json"
+}

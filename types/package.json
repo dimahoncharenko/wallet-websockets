@@ -1,0 +1,12 @@
+{
+  "name": "types",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "main": "./index.js",
+  "types": "./index.d.ts",
+  "scripts": {
+    "lint": "npx eslint src/**/*.ts"
+  },
+  "dependencies": {}
+}

@@ -1,0 +1,16 @@
+[2m> [22mvite build
+
+[36mvite v8.0.3 [32mbuilding client environment for production...[36m[39m
+[2Ktransforming...[32m✓[39m 17 modules transformed.
+rendering chunks...
+computing gzip size...
+[2m../dist/frontend/[0m[32mindex.html                 [39m[2m[1m  0.76 kB[0m[0m[2m │ gzip:  0.41 kB[0m
+[2m../dist/frontend/[0m[2massets/[0m[35mindex-DIiGcPNL.css  [39m[2m[1m 14.57 kB[0m[0m[2m │ gzip:  3.73 kB[0m
+[2m../dist/frontend/[0m[2massets/[0m[36mindex-ZtNxcjlK.js   [39m[2m[1m201.58 kB[0m[0m[2m │ gzip: 63.33 kB[0m
+
+[33m[33m[PLUGIN_TIMINGS] Warning:[0m Your build spent significant time in plugins. Here is a breakdown:
+  - vite:build-html (64%)
+  - nx-vite-ts-paths (28%)
+See https://rolldown.rs/options/checks#plugintimings for more details.
+[39m
+[32m✓ built in 12.54s[39m

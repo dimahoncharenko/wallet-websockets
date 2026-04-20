@@ -1,0 +1,34 @@
+[4m[34mserver\src\main.ts:16:23[39m[24m - [31m[1merror[22m[39m [90mTS2345[39m: Argument of type 'import("D:/Projects/other/wallet-websocket-app/node_modules/@types/ws/index")' is not assignable to parameter of type 'WebSocket'.
+  Property 'dispatchEvent' is missing in type 'import("D:/Projects/other/wallet-websocket-app/node_modules/@types/ws/index")' but required in type 'WebSocket'.
+
+[0m [90m 14 | [39m
+ [90m 15 | [39mwss[33m.[39mon([32m'connection'[39m[33m,[39m (socket) [33m=>[39m {
+[31m[1m>[22m[39m[90m 16 | [39m  userManager[33m.[39maddUser(socket)[33m;[39m
+ [90m    | [39m                      [31m[1m^[22m[39m
+ [90m 17 | [39m  socket[33m.[39mon([32m'message'[39m[33m,[39m (data[33m:[39m [33mRawData[39m) [33m=>[39m {
+ [90m 18 | [39m    [36mconst[39m payload [33m=[39m [33mJSON[39m[33m.[39mparse(data[33m.[39mtoString())[33m;[39m
+ [90m 19 | [39m    console[33m.[39mlog([32m'Received message:'[39m[33m,[39m payload)[33m;[39m[0m
+
+[4m[34mserver\src\main.ts:21:21[39m[24m - [31m[1merror[22m[39m [90mTS2345[39m: Argument of type 'import("D:/Projects/other/wallet-websocket-app/node_modules/@types/ws/index")' is not assignable to parameter of type 'WebSocket'.
+  Property 'dispatchEvent' is missing in type 'import("D:/Projects/other/wallet-websocket-app/node_modules/@types/ws/index")' but required in type 'WebSocket'.
+
+[0m [90m 19 | [39m    console[33m.[39mlog([32m'Received message:'[39m[33m,[39m payload)[33m;[39m
+ [90m 20 | [39m
+[31m[1m>[22m[39m[90m 21 | [39m   userManager[33m.[39msend(socket[33m,[39m payload)[33m;[39m
+ [90m    | [39m                    [31m[1m^[22m[39m
+ [90m 22 | [39m  })[33m;[39m
+ [90m 23 | [39m  socket[33m.[39mon([32m'close'[39m[33m,[39m (code[33m,[39m reason) [33m=>[39m {
+ [90m 24 | [39m    userManager[33m.[39mremoveUser(socket)[33m;[39m[0m
+
+[4m[34mserver\src\main.ts:24:28[39m[24m - [31m[1merror[22m[39m [90mTS2345[39m: Argument of type 'import("D:/Projects/other/wallet-websocket-app/node_modules/@types/ws/index")' is not assignable to parameter of type 'WebSocket'.
+  Property 'dispatchEvent' is missing in type 'import("D:/Projects/other/wallet-websocket-app/node_modules/@types/ws/index")' but required in type 'WebSocket'.
+
+[0m [90m 22 | [39m  })[33m;[39m
+ [90m 23 | [39m  socket[33m.[39mon([32m'close'[39m[33m,[39m (code[33m,[39m reason) [33m=>[39m {
+[31m[1m>[22m[39m[90m 24 | [39m    userManager[33m.[39mremoveUser(socket)[33m;[39m
+ [90m    | [39m                           [31m[1m^[22m[39m
+ [90m 25 | [39m    console[33m.[39mlog([32m'Connection closed:'[39m[33m,[39m code[33m,[39m reason)[33m;[39m
+ [90m 26 | [39m  })[33m;[39m
+ [90m 27 | [39m})[33m;[39m[0m
+
+Found 3 errors.
