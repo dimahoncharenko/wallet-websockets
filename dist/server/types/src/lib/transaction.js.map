@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../../../../../types/src/lib/transaction.ts"],
-  "sourcesContent": ["export interface Transaction {\r\n  id: string;\r\n  amount: number;\r\n  currency: string;\r\n  date: string;\r\n  description: string;\r\n  category: 'pan';\r\n  status: 'failed' | 'paid';\r\n  pan: string;\r\n  type: 'debit' | 'credit';\r\n}\r\n"],
-  "mappings": ";;;;;;;;;;;;;AAAA;AAAA;",
-  "names": []
-}

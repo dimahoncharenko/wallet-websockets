@@ -40,140 +40,100 @@
   "fileMap": {
     "nonProjectFiles": [
       {
+        "file": "dist/types/index.d.ts",
+        "hash": "16504528181146074300"
+      },
+      {
         "file": ".gitignore",
         "hash": "12497534368567063105"
-      },
-      {
-        "file": ".prettierignore",
-        "hash": "14688272390704683536"
-      },
-      {
-        "file": ".prettierrc",
-        "hash": "11190582067353347754"
-      },
-      {
-        "file": ".vscode/launch.json",
-        "hash": "9700990274554336720"
       },
       {
         "file": ".vscode/settings.json",
         "hash": "7592593258915410043"
       },
       {
-        "file": "README.md",
-        "hash": "13839624178466151561"
-      },
-      {
-        "file": "dist/frontend/assets/index-DIiGcPNL.css",
-        "hash": "17002877689613954442"
-      },
-      {
-        "file": "dist/frontend/assets/index-ZtNxcjlK.js",
-        "hash": "3704285755809026674"
-      },
-      {
-        "file": "dist/frontend/favicon.ico",
-        "hash": "9303420814833116677"
-      },
-      {
         "file": "dist/frontend/index.html",
-        "hash": "17335652548498302910"
+        "hash": "16057983415715541666"
       },
       {
-        "file": "dist/server/main.js",
-        "hash": "17626574836372864483"
+        "file": "tmp/server/serve/tsconfig.generated.b775dab1-3b00-4643-a7da-2109cf2f4e3d.json",
+        "hash": "1794606285106146939"
       },
       {
-        "file": "dist/server/main.js.map",
-        "hash": "12274810470923942524"
+        "file": "tmp/server/serve/tsconfig.generated.43c20a92-2ab7-41d5-871e-d1787ef67864.json",
+        "hash": "1794606285106146939"
       },
       {
-        "file": "dist/server/package.json",
-        "hash": "7195283350794088737"
+        "file": "dist/types/package.json",
+        "hash": "17950252107461897611"
       },
       {
-        "file": "dist/server/server/src/main.js",
-        "hash": "13670922882505597639"
+        "file": ".vscode/launch.json",
+        "hash": "9700990274554336720"
       },
       {
-        "file": "dist/server/server/src/main.js.map",
-        "hash": "14595748909709684835"
+        "file": "package-lock.json",
+        "hash": "9761924399016871996"
       },
       {
-        "file": "dist/server/server/src/user-manager.js",
-        "hash": "17994435681769899861"
+        "file": "tmp/server/main-with-require-overrides.js",
+        "hash": "5861938086074446350"
       },
       {
-        "file": "dist/server/server/src/user-manager.js.map",
-        "hash": "5549412421162781183"
+        "file": "tmp/server/serve/tsconfig.generated.7d791dac-be0c-42e2-808b-53b324f9d27c.json",
+        "hash": "1794606285106146939"
       },
       {
-        "file": "dist/server/types/src/index.js",
-        "hash": "4873226381350461700"
+        "file": "yarn.lock",
+        "hash": "12463895067315446026"
       },
       {
-        "file": "dist/server/types/src/index.js.map",
-        "hash": "17496688016039470018"
-      },
-      {
-        "file": "dist/server/types/src/lib/main-page.js",
-        "hash": "18374334913458883673"
-      },
-      {
-        "file": "dist/server/types/src/lib/main-page.js.map",
-        "hash": "12266181612706915985"
-      },
-      {
-        "file": "dist/server/types/src/lib/transaction.js",
-        "hash": "4405628745161927041"
-      },
-      {
-        "file": "dist/server/types/src/lib/transaction.js.map",
-        "hash": "4100961028006078129"
-      },
-      {
-        "file": "dist/server/types/src/lib/user.js",
-        "hash": "13863270969369034588"
-      },
-      {
-        "file": "dist/server/types/src/lib/user.js.map",
-        "hash": "12842223944908959697"
-      },
-      {
-        "file": "dist/server/types/src/lib/wallet.js",
-        "hash": "10017927166534846400"
-      },
-      {
-        "file": "dist/server/types/src/lib/wallet.js.map",
-        "hash": "14015177923664730646"
-      },
-      {
-        "file": "dist/server/types/src/lib/ws-message.js",
-        "hash": "11375803836447920393"
-      },
-      {
-        "file": "dist/server/types/src/lib/ws-message.js.map",
-        "hash": "8250949243594513900"
-      },
-      {
-        "file": "dist/server/yarn.lock",
-        "hash": "17993963237658874176"
+        "file": "dist/frontend/assets/index-CMepsK_z.js",
+        "hash": "9423144267334094765"
       },
       {
         "file": "dist/types/README.md",
         "hash": "4897450697455520334"
       },
       {
-        "file": "dist/types/index.d.ts",
-        "hash": "13521850884686177209"
+        "file": "package.json",
+        "hash": "13979121659489164174"
       },
       {
-        "file": "dist/types/index.js",
-        "hash": "3244421341483603138"
+        "file": ".prettierrc",
+        "hash": "11190582067353347754"
+      },
+      {
+        "file": "tmp/server/serve/tsconfig.generated.1fda81b0-d5b4-4674-a990-3920e77ebaf9.json",
+        "hash": "1794606285106146939"
+      },
+      {
+        "file": "tmp/server/serve/tsconfig.generated.9035ad70-cfc5-4680-80d7-6255862af952.json",
+        "hash": "1794606285106146939"
       },
       {
         "file": "dist/types/lib/main-page.d.ts",
         "hash": "3412917694029298996"
+      },
+      {
+        "file": "dist/frontend/favicon.ico",
+        "hash": "9303420814833116677"
+      },
+      {
+        "file": ".prettierignore",
+        "hash": "14688272390704683536"
+      },
+      {
+        "file": "tmp/server/serve/tsconfig.generated.796508c9-f817-4a8b-b431-7cdcd90485b8.json",
+        "hash": "1794606285106146939"
+      },
+      {
+        "file": "vitest.workspace.ts",
+        "hash": "4665328684042819579"
+      },
+      {
+        "file": "nx.json",
+        "hash": "1185100040509694261"
       },
       {
         "file": "dist/types/lib/transaction.d.ts",
@@ -184,75 +144,23 @@
         "hash": "8502623867572789374"
       },
       {
-        "file": "dist/types/lib/wallet.d.ts",
-        "hash": "18327484957600438555"
-      },
-      {
         "file": "dist/types/lib/ws-message.d.ts",
-        "hash": "10263281472195608385"
-      },
-      {
-        "file": "dist/types/package.json",
-        "hash": "17950252107461897611"
-      },
-      {
-        "file": "eslint.config.mjs",
-        "hash": "11379193645810439577"
-      },
-      {
-        "file": "nx.json",
-        "hash": "1185100040509694261"
-      },
-      {
-        "file": "package-lock.json",
-        "hash": "5871791475741721890"
-      },
-      {
-        "file": "package.json",
-        "hash": "2110821478385146341"
-      },
-      {
-        "file": "tmp/server/main-with-require-overrides.js",
-        "hash": "5861938086074446350"
-      },
-      {
-        "file": "tmp/server/serve/tsconfig.generated.1fda81b0-d5b4-4674-a990-3920e77ebaf9.json",
-        "hash": "1794606285106146939"
-      },
-      {
-        "file": "tmp/server/serve/tsconfig.generated.2c548743-3ffd-49ff-a3ae-0ab669f8bc33.json",
-        "hash": "1794606285106146939"
+        "hash": "15014353567434446123"
       },
       {
         "file": "tmp/server/serve/tsconfig.generated.327da4ba-4ec5-4441-b3b6-7330dc2a755d.json",
         "hash": "6464658136732305376"
       },
       {
-        "file": "tmp/server/serve/tsconfig.generated.43c20a92-2ab7-41d5-871e-d1787ef67864.json",
-        "hash": "1794606285106146939"
+        "file": "dist/types/lib/wallet.d.ts",
+        "hash": "415089475235219212"
       },
       {
-        "file": "tmp/server/serve/tsconfig.generated.5b004e72-9c86-476e-8d43-a924561f6eff.json",
-        "hash": "1794606285106146939"
+        "file": "README.md",
+        "hash": "18422253503445360030"
       },
       {
-        "file": "tmp/server/serve/tsconfig.generated.796508c9-f817-4a8b-b431-7cdcd90485b8.json",
-        "hash": "1794606285106146939"
-      },
-      {
-        "file": "tmp/server/serve/tsconfig.generated.7d791dac-be0c-42e2-808b-53b324f9d27c.json",
-        "hash": "1794606285106146939"
-      },
-      {
-        "file": "tmp/server/serve/tsconfig.generated.9035ad70-cfc5-4680-80d7-6255862af952.json",
-        "hash": "1794606285106146939"
-      },
-      {
-        "file": "tmp/server/serve/tsconfig.generated.b775dab1-3b00-4643-a7da-2109cf2f4e3d.json",
-        "hash": "1794606285106146939"
-      },
-      {
-        "file": "tmp/server/serve/tsconfig.generated.cbea9451-c0fa-403f-bb4d-38c89ba023e5.json",
+        "file": "tmp/server/serve/tsconfig.generated.2c548743-3ffd-49ff-a3ae-0ab669f8bc33.json",
         "hash": "1794606285106146939"
       },
       {
@@ -260,16 +168,32 @@
         "hash": "6448560286823177145"
       },
       {
+        "file": "tmp/server/serve/tsconfig.generated.f82484ff-ef0b-4a44-8409-39f9432a5cc4.json",
+        "hash": "6464658136732305376"
+      },
+      {
         "file": "tsconfig.base.json",
         "hash": "7943512198215899884"
       },
       {
-        "file": "vitest.workspace.ts",
-        "hash": "4665328684042819579"
+        "file": "tmp/server/serve/tsconfig.generated.5b004e72-9c86-476e-8d43-a924561f6eff.json",
+        "hash": "1794606285106146939"
       },
       {
-        "file": "yarn.lock",
-        "hash": "12000065370108625241"
+        "file": "dist/types/index.js",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "tmp/server/serve/tsconfig.generated.cbea9451-c0fa-403f-bb4d-38c89ba023e5.json",
+        "hash": "1794606285106146939"
+      },
+      {
+        "file": "dist/frontend/assets/index-Ddo_rSG9.css",
+        "hash": "1497205742427098117"
+      },
+      {
+        "file": "eslint.config.mjs",
+        "hash": "11379193645810439577"
       }
     ],
     "projectFileMap": {
@@ -298,7 +222,7 @@
         },
         {
           "file": "types/src/index.ts",
-          "hash": "13521850884686177209"
+          "hash": "16504528181146074300"
         },
         {
           "file": "types/src/lib/main-page.ts",
@@ -314,11 +238,11 @@
         },
         {
           "file": "types/src/lib/wallet.ts",
-          "hash": "5662547510621826025"
+          "hash": "11823951579913118167"
         },
         {
           "file": "types/src/lib/ws-message.ts",
-          "hash": "14297430236383424169"
+          "hash": "6511409656654935047"
         },
         {
           "file": "types/tsconfig.json",
@@ -340,45 +264,6 @@
             "npm:vite-plugin-dts",
             "npm:@nx/vite"
           ]
-        }
-      ],
-      "server": [
-        {
-          "file": "server/eslint.config.mjs",
-          "hash": "9036454466467975933"
-        },
-        {
-          "file": "server/project.json",
-          "hash": "15266176699896050138"
-        },
-        {
-          "file": "server/src/assets/.gitkeep",
-          "hash": "3244421341483603138"
-        },
-        {
-          "file": "server/src/main.ts",
-          "hash": "8538233144016274144",
-          "deps": [
-            "npm:express",
-            "npm:ws",
-            "types"
-          ]
-        },
-        {
-          "file": "server/src/user-manager.ts",
-          "hash": "12265536683140103045",
-          "deps": [
-            "npm:ws",
-            "types"
-          ]
-        },
-        {
-          "file": "server/tsconfig.app.json",
-          "hash": "17242618072763467887"
-        },
-        {
-          "file": "server/tsconfig.json",
-          "hash": "4276712839166217253"
         }
       ],
       "frontend": [
@@ -406,72 +291,88 @@
           "hash": "9303420814833116677"
         },
         {
-          "file": "frontend/src/app/components/ProtectedRoute.tsx",
-          "hash": "7754952926982541106",
+          "file": "frontend/src/assets/.gitkeep",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "frontend/src/components/ProtectedRoute.tsx",
+          "hash": "12216099619742180522",
           "deps": [
             "npm:react-router-dom"
           ]
         },
         {
-          "file": "frontend/src/app/components/TransferModal.tsx",
-          "hash": "3791372648589205195",
+          "file": "frontend/src/components/TransferModal.tsx",
+          "hash": "15346922941958120281",
           "deps": [
             "npm:react"
           ]
         },
         {
-          "file": "frontend/src/app/hooks/useAnimatedBalance.ts",
-          "hash": "17467698864058204592",
+          "file": "frontend/src/hooks/useAuth.tsx",
+          "hash": "5467489979523836090",
           "deps": [
-            "npm:react"
+            "npm:react-redux"
           ]
         },
         {
-          "file": "frontend/src/app/hooks/useAuth.tsx",
-          "hash": "10720230950314272766",
-          "deps": [
-            "npm:react"
-          ]
-        },
-        {
-          "file": "frontend/src/app/hooks/useCardColor.tsx",
-          "hash": "10704999440526715881",
+          "file": "frontend/src/hooks/useCardColor.tsx",
+          "hash": "2695290992905181604",
           "deps": [
             "npm:react",
             "types"
           ]
         },
         {
-          "file": "frontend/src/app/hooks/useModal.tsx",
+          "file": "frontend/src/hooks/useModal.tsx",
           "hash": "11522492564958432046",
           "deps": [
             "npm:react"
           ]
         },
         {
-          "file": "frontend/src/app/hooks/useWebsocket.tsx",
+          "file": "frontend/src/hooks/useWebsocket.tsx",
           "hash": "13716177434415722436",
           "deps": [
             "npm:react"
           ]
         },
         {
-          "file": "frontend/src/app/modules/auth/index.tsx",
-          "hash": "9815005405296491765",
+          "file": "frontend/src/main.tsx",
+          "hash": "6322911793686572276",
+          "deps": [
+            "npm:react-dom",
+            "npm:react-router-dom"
+          ]
+        },
+        {
+          "file": "frontend/src/modules/auth/components/LoginForm.tsx",
+          "hash": "13035261880837889205",
           "deps": [
             "npm:react",
             "npm:react-router-dom"
           ]
         },
         {
-          "file": "frontend/src/app/modules/main/app.spec.tsx",
+          "file": "frontend/src/modules/auth/index.tsx",
+          "hash": "16852082613521541691"
+        },
+        {
+          "file": "frontend/src/modules/auth/store.ts",
+          "hash": "10516932087393885881",
+          "deps": [
+            "npm:@reduxjs/toolkit"
+          ]
+        },
+        {
+          "file": "frontend/src/modules/main/app.spec.tsx",
           "hash": "4973693681550103825",
           "deps": [
             "npm:@testing-library/react"
           ]
         },
         {
-          "file": "frontend/src/app/modules/main/components/Header.tsx",
+          "file": "frontend/src/modules/main/components/Header.tsx",
           "hash": "4923342993800520077",
           "deps": [
             "npm:react",
@@ -480,15 +381,19 @@
           ]
         },
         {
-          "file": "frontend/src/app/modules/main/components/Stats.tsx",
-          "hash": "14445302787449948543"
+          "file": "frontend/src/modules/main/components/Stats.tsx",
+          "hash": "4238189236446031743",
+          "deps": [
+            "npm:react",
+            "types"
+          ]
         },
         {
-          "file": "frontend/src/app/modules/main/const.ts",
-          "hash": "4207095259673164011"
+          "file": "frontend/src/modules/main/const.ts",
+          "hash": "5966497973138400920"
         },
         {
-          "file": "frontend/src/app/modules/main/hooks/useInitCard.ts",
+          "file": "frontend/src/modules/main/hooks/useInitCard.ts",
           "hash": "7619431421537495713",
           "deps": [
             "npm:react",
@@ -496,113 +401,132 @@
           ]
         },
         {
-          "file": "frontend/src/app/modules/main/index.tsx",
-          "hash": "5785413451439702379",
+          "file": "frontend/src/modules/main/index.tsx",
+          "hash": "5406035726940614746",
           "deps": [
             "npm:react",
             "npm:react-hot-toast"
           ]
         },
         {
-          "file": "frontend/src/app/modules/main/providers.tsx",
-          "hash": "18168115161916214878",
+          "file": "frontend/src/modules/main/providers.tsx",
+          "hash": "10523240588423883910",
           "deps": [
-            "npm:react"
+            "npm:react",
+            "npm:react-redux",
+            "npm:redux-persist"
           ]
         },
         {
-          "file": "frontend/src/app/modules/transactions/index.tsx",
-          "hash": "4431196707908119849",
+          "file": "frontend/src/modules/transactions/index.tsx",
+          "hash": "5582464810789701916",
           "deps": [
             "npm:react",
             "types"
           ]
         },
         {
-          "file": "frontend/src/app/modules/wallet/components/CardControls.tsx",
-          "hash": "3726056125638271097",
+          "file": "frontend/src/modules/wallet/components/CardControls.tsx",
+          "hash": "15196149436490294117",
           "deps": [
             "npm:react",
             "types"
           ]
         },
         {
-          "file": "frontend/src/app/modules/wallet/components/CardLevitate.tsx",
-          "hash": "11054697884115782554",
+          "file": "frontend/src/modules/wallet/components/CardLevitate.tsx",
+          "hash": "9313530451733389169",
           "deps": [
             "npm:react"
           ]
         },
         {
-          "file": "frontend/src/app/modules/wallet/components/CardPlaceholder.tsx",
+          "file": "frontend/src/modules/wallet/components/CardPlaceholder.tsx",
           "hash": "4233125459964773687"
         },
         {
-          "file": "frontend/src/app/modules/wallet/components/CheckIcon.tsx",
+          "file": "frontend/src/modules/wallet/components/CheckIcon.tsx",
           "hash": "3514202107892584941"
         },
         {
-          "file": "frontend/src/app/modules/wallet/components/ChipIcon.tsx",
+          "file": "frontend/src/modules/wallet/components/ChipIcon.tsx",
           "hash": "1500936854689838955"
         },
         {
-          "file": "frontend/src/app/modules/wallet/components/CopyIcon.tsx",
+          "file": "frontend/src/modules/wallet/components/CopyIcon.tsx",
           "hash": "12081351586698075274"
         },
         {
-          "file": "frontend/src/app/modules/wallet/components/EyeClosedIcon.tsx",
+          "file": "frontend/src/modules/wallet/components/EyeClosedIcon.tsx",
           "hash": "17443804408462673183"
         },
         {
-          "file": "frontend/src/app/modules/wallet/components/EyeOpenIcon.tsx",
+          "file": "frontend/src/modules/wallet/components/EyeOpenIcon.tsx",
           "hash": "17761568197708889637"
         },
         {
-          "file": "frontend/src/app/modules/wallet/components/MastercardIcon.tsx",
+          "file": "frontend/src/modules/wallet/components/MastercardIcon.tsx",
           "hash": "13950085513414494832"
         },
         {
-          "file": "frontend/src/app/modules/wallet/components/Sparkles.tsx",
+          "file": "frontend/src/modules/wallet/components/Sparkles.tsx",
           "hash": "17585925900218365812",
           "deps": [
             "npm:react"
           ]
         },
         {
-          "file": "frontend/src/app/modules/wallet/components/VisaIcon.tsx",
+          "file": "frontend/src/modules/wallet/components/VisaIcon.tsx",
           "hash": "17129348110532297945"
         },
         {
-          "file": "frontend/src/app/modules/wallet/const.ts",
+          "file": "frontend/src/modules/wallet/components/WalletCard.tsx",
+          "hash": "16457063880963542474",
+          "deps": [
+            "npm:react",
+            "types"
+          ]
+        },
+        {
+          "file": "frontend/src/modules/wallet/const.ts",
           "hash": "17137235722947520477",
           "deps": [
             "types"
           ]
         },
         {
-          "file": "frontend/src/app/modules/wallet/index.tsx",
-          "hash": "18033978228304898224",
+          "file": "frontend/src/modules/wallet/hooks/useAnimatedBalance.ts",
+          "hash": "9013195214398132795",
+          "deps": [
+            "npm:react"
+          ]
+        },
+        {
+          "file": "frontend/src/modules/wallet/index.tsx",
+          "hash": "17291376418973968292",
           "deps": [
             "npm:react",
             "types"
           ]
         },
         {
-          "file": "frontend/src/assets/.gitkeep",
-          "hash": "3244421341483603138"
+          "file": "frontend/src/modules/wallet/store.ts",
+          "hash": "6488748848191058125",
+          "deps": [
+            "npm:@reduxjs/toolkit"
+          ]
         },
         {
-          "file": "frontend/src/main.tsx",
-          "hash": "4649898829840348047",
+          "file": "frontend/src/store/index.ts",
+          "hash": "6788183801012832077",
           "deps": [
-            "npm:react",
-            "npm:react-dom",
-            "npm:react-router-dom"
+            "npm:@reduxjs/toolkit",
+            "npm:redux-persist"
           ]
         },
         {
           "file": "frontend/src/styles.css",
-          "hash": "14819310859234019097"
+          "hash": "7702290348410871215"
         },
         {
           "file": "frontend/tailwind.config.js",
@@ -617,7 +541,7 @@
         },
         {
           "file": "frontend/tsconfig.json",
-          "hash": "17972299458883822399"
+          "hash": "13793385191636344554"
         },
         {
           "file": "frontend/tsconfig.spec.json",
@@ -632,8 +556,47 @@
             "npm:@nx/vite"
           ]
         }
+      ],
+      "server": [
+        {
+          "file": "server/eslint.config.mjs",
+          "hash": "9036454466467975933"
+        },
+        {
+          "file": "server/project.json",
+          "hash": "15266176699896050138"
+        },
+        {
+          "file": "server/src/assets/.gitkeep",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "server/src/main.ts",
+          "hash": "7883421754050324003",
+          "deps": [
+            "npm:express",
+            "npm:ws",
+            "types"
+          ]
+        },
+        {
+          "file": "server/src/user-manager.ts",
+          "hash": "13383025466834852102",
+          "deps": [
+            "npm:ws",
+            "types"
+          ]
+        },
+        {
+          "file": "server/tsconfig.app.json",
+          "hash": "17242618072763467887"
+        },
+        {
+          "file": "server/tsconfig.json",
+          "hash": "4276712839166217253"
+        }
       ]
     }
   },
-  "externalNodesHash": "17197289949898695773"
+  "externalNodesHash": "7570806929779116498"
 }

@@ -15,7 +15,8 @@ export type WebsocketMessage =
       amount: number;
       debitPan: string;
       creditPan: string;
-    };
+    }
+  | UpdateStats;
 
 export interface InitBalance {
   event: 'init-card';
@@ -32,4 +33,16 @@ export interface ChangeBalance {
 export interface UpdateHistory {
   event: 'update-history';
   transaction: Transaction;
+}
+
+export interface StatData {
+  value: number;
+  sparkline: number[];
+}
+
+export interface UpdateStats {
+  event: 'update-stats';
+  pan: string;
+  income: StatData;
+  spending: StatData;
 }

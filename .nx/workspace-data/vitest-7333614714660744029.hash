@@ -17576,5 +17576,7102 @@
       }
     },
     "projectType": "library"
+  },
+  "10256295469467528940frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "3201933230214525654frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "788570316966122714frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "18054258950913951667frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "7435618935028206252frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "8044798851555038860frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "2092660261137201433frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "6328580330002284127frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "10427054087288937099frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "1944619877802612507frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "2158236020662659391frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "13964616241164193375types/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "types"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\types"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "13738741398945676031frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "11648734459947363694types/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "types"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\types"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "17470599808780943886frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "7778233833313243775frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "4849805155896296438frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "4146300203428395577frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "1570253792496721766frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "14828899435057586934frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "10742815832143546054frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "14503772478747296735frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "6064305123742003049frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "867576548870269023frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "438335441803708529frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "15355516705682626504frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "4869092202951414888types/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "types"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\types"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "16776353757635676982frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "1058311429549070829frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "2493890344694554165frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "3190786297477530664frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "2105148232137665278frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "8546941305815518435frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "14405816350121569911frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "12332773307993722203frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "6325345734373547215frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "4999248116010251490frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "5835415730478958651frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "6768970270167477833frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "16853365814710199221types/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "types"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\types"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "16480282776810513587frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "15915916097030582661frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "5550300900472006288frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "3661283946358505853frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "3455092438323563603frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "5216932998947798661frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "905075445026042657types/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "types"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\types"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "6788684738040538796frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "647058361307730438frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "16757990774534575051frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "17916494286181706900frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "15595088950742922652frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "7470091037179857048frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "4668079175325646309frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "2691195737534981768frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "923636743341395813frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "1941460072036593812frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "5991015799566848703frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "3716178596345890160frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "1942433396620554670frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "3119713627965643678frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "17393640704698604816frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "4787642053282618686frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "12489739719348305453frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "14720039583665315519frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "14665694925215398851frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "9063097558038675335frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "9861738558029680281frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "17433183248857179140frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "7469441476746489241frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "13671963959723512986frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "10608700401351220208frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "12578661865213276398frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "13152536244994043308frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "13557472516145263653frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "5726017135282009765frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "4065338887179940355frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "5256520676055366644frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "5814194811258639260frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "1941052397462887021frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "1620985864168646656frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "3837917957965921764frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "10469837598603622267frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "11823756352338740563frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "10811912346335980453frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "5058199529864946798frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "12366892498758375284frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "9249575042653359979frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "4560271120171308667frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "5650719235233285879frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "539559064900249967frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "8700677521246926540frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "12671902666417104048frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "8845856076447057973frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "4479065357252920656frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "14529393681118182894frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "3942338449277514069frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "17926823147276302989frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "9919167440112229686frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "1781647320670078589frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "10944572674587812999frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "1816145888426549751frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "12241471353206197379frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "13963919598375496623frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "7605887353250864702frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "15198582916936625935frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "8641359839991577482frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "3996992346281721502frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "11328401874855027732frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "3575543504815304296frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "12155655093888143637frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "15809352842695850025frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "7972032254921049118frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "5001750608273623559frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "8634215343678634105frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "6058141324143169320frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "8657704875135312584frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "16672338920360988045frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "15849805835520338795frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "3942216638377020733frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "13447852610361995824frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "7364200461603223782frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "8198051669509923657frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "13778922522441867171types/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "types"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\types"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "1305143270228728928frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "1855056794611261641frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "9613761420602652683frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "2371237098504850947frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "7668574215846330806frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "10340951949858246784frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "4979385993354095068frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "7615924637548187729frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "8468189260598216833frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "12518430987912454231frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "15754367939293852895frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "17144325436317062421frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "17684781838401451099frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "2340784184341237009frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "2534339457515538669frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "15679711997673686844frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "8536332729127459400types/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "types"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\types"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "9482513296264743136types/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "types"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\types"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "9188672173519114609frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "1707663061133016863frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "16019884759676573265frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "17118481608702158654frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "12220813015520040382frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "12943702543066794276frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "4732792216848574178frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "15126761737473086593frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
+  },
+  "5874643196250166440frontend/vite.config.mts": {
+    "targets": {
+      "test": {
+        "command": "vitest",
+        "options": {
+          "cwd": "frontend"
+        },
+        "cache": true,
+        "inputs": [
+          "default",
+          "^default",
+          {
+            "externalDependencies": [
+              "vitest"
+            ]
+          },
+          {
+            "env": "CI"
+          }
+        ],
+        "outputs": [
+          "{workspaceRoot}\\coverage\\frontend"
+        ],
+        "metadata": {
+          "technologies": [
+            "vitest"
+          ],
+          "description": "Run Vitest tests",
+          "help": {
+            "command": "yarn vitest --help",
+            "example": {
+              "options": {
+                "bail": 1,
+                "coverage": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "targetGroups": {
+        "TEST (CI)": []
+      }
+    },
+    "projectType": "library"
   }
 }

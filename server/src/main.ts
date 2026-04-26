@@ -118,6 +118,11 @@ wss.on('connection', (socket: AuthWebSocket) => {
         event: 'init-card',
         card: card,
       });
+      userManager.send(socket, {
+        event: 'update-stats',
+        pan: card.pan,
+        ...userManager.getStats(card.pan),
+      });
     }
 
     if (payload.event === 'proceed-transfer') {
@@ -144,7 +149,7 @@ wss.on('connection', (socket: AuthWebSocket) => {
           transaction: {
             ...transactionBase,
             description: `Transfer from ${maskPan(payload.debitPan)}`,
-            pan: payload.debitPan,
+            pan: payload.creditPan,
             type: 'credit',
             status: 'paid',
           },
@@ -155,10 +160,24 @@ wss.on('connection', (socket: AuthWebSocket) => {
           transaction: {
             ...transactionBase,
             description: `Transfer to ${maskPan(payload.creditPan)}`,
-            pan: payload.creditPan,
+            pan: payload.debitPan,
             type: 'debit',
             status: 'paid',
           },
+        });
+
+        userManager.updateStats(payload.creditPan, 'income', payload.amount);
+        userManager.sendByPan(payload.creditPan, {
+          event: 'update-stats',
+          pan: payload.creditPan,
+          ...userManager.getStats(payload.creditPan),
+        });
+
+        userManager.updateStats(payload.debitPan, 'spending', payload.amount);
+        userManager.sendByPan(payload.debitPan, {
+          event: 'update-stats',
+          pan: payload.debitPan,
+          ...userManager.getStats(payload.debitPan),
         });
       } catch {
         userManager.sendByPan(payload.debitPan, {
@@ -173,7 +192,7 @@ wss.on('connection', (socket: AuthWebSocket) => {
           transaction: {
             ...transactionBase,
             description: `Transfer to ${maskPan(payload.creditPan)} failed`,
-            pan: payload.creditPan,
+            pan: payload.debitPan,
             type: 'debit',
             status: 'failed',
           },

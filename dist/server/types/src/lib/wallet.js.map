@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../../../../../types/src/lib/wallet.ts"],
-  "sourcesContent": ["export type CardColor = 'violet' | 'emerald' | 'rose' | 'midnight';\nexport type CardNetwork = 'visa' | 'mastercard';\n\nexport interface CardData {\n  holderName: string;\n  pan: string;\n  balance: number;\n  currency: string;\n  expiry: string;\n  cardNetwork: CardNetwork;\n  cardColor?: CardColor;\n}\n\nexport interface WalletCardProps {\n  card: CardData;\n}\n"],
-  "mappings": ";;;;;;;;;;;;;AAAA;AAAA;",
-  "names": []
-}

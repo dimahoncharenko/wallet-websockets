@@ -1,0 +1,702 @@
+[ [32mwatch[39m ] build succeeded, watching for changes...
+[1m[31mDebugger listening on ws://localhost:9229/4d46bbd7-247e-46c1-8166-17989be3ef88
+Debugger listening on ws://localhost:9229/4d46bbd7-247e-46c1-8166-17989be3ef88
+For help, see: https://nodejs.org/en/docs/inspector
+[39m[22m
+Server listening on port: 3000
+[ ready ] http://localhost:3000
+Sending auth_result
+Starting session timer
+Sending init-card
+Sending auth_result
+Starting session timer
+Sending init-card
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Sending auth_result
+Starting session timer
+Sending init-card
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+[4m[34mserver\src\main.ts:92:9[39m[24m - [31m[1merror[22m[39m [90mTS2367[39m: This comparison appears to be unintentional because the types '"ping" | "init-card" | "change-balance" | "update-history" | "auth" | "auth_result" | "token_refreshed" | "proceed-transfer" | "update-stats"' and '"token_refresh"' have no overlap.
+
+[0m [90m 90 | [39m    }
+ [90m 91 | [39m
+[31m[1m>[22m[39m[90m 92 | [39m    [36mif[39m (payload[33m.[39mevent [33m===[39m [32m'token_refresh'[39m) {
+ [90m    | [39m        [31m[1m^[22m[39m
+ [90m 93 | [39m      [36mconst[39m token [33m=[39m payload[33m.[39mtoken[33m;[39m
+ [90m 94 | [39m      console[33m.[39mlog([32m'Token is about to refresh:'[39m[33m,[39m token)[33m;[39m
+ [90m 95 | [39m      [36mif[39m ([33m![39mtoken [33m||[39m token[33m.[39mtrim()[33m.[39mlength [33m===[39m [35m0[39m) {[0m
+
+[4m[34mserver\src\main.ts:93:29[39m[24m - [31m[1merror[22m[39m [90mTS2339[39m: Property 'token' does not exist on type 'never'.
+
+[0m [90m 91 | [39m
+ [90m 92 | [39m    [36mif[39m (payload[33m.[39mevent [33m===[39m [32m'token_refresh'[39m) {
+[31m[1m>[22m[39m[90m 93 | [39m      [36mconst[39m token [33m=[39m payload[33m.[39mtoken[33m;[39m
+ [90m    | [39m                            [31m[1m^[22m[39m
+ [90m 94 | [39m      console[33m.[39mlog([32m'Token is about to refresh:'[39m[33m,[39m token)[33m;[39m
+ [90m 95 | [39m      [36mif[39m ([33m![39mtoken [33m||[39m token[33m.[39mtrim()[33m.[39mlength [33m===[39m [35m0[39m) {
+ [90m 96 | [39m        socket[33m.[39mclose([35m4001[39m[33m,[39m [32m'Refresh token invalid'[39m)[33m;[39m[0m
+
+Found 2 errors.
+[ [31mwatch[39m ] build finished with errors (see above), watching for changes...
+[1m[31mBuild failed, waiting for changes to restart...[39m[22m
+[ [32mwatch[39m ] build succeeded, watching for changes...
+[1m[31mDebugger listening on ws://localhost:9229/544fb222-9d00-46f2-ba1e-128c433eee70
+Debugger listening on ws://localhost:9229/544fb222-9d00-46f2-ba1e-128c433eee70
+For help, see: https://nodejs.org/en/docs/inspector
+[39m[22m
+Server listening on port: 3000
+[ ready ] http://localhost:3000
+[ [32mwatch[39m ] build succeeded, watching for changes...
+[1m[31mDebugger listening on ws://localhost:9229/cc0e3334-c920-4ac3-8381-8b5eb0ef9807
+Debugger listening on ws://localhost:9229/cc0e3334-c920-4ac3-8381-8b5eb0ef9807
+For help, see: https://nodejs.org/en/docs/inspector
+[39m[22m
+Server listening on port: 3000
+[ ready ] http://localhost:3000
+[ [32mwatch[39m ] build succeeded, watching for changes...
+[1m[31mDebugger listening on ws://localhost:9229/95af9d67-c97c-44f5-aa49-6493e738ffaf
+Debugger listening on ws://localhost:9229/95af9d67-c97c-44f5-aa49-6493e738ffaf
+For help, see: https://nodejs.org/en/docs/inspector
+[39m[22m
+Server listening on port: 3000
+[ ready ] http://localhost:3000
+Sending auth_result
+Starting session timer
+Sending init-card
+Sending auth_result
+Starting session timer
+Sending init-card
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Sending auth_result
+Starting session timer
+Sending init-card
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Sending auth_result
+Starting session timer
+Sending init-card
+Token is about to refresh: Dima
+Sending auth_result
+Starting session timer
+Sending init-card
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Sending auth_result
+Starting session timer
+Sending init-card
+Sending auth_result
+Starting session timer
+Sending init-card
+Sending auth_result
+Starting session timer
+Sending init-card
+Sending auth_result
+Starting session timer
+Sending init-card
+Sending auth_result
+Starting session timer
+Sending init-card
+Sending auth_result
+Starting session timer
+Sending init-card
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Sending auth_result
+Starting session timer
+Sending init-card
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Sending auth_result
+Starting session timer
+Sending init-card
+Sending auth_result
+Starting session timer
+Sending init-card
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Sending auth_result
+Starting session timer
+Sending init-card
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+
+[7m[1m[36m NX [39m[22m[27m [1mProcess exited with code 3221225786, waiting for changes to restart...[22m
+

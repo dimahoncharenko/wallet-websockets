@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../../../../../types/src/lib/ws-message.ts"],
-  "sourcesContent": ["import { Transaction } from './transaction';\nimport { CardData } from './wallet';\n\nexport type WebsocketMessage =\n  | InitBalance\n  | ChangeBalance\n  | UpdateHistory\n  | { event: 'ping' }\n  | { event: 'auth'; token: string }\n  | { event: 'auth_result'; success: boolean; expiresIn: number }\n  | { event: 'token_refresh'; token: string }\n  | { event: 'token_refreshed'; success: boolean; expiresIn: number }\n  | {\n      event: 'proceed-transfer';\n      amount: number;\n      debitPan: string;\n      creditPan: string;\n    };\n\nexport interface InitBalance {\n  event: 'init-card';\n  card: CardData;\n}\n\nexport interface ChangeBalance {\n  event: 'change-balance';\n  balance: string;\n  creditPan: string;\n  message?: string;\n}\n\nexport interface UpdateHistory {\n  event: 'update-history';\n  transaction: Transaction;\n}\n"],
-  "mappings": ";;;;;;;;;;;;;AAAA;AAAA;",
-  "names": []
-}

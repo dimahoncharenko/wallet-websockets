@@ -1,0 +1,11 @@
+[2m> [22mvite build
+
+[36mvite v8.0.3 [32mbuilding client environment for production...[36m[39m
+[2Ktransforming...[32m✓[39m 80 modules transformed.
+rendering chunks...
+computing gzip size...
+[2m../dist/frontend/[0m[32mindex.html                 [39m[2m[1m  0.76 kB[0m[0m[2m │ gzip:  0.41 kB[0m
+[2m../dist/frontend/[0m[2massets/[0m[35mindex-Ddo_rSG9.css  [39m[2m[1m 26.02 kB[0m[0m[2m │ gzip:  5.30 kB[0m
+[2m../dist/frontend/[0m[2massets/[0m[36mindex-CMepsK_z.js   [39m[2m[1m306.68 kB[0m[0m[2m │ gzip: 98.01 kB[0m
+
+[32m✓ built in 2.85s[39m

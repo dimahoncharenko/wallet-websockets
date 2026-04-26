@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../../../../../types/src/lib/main-page.ts"],
-  "sourcesContent": ["import { CardColor } from './wallet';\n\nexport type ColorOption = { color: CardColor; bg: string; ring: string };\n"],
-  "mappings": ";;;;;;;;;;;;;AAAA;AAAA;",
-  "names": []
-}

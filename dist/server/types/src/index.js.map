@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../../../../types/src/index.ts"],
-  "sourcesContent": ["export * from './lib/user';\nexport * from './lib/ws-message';\nexport * from './lib/main-page';\nexport * from './lib/wallet';\n"],
-  "mappings": ";;;;;;;;;;;;;;AAAA;AAAA;AAAA,wBAAc,uBAAd;AACA,wBAAc,6BADd;AAEA,wBAAc,4BAFd;AAGA,wBAAc,yBAHd;",
-  "names": []
-}

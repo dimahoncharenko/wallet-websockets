@@ -1,0 +1,19 @@
+[ [32mwatch[39m ] build succeeded, watching for changes...
+[1m[31mDebugger listening on ws://localhost:9229/a7c24a41-898d-4c57-accf-f1a0428e96a0
+Debugger listening on ws://localhost:9229/a7c24a41-898d-4c57-accf-f1a0428e96a0
+For help, see: https://nodejs.org/en/docs/inspector
+[39m[22m
+Server listening on port: 3000
+[ ready ] http://localhost:3000
+Sending auth_result
+Starting session timer
+Sending init-card
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima
+Token is about to refresh: Dima

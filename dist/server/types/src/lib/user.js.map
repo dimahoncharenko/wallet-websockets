@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../../../../../types/src/lib/user.ts"],
-  "sourcesContent": ["export interface User {\n  id: string;\n  name: string;\n}\n"],
-  "mappings": ";;;;;;;;;;;;;AAAA;AAAA;",
-  "names": []
-}

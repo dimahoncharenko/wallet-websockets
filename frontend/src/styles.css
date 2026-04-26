@@ -19,41 +19,28 @@
       'Helvetica Neue',
       Arial,
       sans-serif;
-    background-color: #020617; /* slate-950 */
-    color: #f8fafc; /* slate-50  */
+    background-color: #020617;
+    color: #f8fafc;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 }
 
-/* ── Card levitation — two-layer approach ──
-   Outer wrapper  →  hover tilt + elevation (transform from JS vars)
-   Inner element  →  continuous float animation (separate transform layer)
-*/
 .card-levitate-wrapper {
   overflow: visible;
   will-change: transform, filter;
   border-radius: 1rem;
   perspective: 800px;
   cursor: default;
-  /* Enter/leave elevation eased by filter only; transform is JS-driven */
   transition: filter 0.35s ease;
 }
 
 /* While hovered: raise card and apply deep shadow */
 .card-levitate-wrapper:hover {
-  filter:
-    drop-shadow(0 28px 45px rgba(139, 92, 246, 0.42))
-    drop-shadow(0 10px 18px rgba(139, 92, 246, 0.22));
+  filter: drop-shadow(0 2px 3px rgba(139, 92, 246, 0.42))
+    drop-shadow(0 2px 3px rgba(139, 92, 246, 0.22));
 }
 
-/* When NOT hovered, gentle ambient shadow */
-.card-levitate-wrapper:not(:hover) {
-  filter:
-    drop-shadow(0 8px 20px rgba(139, 92, 246, 0.18));
-}
-
-/* Inner div runs the continuous float, unaffected by hover transform */
 .card-levitate-inner {
   animation: levitate 3s ease-in-out infinite;
   will-change: transform;
@@ -61,22 +48,44 @@
   overflow: visible;
 }
 
-/* ── Keyframe definitions (mirrored from tailwind.config.js) ── */
 @keyframes levitate {
-  0%, 100% { transform: translateY(0px); }
-  50%       { transform: translateY(-12px); }
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
 }
 
 @keyframes sparkle-float {
-  0%   { opacity: 0; transform: scale(0) rotate(0deg); }
-  50%  { opacity: 1; transform: scale(1) rotate(180deg); }
-  100% { opacity: 0; transform: scale(0) rotate(360deg); }
+  0% {
+    opacity: 0;
+    transform: scale(0) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1) rotate(180deg);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0) rotate(360deg);
+  }
 }
 
 @keyframes sparkle-drift {
-  0%   { opacity: 0; transform: translateY(0) scale(0); }
-  20%  { opacity: 1; transform: translateY(-8px) scale(1); }
-  100% { opacity: 0; transform: translateY(-30px) scale(0.3); }
+  0% {
+    opacity: 0;
+    transform: translateY(0) scale(0);
+  }
+  20% {
+    opacity: 1;
+    transform: translateY(-8px) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-30px) scale(0.3);
+  }
 }
 
 /* ── Sparkle particles ── */
@@ -112,13 +121,15 @@
   border-radius: 50%;
   background: radial-gradient(
     ellipse at center,
-    rgba(139, 92, 246, 0.30) 0%,
-    rgba(139, 92, 246, 0.10) 45%,
+    rgba(139, 92, 246, 0.3) 0%,
+    rgba(139, 92, 246, 0.1) 45%,
     transparent 70%
   );
   filter: blur(25px);
   pointer-events: none;
-  transition: opacity 0.4s ease, filter 0.4s ease;
+  transition:
+    opacity 0.4s ease,
+    filter 0.4s ease;
   z-index: -1;
   animation: levitate 3s ease-in-out infinite;
 }
@@ -134,3 +145,10 @@
   );
 }
 
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
