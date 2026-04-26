@@ -8,6 +8,7 @@ import { Stats } from './components/Stats';
 import { useWebsocket } from '@hooks/useWebsocket';
 import Transactions from '@modules/transactions';
 import { Header } from './components/Header';
+import { NotificationsPanel } from '@modules/notifications';
 
 export function App() {
   const { card, balance, setBalance } = useInitCard();
@@ -44,28 +45,47 @@ export function App() {
   const currentCard = cards ? cards[activeIndex] : null;
 
   return (
-    <main className="min-h-screen bg-slate-950 text-white flex flex-col items-center px-4 py-10 gap-8">
-      <Header card={currentCard} />
-      <div className="w-full max-w-sm">
+    <main className="min-h-screen bg-slate-950 text-white px-4 py-10 lg:px-10 lg:py-8">
+      <div className="flex flex-col items-center gap-8 lg:max-w-6xl lg:mx-auto lg:items-stretch">
+        <Header />
+        <NotificationsPanel />
+
         {cards && currentCard ? (
-          <div className="flex flex-col gap-4">
-            <WalletCard
-              cards={cards}
-              activeIndex={activeIndex}
-              onActiveIndexChange={setActiveIndex}
-            />
-            <CardControls
-              card={currentCard}
-              balance={currentCard.balance}
-              setBalance={setBalance}
-            />
-          </div>
+          <>
+            <div className="w-full flex flex-col items-center gap-8 lg:grid lg:grid-cols-[440px,1fr] lg:items-stretch lg:gap-6">
+              <div className="w-full max-w-sm lg:max-w-none flex flex-col gap-4">
+                <WalletCard
+                  cards={cards}
+                  activeIndex={activeIndex}
+                  onActiveIndexChange={setActiveIndex}
+                />
+                <CardControls
+                  card={currentCard}
+                  balance={currentCard.balance}
+                  setBalance={setBalance}
+                />
+              </div>
+
+              <div className="hidden lg:flex flex-col bg-white/[0.03] lg:mt-10 lg:mb-4 border border-white/[0.06] rounded-3xl overflow-hidden">
+                <Transactions currentCard={currentCard} />
+              </div>
+            </div>
+
+            <div className="w-full max-w-sm lg:max-w-none">
+              <Stats currentCard={currentCard} />
+            </div>
+
+            <div className="w-full max-w-sm lg:hidden">
+              <Transactions currentCard={currentCard} />
+            </div>
+          </>
         ) : (
-          <CardPlaceholder />
+          <div className="w-full max-w-sm">
+            <CardPlaceholder />
+          </div>
         )}
       </div>
-      {currentCard && <Stats currentCard={currentCard} />}
-      {currentCard && <Transactions currentCard={currentCard} />}
+
       <Toaster
         position="top-center"
         toastOptions={{

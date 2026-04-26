@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { WalletProps } from 'types';
+import './wallet.css';
 import { WalletCard } from './components/WalletCard';
 import { CardLevitate } from './components/CardLevitate';
 import { Sparkles } from './components/Sparkles';
@@ -50,7 +51,7 @@ export default function Wallet({
   return (
     <div className="relative w-full">
       {Array.isArray(cards) && cards.length > 1 && (
-        <div className="bg-white/5 ml-auto max-w-24 backdrop-blur-md border border-white/10 px-3 py-1 rounded-full text-[10px] font-medium tracking-wider uppercase text-white/60">
+        <div className="bg-white/5 ml-auto max-w-24 backdrop-blur-md border border-white/10 px-3 py-1 rounded-full text-[10px] font-medium tracking-wider uppercase lg:hidden text-white/60">
           Card {activeIndex + 1} of {cards.length}
         </div>
       )}
@@ -82,22 +83,27 @@ export default function Wallet({
       </div>
 
       {cards.length > 1 && (
-        <div className="flex justify-center items-center gap-2 -mt-16 relative z-10">
-          {cards.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => scrollTo(i)}
-              className={`
-                h-1.5 rounded-full transition-all duration-500 ease-out
-                ${
-                  i === activeIndex
-                    ? 'bg-gradient-to-r from-violet-400 to-indigo-500 w-8 opacity-100 shadow-[0_0_8px_rgba(167,139,250,0.5)]'
-                    : 'bg-white/20 w-1.5 hover:bg-white/40 opacity-50'
-                }
-              `}
-              aria-label={`Go to card ${i + 1}`}
-            />
-          ))}
+        <div className="flex justify-center items-center gap-2 -mt-16 relative z-10 lg:justify-between lg:px-1">
+          <div className="flex items-center gap-2">
+            {cards.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => scrollTo(i)}
+                className={`
+                  h-1.5 rounded-full transition-all duration-500 ease-out
+                  ${
+                    i === activeIndex
+                      ? 'bg-gradient-to-r from-violet-400 to-indigo-500 w-8 opacity-100 shadow-[0_0_8px_rgba(167,139,250,0.5)]'
+                      : 'bg-white/20 w-1.5 hover:bg-white/40 opacity-50'
+                  }
+                `}
+                aria-label={`Go to card ${i + 1}`}
+              />
+            ))}
+          </div>
+          <button className="hidden lg:flex items-center gap-1.5 text-[12px] text-white/40 hover:text-white/70 transition-colors font-medium">
+            <span className="text-base leading-none">+</span> Add card
+          </button>
         </div>
       )}
     </div>

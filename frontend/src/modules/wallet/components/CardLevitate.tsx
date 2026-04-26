@@ -52,7 +52,10 @@ export function CardLevitate({ children }: CardLevitateProps) {
     }
   }, [loop]);
 
+  const isLargeScreen = () => window.matchMedia('(min-width: 1024px)').matches;
+
   const handleMouseEnter = useCallback(() => {
+    if (isLargeScreen()) return;
     hovering.current = true;
     tgt.current.elev = -18;
     startLoop();
@@ -60,6 +63,7 @@ export function CardLevitate({ children }: CardLevitateProps) {
 
   const handleMouseMove = useCallback(
     (e: React.MouseEvent<HTMLDivElement>) => {
+      if (isLargeScreen()) return;
       const rect = outerRef.current?.getBoundingClientRect();
       if (!rect) return;
 
@@ -77,6 +81,7 @@ export function CardLevitate({ children }: CardLevitateProps) {
   );
 
   const handleMouseLeave = useCallback(() => {
+    if (isLargeScreen()) return;
     hovering.current = false;
     tgt.current = { x: 0, y: 0, elev: 0 };
     startLoop();

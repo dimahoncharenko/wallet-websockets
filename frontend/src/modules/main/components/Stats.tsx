@@ -110,7 +110,7 @@ export const Stats = ({ currentCard }: StatsProps) => {
   ];
 
   return (
-    <div className="grid grid-cols-3 gap-3 w-full max-w-sm">
+    <div className="grid grid-cols-3 gap-3 w-full">
       {statsList.map(
         ({ label, value, change, icon, accent, bg, sparkline }) => (
           <div
@@ -118,15 +118,15 @@ export const Stats = ({ currentCard }: StatsProps) => {
             className="rounded-[24px] bg-white/[0.03] border border-white/[0.05] p-4 flex flex-col shadow-lg shadow-black/20"
           >
             <div
-              className={`w-10 h-10 rounded-[14px] ${bg} flex items-center justify-center mb-6`}
+              className={`w-9 h-9 rounded-[12px] ${bg} flex items-center justify-center mb-3`}
             >
               <span className={`text-lg font-bold ${accent}`}>{icon}</span>
             </div>
 
-            <p className="text-[22px] font-black leading-none mb-1.5 tracking-tight">
+            <p className="text-[20px] font-black leading-none mb-1.5 tracking-tight">
               {value}
             </p>
-            <p className="text-[10px] text-white/40 uppercase font-bold tracking-widest mb-5">
+            <p className="text-[10px] text-white/40 uppercase font-bold tracking-widest mb-3">
               {label}
             </p>
 

@@ -1,0 +1,11 @@
+[2m> [22mvite build
+
+[36mvite v8.0.3 [32mbuilding client environment for production...[36m[39m
+[2Ktransforming...[32m✓[39m 84 modules transformed.
+rendering chunks...
+computing gzip size...
+[2m../dist/frontend/[0m[32mindex.html                 [39m[2m[1m  0.76 kB[0m[0m[2m │ gzip:   0.41 kB[0m
+[2m../dist/frontend/[0m[2massets/[0m[35mindex-wQGJRMQ1.css  [39m[2m[1m 30.16 kB[0m[0m[2m │ gzip:   6.17 kB[0m
+[2m../dist/frontend/[0m[2massets/[0m[36mindex-uatqIAgJ.js   [39m[2m[1m321.28 kB[0m[0m[2m │ gzip: 101.50 kB[0m
+
+[32m✓ built in 1.08s[39m

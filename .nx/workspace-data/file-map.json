@@ -40,232 +40,55 @@
   "fileMap": {
     "nonProjectFiles": [
       {
-        "file": "dist/types/index.d.ts",
-        "hash": "16504528181146074300"
-      },
-      {
         "file": ".gitignore",
-        "hash": "12497534368567063105"
-      },
-      {
-        "file": ".vscode/settings.json",
-        "hash": "7592593258915410043"
-      },
-      {
-        "file": "dist/frontend/index.html",
-        "hash": "16057983415715541666"
-      },
-      {
-        "file": "tmp/server/serve/tsconfig.generated.b775dab1-3b00-4643-a7da-2109cf2f4e3d.json",
-        "hash": "1794606285106146939"
-      },
-      {
-        "file": "tmp/server/serve/tsconfig.generated.43c20a92-2ab7-41d5-871e-d1787ef67864.json",
-        "hash": "1794606285106146939"
-      },
-      {
-        "file": "dist/types/package.json",
-        "hash": "17950252107461897611"
-      },
-      {
-        "file": ".vscode/launch.json",
-        "hash": "9700990274554336720"
-      },
-      {
-        "file": "package-lock.json",
-        "hash": "9761924399016871996"
-      },
-      {
-        "file": "tmp/server/main-with-require-overrides.js",
-        "hash": "5861938086074446350"
-      },
-      {
-        "file": "tmp/server/serve/tsconfig.generated.7d791dac-be0c-42e2-808b-53b324f9d27c.json",
-        "hash": "1794606285106146939"
-      },
-      {
-        "file": "yarn.lock",
-        "hash": "12463895067315446026"
-      },
-      {
-        "file": "dist/frontend/assets/index-CMepsK_z.js",
-        "hash": "9423144267334094765"
-      },
-      {
-        "file": "dist/types/README.md",
-        "hash": "4897450697455520334"
-      },
-      {
-        "file": "package.json",
-        "hash": "13979121659489164174"
-      },
-      {
-        "file": ".prettierrc",
-        "hash": "11190582067353347754"
-      },
-      {
-        "file": "tmp/server/serve/tsconfig.generated.1fda81b0-d5b4-4674-a990-3920e77ebaf9.json",
-        "hash": "1794606285106146939"
-      },
-      {
-        "file": "tmp/server/serve/tsconfig.generated.9035ad70-cfc5-4680-80d7-6255862af952.json",
-        "hash": "1794606285106146939"
-      },
-      {
-        "file": "dist/types/lib/main-page.d.ts",
-        "hash": "3412917694029298996"
-      },
-      {
-        "file": "dist/frontend/favicon.ico",
-        "hash": "9303420814833116677"
+        "hash": "4247377844362489411"
       },
       {
         "file": ".prettierignore",
         "hash": "14688272390704683536"
       },
       {
-        "file": "tmp/server/serve/tsconfig.generated.796508c9-f817-4a8b-b431-7cdcd90485b8.json",
-        "hash": "1794606285106146939"
+        "file": ".prettierrc",
+        "hash": "11190582067353347754"
       },
       {
-        "file": "vitest.workspace.ts",
-        "hash": "4665328684042819579"
-      },
-      {
-        "file": "nx.json",
-        "hash": "1185100040509694261"
-      },
-      {
-        "file": "dist/types/lib/transaction.d.ts",
-        "hash": "14298945910955178063"
-      },
-      {
-        "file": "dist/types/lib/user.d.ts",
-        "hash": "8502623867572789374"
-      },
-      {
-        "file": "dist/types/lib/ws-message.d.ts",
-        "hash": "15014353567434446123"
-      },
-      {
-        "file": "tmp/server/serve/tsconfig.generated.327da4ba-4ec5-4441-b3b6-7330dc2a755d.json",
-        "hash": "6464658136732305376"
-      },
-      {
-        "file": "dist/types/lib/wallet.d.ts",
-        "hash": "415089475235219212"
+        "file": "AGENTS.md",
+        "hash": "9619065949160121505"
       },
       {
         "file": "README.md",
         "hash": "18422253503445360030"
       },
       {
-        "file": "tmp/server/serve/tsconfig.generated.2c548743-3ffd-49ff-a3ae-0ab669f8bc33.json",
-        "hash": "1794606285106146939"
+        "file": "eslint.config.mjs",
+        "hash": "11379193645810439577"
       },
       {
-        "file": "tmp_build_output.txt",
-        "hash": "6448560286823177145"
+        "file": "nx.json",
+        "hash": "1185100040509694261"
       },
       {
-        "file": "tmp/server/serve/tsconfig.generated.f82484ff-ef0b-4a44-8409-39f9432a5cc4.json",
-        "hash": "6464658136732305376"
+        "file": "package-lock.json",
+        "hash": "9761924399016871996"
+      },
+      {
+        "file": "package.json",
+        "hash": "13979121659489164174"
       },
       {
         "file": "tsconfig.base.json",
         "hash": "7943512198215899884"
       },
       {
-        "file": "tmp/server/serve/tsconfig.generated.5b004e72-9c86-476e-8d43-a924561f6eff.json",
-        "hash": "1794606285106146939"
+        "file": "vitest.workspace.ts",
+        "hash": "4665328684042819579"
       },
       {
-        "file": "dist/types/index.js",
-        "hash": "3244421341483603138"
-      },
-      {
-        "file": "tmp/server/serve/tsconfig.generated.cbea9451-c0fa-403f-bb4d-38c89ba023e5.json",
-        "hash": "1794606285106146939"
-      },
-      {
-        "file": "dist/frontend/assets/index-Ddo_rSG9.css",
-        "hash": "1497205742427098117"
-      },
-      {
-        "file": "eslint.config.mjs",
-        "hash": "11379193645810439577"
+        "file": "yarn.lock",
+        "hash": "12463895067315446026"
       }
     ],
     "projectFileMap": {
-      "types": [
-        {
-          "file": "types/README.md",
-          "hash": "4897450697455520334"
-        },
-        {
-          "file": "types/eslint.config.mjs",
-          "hash": "15554717450871712595",
-          "deps": [
-            [
-              "npm:jsonc-eslint-parser",
-              "dynamic"
-            ]
-          ]
-        },
-        {
-          "file": "types/package.json",
-          "hash": "17950252107461897611"
-        },
-        {
-          "file": "types/project.json",
-          "hash": "16994227310171319081"
-        },
-        {
-          "file": "types/src/index.ts",
-          "hash": "16504528181146074300"
-        },
-        {
-          "file": "types/src/lib/main-page.ts",
-          "hash": "8191582938215269361"
-        },
-        {
-          "file": "types/src/lib/transaction.ts",
-          "hash": "10937514925760490589"
-        },
-        {
-          "file": "types/src/lib/user.ts",
-          "hash": "5722251289007816762"
-        },
-        {
-          "file": "types/src/lib/wallet.ts",
-          "hash": "11823951579913118167"
-        },
-        {
-          "file": "types/src/lib/ws-message.ts",
-          "hash": "6511409656654935047"
-        },
-        {
-          "file": "types/tsconfig.json",
-          "hash": "10148903843036702529"
-        },
-        {
-          "file": "types/tsconfig.lib.json",
-          "hash": "14013297239685438097"
-        },
-        {
-          "file": "types/tsconfig.spec.json",
-          "hash": "7277455390741021771"
-        },
-        {
-          "file": "types/vite.config.mts",
-          "hash": "90732991957302554",
-          "deps": [
-            "npm:vite",
-            "npm:vite-plugin-dts",
-            "npm:@nx/vite"
-          ]
-        }
-      ],
       "frontend": [
         {
           "file": "frontend/eslint.config.mjs",
@@ -594,6 +417,75 @@
         {
           "file": "server/tsconfig.json",
           "hash": "4276712839166217253"
+        }
+      ],
+      "types": [
+        {
+          "file": "types/README.md",
+          "hash": "4897450697455520334"
+        },
+        {
+          "file": "types/eslint.config.mjs",
+          "hash": "15554717450871712595",
+          "deps": [
+            [
+              "npm:jsonc-eslint-parser",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "types/package.json",
+          "hash": "17950252107461897611"
+        },
+        {
+          "file": "types/project.json",
+          "hash": "16994227310171319081"
+        },
+        {
+          "file": "types/src/index.ts",
+          "hash": "16504528181146074300"
+        },
+        {
+          "file": "types/src/lib/main-page.ts",
+          "hash": "8191582938215269361"
+        },
+        {
+          "file": "types/src/lib/transaction.ts",
+          "hash": "10937514925760490589"
+        },
+        {
+          "file": "types/src/lib/user.ts",
+          "hash": "5722251289007816762"
+        },
+        {
+          "file": "types/src/lib/wallet.ts",
+          "hash": "11823951579913118167"
+        },
+        {
+          "file": "types/src/lib/ws-message.ts",
+          "hash": "6511409656654935047"
+        },
+        {
+          "file": "types/tsconfig.json",
+          "hash": "10148903843036702529"
+        },
+        {
+          "file": "types/tsconfig.lib.json",
+          "hash": "14013297239685438097"
+        },
+        {
+          "file": "types/tsconfig.spec.json",
+          "hash": "7277455390741021771"
+        },
+        {
+          "file": "types/vite.config.mts",
+          "hash": "90732991957302554",
+          "deps": [
+            "npm:vite",
+            "npm:vite-plugin-dts",
+            "npm:@nx/vite"
+          ]
         }
       ]
     }

@@ -4,13 +4,16 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { store, persistor } from '../../store';
 import { ModalProvider } from '@hooks/useModal';
 import { WebsocketProvider } from '@hooks/useWebsocket';
+import { NotificationsProvider } from '@hooks/useNotifications';
 
 export const Providers = ({ children }: { children: ReactNode }) => {
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <WebsocketProvider>
-          <ModalProvider>{children}</ModalProvider>
+          <NotificationsProvider>
+            <ModalProvider>{children}</ModalProvider>
+          </NotificationsProvider>
         </WebsocketProvider>
       </PersistGate>
     </Provider>
