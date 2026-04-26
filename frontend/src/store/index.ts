@@ -10,10 +10,10 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import authReducer from '../modules/auth/store';
+import walletReducer from '../modules/wallet/store';
 
 const rootReducer = combineReducers({
-  auth: authReducer,
+  wallet: walletReducer,
 });
 
 const persistConfig = {

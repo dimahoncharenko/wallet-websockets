@@ -1,8 +1,22 @@
 vite.config.*.timestamp*
 vitest.config.*.timestamp*
 /node_modules
+/.nx
 /dist
 /.vscode
-tmp_build_output.txt
-/tmp
 /.claude
+/tmp
+tmp_build_output.txt
+
+# Lockfile (project uses yarn)
+package-lock.json
+
+# Test coverage
+coverage/
+
+# Env files
+/frontend/.env.local
+/server/.env
+/server/.env.local
+/server/.env.*
+/frontend/.env.*

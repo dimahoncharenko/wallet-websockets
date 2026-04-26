@@ -31,14 +31,14 @@ Path aliases are declared in `tsconfig.base.json` and resolved at build time by 
 
 ## Tech Stack
 
-| Layer      | Technology                                    |
-|------------|-----------------------------------------------|
-| Backend    | Node.js, Express 4, `ws` v8 (raw WebSocket)   |
-| Frontend   | React 19, React Router 7, Vite 8, Tailwind 3  |
-| State      | Redux Toolkit 2 + redux-persist               |
-| Types      | Shared `/types` package, AJV for validation   |
-| Tooling    | Nx 22, esbuild (server), ESLint 9, Prettier   |
-| Testing    | Vitest 4 + Testing Library, jsdom             |
+| Layer    | Technology                                   |
+| -------- | -------------------------------------------- |
+| Backend  | Node.js, Express 4, `ws` v8 (raw WebSocket)  |
+| Frontend | React 19, React Router 7, Vite 8, Tailwind 3 |
+| State    | Redux Toolkit 2 + redux-persist              |
+| Types    | Shared `/types` package, AJV for validation  |
+| Tooling  | Nx 22, esbuild (server), ESLint 9, Prettier  |
+| Testing  | Vitest 4 + Testing Library, jsdom            |
 
 ---
 
@@ -88,24 +88,24 @@ Never duplicate type definitions across packages.
 
 ### Naming
 
-| Thing               | Convention              | Example                        |
-|---------------------|-------------------------|--------------------------------|
-| Components          | PascalCase              | `CardLevitate.tsx`             |
-| Hooks               | `use` prefix, camelCase | `useInitCard`, `useCardColor`  |
-| Event handlers      | `handle` prefix         | `handleTransfer`, `handleSubmit` |
-| Constants           | SCREAMING_SNAKE_CASE    | `SESSION_LIFETIME_MS`, `GRADIENTS` |
-| Types / Interfaces  | PascalCase noun         | `CardData`, `WebsocketMessage` |
-| Props types         | `{Name}Props` suffix    | `TransferModalProps`           |
+| Thing              | Convention              | Example                            |
+| ------------------ | ----------------------- | ---------------------------------- |
+| Components         | PascalCase              | `CardLevitate.tsx`                 |
+| Hooks              | `use` prefix, camelCase | `useInitCard`, `useCardColor`      |
+| Event handlers     | `handle` prefix         | `handleTransfer`, `handleSubmit`   |
+| Constants          | SCREAMING_SNAKE_CASE    | `SESSION_LIFETIME_MS`, `GRADIENTS` |
+| Types / Interfaces | PascalCase noun         | `CardData`, `WebsocketMessage`     |
+| Props types        | `{Name}Props` suffix    | `TransferModalProps`               |
 
 ### State Ownership
 
-| State                 | Where it lives               |
-|-----------------------|------------------------------|
-| Auth (login/logout)   | Redux slice (`authSlice`)    |
-| WebSocket connection  | `WebsocketContext`           |
-| Modal visibility      | `ModalContext`               |
-| Card color per PAN    | localStorage + custom events |
-| Balance / transactions| Component-local via hooks    |
+| State                  | Where it lives               |
+| ---------------------- | ---------------------------- |
+| Auth (login/logout)    | Redux slice (`authSlice`)    |
+| WebSocket connection   | `WebsocketContext`           |
+| Modal visibility       | `ModalContext`               |
+| Card color per PAN     | localStorage + custom events |
+| Balance / transactions | Component-local via hooks    |
 
 Redux is only used for auth. Keep it that way — do not add new slices for feature-level state.
 
@@ -146,12 +146,22 @@ type WebsocketMessage =
   | { event: 'auth'; token: string }
   | { event: 'auth_result'; success: boolean; expiresIn: number }
   | { event: 'init-card'; card: CardData }
-  | { event: 'change-balance'; balance: number; creditPan: string; message: string }
+  | {
+      event: 'change-balance';
+      balance: number;
+      creditPan: string;
+      message: string;
+    }
   | { event: 'update-history'; transaction: Transaction }
   | { event: 'update-stats'; pan: string; income: number; spending: number }
-  | { event: 'proceed-transfer'; amount: number; debitPan: string; creditPan: string }
+  | {
+      event: 'proceed-transfer';
+      amount: number;
+      debitPan: string;
+      creditPan: string;
+    }
   | { event: 'token_refresh'; token: string }
-  | { event: 'token_refreshed'; success: boolean; expiresIn: number }
+  | { event: 'token_refreshed'; success: boolean; expiresIn: number };
 ```
 
 Add new message types to `types/src/lib/ws-message.ts` before implementing handlers. Use `event` values in kebab-case to match existing convention.
@@ -292,3 +302,9 @@ esbuild targets CommonJS for the server. Source maps are enabled in development 
 ## Validation
 
 `server/main.ts` validates WebSocket message structure inline. For new events with complex payloads, use AJV (already a dependency in `/types`) to validate against a JSON schema before processing.
+
+## Code guidelines
+
+Never use nested ternary operators
+
+You can define a module specific but not important type in module's types.ts file. But entity types, or shared, place into types monorepo

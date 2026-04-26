@@ -1,5 +1,6 @@
-import { createContext, useContext, useState, useRef } from 'react';
+import { createContext, useContext, useState, useRef, useEffect } from 'react';
 import { useAuth } from '@hooks/useAuth';
+import { supabase } from '@lib/supabase';
 
 type Context = {
   socket: WebSocket | null;
@@ -23,35 +24,37 @@ export const WebsocketProvider = ({
   children: React.ReactNode;
 }) => {
   const [socket, setSocket] = useState<WebSocket | null>(null);
-  const { logout, username } = useAuth();
+  const socketRef = useRef<WebSocket | null>(null);
+  const { logout, session } = useAuth();
 
-  const refreshTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-
-  const scheduleTokenRefresh = (ws: WebSocket, expiresIn: number) => {
-    if (refreshTimeoutRef.current) {
-      console.log('Clearing previous refresh timeout');
-      clearTimeout(refreshTimeoutRef.current);
-    }
-
-    // Refresh 5 seconds before it expires!
-    const refreshAt = Math.max(expiresIn - 5000, 1000); // Wait at least 1 second
-
-    console.log(`Scheduling token refresh in ${refreshAt}ms`);
-
-    refreshTimeoutRef.current = setTimeout(() => {
-      console.log('Sending in-band token refresh...');
-      ws.send(JSON.stringify({ event: 'token_refresh', token: username }));
-    }, refreshAt);
-  };
+  useEffect(() => {
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((event, newSession) => {
+      if (
+        event === 'TOKEN_REFRESHED' &&
+        newSession &&
+        socketRef.current?.readyState === WebSocket.OPEN
+      ) {
+        socketRef.current.send(
+          JSON.stringify({
+            event: 'token_refresh',
+            token: newSession.access_token,
+          }),
+        );
+      }
+    });
+    return () => subscription.unsubscribe();
+  }, []);
 
   const connect = () => {
-    if (socket || !username) return;
+    if (socketRef.current || !session) return;
     const ws = new WebSocket('ws://localhost:3000');
+    socketRef.current = ws;
     setSocket(ws);
 
     ws.onopen = () => {
-      console.log('WebSocket connected');
-      ws.send(JSON.stringify({ event: 'auth', token: username }));
+      ws.send(JSON.stringify({ event: 'auth', token: session.access_token }));
     };
 
     ws.addEventListener('message', (event) => {
@@ -59,16 +62,7 @@ export const WebsocketProvider = ({
         const msg = JSON.parse(event.data);
 
         if (msg.event === 'auth_result' && msg.success) {
-          console.log('Initial Auth verification succeeded!');
-          scheduleTokenRefresh(ws, msg.expiresIn);
-
-          // Initial ping to bootstrap the layout
           ws.send(JSON.stringify({ event: 'ping' }));
-        }
-
-        if (msg.event === 'token_refreshed' && msg.success) {
-          console.log('Token aggressively refreshed! Connection alive.');
-          scheduleTokenRefresh(ws, msg.expiresIn);
         }
       } catch (error) {
         console.error('Failed to parse WS message:', error);
@@ -76,20 +70,19 @@ export const WebsocketProvider = ({
     });
 
     ws.onclose = (event) => {
-      if (refreshTimeoutRef.current) clearTimeout(refreshTimeoutRef.current);
+      socketRef.current = null;
+      setSocket(null);
 
-      // 4001: Token Expired / Unauthorized
       if (event.code === 4001 || event.code === 1008) {
         console.warn('WebSocket closed due to auth expiration:', event.reason);
         logout();
       }
-      setSocket(null);
     };
   };
 
   const disconnect = () => {
-    if (refreshTimeoutRef.current) clearTimeout(refreshTimeoutRef.current);
-    socket?.close();
+    socketRef.current?.close();
+    socketRef.current = null;
     setSocket(null);
   };
 

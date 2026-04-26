@@ -11,7 +11,8 @@
       "types": ["../types/src/index.ts"],
       "@components/*": ["src/components/*"],
       "@modules/*": ["src/modules/*"],
-      "@hooks/*": ["src/hooks/*"]
+      "@hooks/*": ["src/hooks/*"],
+      "@lib/*": ["src/lib/*"]
     }
   },
   "files": [],

@@ -1,6 +1,12 @@
-import { LoginForm } from './components/LoginForm';
+import { useState } from 'react';
+import { AuthenticationForm } from './components/AuthenticationForm';
+import { Mode } from './types';
+import { headings } from './const';
 
 export default function Auth() {
+  const [mode, setMode] = useState<Mode>('login');
+  const { title, subtitle } = headings[mode];
+
   return (
     <main className="min-h-screen bg-slate-950 text-white flex flex-col items-center justify-center p-4">
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-[120px] pointer-events-none" />
@@ -12,13 +18,11 @@ export default function Auth() {
             <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-400 to-teal-600 flex items-center justify-center mb-4 shadow-lg shadow-emerald-500/20">
               <span className="text-white text-xl font-bold">✦</span>
             </div>
-            <h1 className="text-2xl font-bold tracking-wide">Welcome Back</h1>
-            <p className="text-sm text-white/40 mt-1">
-              Enter your standard username
-            </p>
+            <h1 className="text-2xl font-bold tracking-wide">{title}</h1>
+            <p className="text-sm text-white/40 mt-1">{subtitle}</p>
           </div>
 
-          <LoginForm />
+          <AuthenticationForm mode={mode} onModeChange={setMode} />
         </div>
 
         <p className="text-center text-xs text-white/30 mt-6 tracking-widest uppercase">
