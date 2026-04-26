@@ -2,6 +2,7 @@ vite.config.*.timestamp*
 vitest.config.*.timestamp*
 /node_modules
 /dist
-.vscode
+/.vscode
 tmp_build_output.txt
 /tmp
+/.claude
