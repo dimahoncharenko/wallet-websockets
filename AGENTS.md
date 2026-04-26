@@ -64,13 +64,20 @@ Frontend is organized by domain under `frontend/src/modules/`:
 
 ```
 modules/
-├── auth/           # login form, auth state
+├── auth/           # login/signup form, auth page
+│   ├── index.tsx         # page component — owns mode state
+│   ├── types.ts          # module-local types (e.g. Mode)
+│   ├── const.ts          # UI constants (e.g. headings per mode)
+│   └── components/
+│       └── AuthenticationForm.tsx
 ├── main/           # dashboard layout, header, stats
 ├── wallet/         # card display, color picker, animations
 └── transactions/   # transaction history list
 ```
 
 Each module owns its `components/` and `hooks/` subdirectories. Shared atoms live in `frontend/src/components/`.
+
+When a component needs to drive sibling or parent UI (e.g. a tab switch that changes a page-level heading), lift the state to the nearest common ancestor and pass it as props — do not reach up via context for simple local toggles.
 
 ### Shared Types Package
 
@@ -106,18 +113,9 @@ Never duplicate type definitions across packages.
 | Modal visibility       | `ModalContext`               |
 | Card color per PAN     | localStorage + custom events |
 | Balance / transactions | Component-local via hooks    |
+| Auth form mode         | `auth/index.tsx` (page)      |
 
 Redux is only used for auth. Keep it that way — do not add new slices for feature-level state.
-
-### Custom Events for Cross-Component Sync
-
-Card color changes are broadcast without a central store using `CustomEvent`:
-
-```typescript
-window.dispatchEvent(new CustomEvent('card-color-change'));
-```
-
-Follow this pattern for other lightweight cross-component signals that don't need history.
 
 ### Component Structure
 
@@ -305,6 +303,5 @@ esbuild targets CommonJS for the server. Source maps are enabled in development 
 
 ## Code guidelines
 
-Never use nested ternary operators
-
-You can define a module specific but not important type in module's types.ts file. But entity types, or shared, place into types monorepo
+- Never use nested ternary operators
+- You can define a module specific but not important type in module's types.ts file. But entity types, or shared, place into types monorepo

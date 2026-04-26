@@ -4,24 +4,37 @@ A modern, real-time wallet application built with React and Node.js. This projec
 
 ## 🚀 Features
 
+- **Authentication**: Sign in and sign up via Supabase — email/password with session persistence.
 - **Real-time Balance Updates**: Instant synchronization of wallet balances across multiple sessions.
 - **Interactive Wallet Card**: 3D tilt effects and subtle levitation animations on hover.
 - **Transaction History**: Real-time updates for debit and credit transactions.
 - **Secure Fund Transfers**: Functional transfer mechanism between masked PANs.
-- **Premium Design System**: Sleek black & gold aesthetic with glassmorphism and modern typography.
+- **Premium Design System**: Sleek glassmorphism aesthetic with modern typography.
 
 ## 🛠️ Tech Stack
 
-- **Frontend**: React, Vite, Tailwind CSS, Nx.
-- **Backend**: Node.js, Express, `ws` (WebSocket) library.
-- **Workspace**: Nx Monorepo for optimized builds and developer experience.
+- **Frontend**: React 19, Vite 8, Tailwind CSS 3, Redux Toolkit 2, React Router 7.
+- **Auth**: Supabase (email/password, session management via `@supabase/supabase-js`).
+- **Backend**: Node.js, Express 4, `ws` v8 (raw WebSocket).
+- **Shared Types**: `/types` Nx package consumed by both frontend and backend.
+- **Workspace**: Nx 22 monorepo — use **yarn** for all package operations.
 
 ## ⚙️ Getting Started
 
 ### Prerequisites
 
 - [Node.js](https://nodejs.org/) (v18 or higher)
-- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
+- [Yarn](https://yarnpkg.com/)
+- A [Supabase](https://supabase.com/) project with email auth enabled
+
+### Environment Variables
+
+Create `frontend/.env.local`:
+
+```
+VITE_SUPABASE_URL=your_supabase_project_url
+VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
+```
 
 ### Installation
 
@@ -33,7 +46,7 @@ A modern, real-time wallet application built with React and Node.js. This projec
 
 2. Install dependencies:
    ```bash
-   npm install
+   yarn install
    ```
 
 ### Running the Application
@@ -43,14 +56,14 @@ You will need to run both the backend server and the frontend application simult
 #### 1. Start the Backend Server
 The server handles WebSocket connections and manages the wallet state.
 ```bash
-npm run server:dev
+yarn nx run server:serve
 ```
 *Port: [http://localhost:3000](http://localhost:3000)*
 
 #### 2. Start the Frontend
 The frontend provides the interactive user interface.
 ```bash
-npm run frontend:dev
+yarn nx run frontend:serve
 ```
 *Port: [http://localhost:3001](http://localhost:3001)*
 
@@ -59,9 +72,8 @@ npm run frontend:dev
 To generate optimized production bundles:
 
 ```bash
-# Build both services
-npm run server:build
-npm run frontend:build
+yarn nx run server:build
+yarn nx run frontend:build
 ```
 
 The output will be available in the `dist/` directory.
