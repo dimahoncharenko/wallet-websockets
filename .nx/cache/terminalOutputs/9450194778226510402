@@ -1,13 +1,0 @@
-[2m> [22mvite build
-
-[36mvite v8.0.3 [32mbuilding client environment for production...[36m[39m
-[2Ktransforming...[32m✓[39m 7 modules transformed.
-rendering chunks...
-
-[vite:dts] Start generate declaration files...
-[vite:dts] Declaration files built in 1422ms.
-
-computing gzip size...
-[2m../dist/types/[0m[36mindex.js  [39m[2m[1m0.00 kB[0m[0m[2m │ gzip: 0.02 kB[0m
-
-[32m✓ built in 1.47s[39m
