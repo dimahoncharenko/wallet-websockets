@@ -7,6 +7,7 @@ export class UserManager {
   private users = new Set<WebSocket>();
   private panMap = new Map<string, WebSocket>();
   private statsMap = new Map<string, { income: StatData; spending: StatData }>();
+  private cardsMap = new Map<WebSocket, CardData[]>();
 
   addUser(socket: WebSocket) {
     this.users.add(socket);
@@ -14,12 +15,22 @@ export class UserManager {
 
   removeUser(socket: WebSocket) {
     this.users.delete(socket);
+    this.cardsMap.delete(socket);
     for (const [pan, ws] of this.panMap.entries()) {
       if (ws === socket) {
         this.panMap.delete(pan);
-        // keep stats for simplicity or clear them
       }
     }
+  }
+
+  addCard(socket: WebSocket, card: CardData) {
+    const existing = this.cardsMap.get(socket) ?? [];
+    this.cardsMap.set(socket, [...existing, card]);
+    this.setPan(socket, card.pan);
+  }
+
+  getCards(socket: WebSocket): CardData[] {
+    return this.cardsMap.get(socket) ?? [];
   }
 
   send(socket: WebSocket, message: WebsocketMessage) {
@@ -74,17 +85,15 @@ export class UserManager {
     return this.users;
   }
 
-  static makeCard() {
-    const CARD: CardData = {
-      holderName: 'Jane Doe',
+  static makeCard(holderName = 'Card Holder'): CardData {
+    return {
+      holderName,
       pan: `4567${makePan()}`,
       balance: Math.round(Math.random() * 10000) + 100,
       currency: '$',
       expiry: '12/27',
       cardNetwork: 'visa',
     };
-
-    return CARD;
   }
 }
 

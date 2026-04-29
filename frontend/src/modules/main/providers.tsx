@@ -6,19 +6,25 @@ import { AuthProvider } from '@hooks/useAuth';
 import { ModalProvider } from '@hooks/useModal';
 import { WebsocketProvider } from '@hooks/useWebsocket';
 import { NotificationsProvider } from '@hooks/useNotifications';
+import { WalletCardsProvider } from '@hooks/useWalletCards';
+import { RootActionsProvider } from '@hooks/useRootActions';
 
 export const Providers = ({ children }: { children: ReactNode }) => {
   return (
     <AuthProvider>
-      <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
-          <WebsocketProvider>
-            <NotificationsProvider>
-              <ModalProvider>{children}</ModalProvider>
-            </NotificationsProvider>
-          </WebsocketProvider>
-        </PersistGate>
-      </Provider>
+      <WebsocketProvider>
+        <Provider store={store}>
+          <PersistGate loading={null} persistor={persistor}>
+            <WalletCardsProvider>
+              <NotificationsProvider>
+                <ModalProvider>
+                  <RootActionsProvider>{children}</RootActionsProvider>
+                </ModalProvider>
+              </NotificationsProvider>
+            </WalletCardsProvider>
+          </PersistGate>
+        </Provider>
+      </WebsocketProvider>
     </AuthProvider>
   );
 };

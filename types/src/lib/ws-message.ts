@@ -3,9 +3,12 @@ import { CardData } from './wallet';
 
 export type WebsocketMessage =
   | InitBalance
+  | InitCards
   | ChangeBalance
   | UpdateHistory
-  | { event: 'ping' }
+  | CardAdded
+  | { event: 'ping'; holderName: string }
+  | { event: 'add-card' }
   | { event: 'auth'; token: string }
   | { event: 'auth_result'; success: boolean; expiresIn: number }
   | { event: 'token_refresh'; token: string }
@@ -20,6 +23,16 @@ export type WebsocketMessage =
 
 export interface InitBalance {
   event: 'init-card';
+  card: CardData;
+}
+
+export interface InitCards {
+  event: 'init-cards';
+  cards: CardData[];
+}
+
+export interface CardAdded {
+  event: 'card-added';
   card: CardData;
 }
 

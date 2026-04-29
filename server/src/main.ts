@@ -42,6 +42,7 @@ async function loadJWKS(): Promise<void> {
 interface AuthWebSocket extends WebSocket {
   authenticated?: boolean;
   userId?: string;
+  holderName?: string;
   authTimeout?: NodeJS.Timeout;
   sessionTimeout?: NodeJS.Timeout;
 }
@@ -147,9 +148,21 @@ wss.on('connection', (socket: AuthWebSocket) => {
     }
 
     if (payload.event === 'ping') {
-      const card = UserManager.makeCard();
-      userManager.setPan(socket, card.pan);
-      userManager.send(socket, { event: 'init-card', card });
+      socket.holderName = payload.holderName;
+      const card = UserManager.makeCard(payload.holderName);
+      userManager.addCard(socket, card);
+      userManager.send(socket, { event: 'init-cards', cards: [card] });
+      userManager.send(socket, {
+        event: 'update-stats',
+        pan: card.pan,
+        ...userManager.getStats(card.pan),
+      });
+    }
+
+    if (payload.event === 'add-card') {
+      const card = UserManager.makeCard(socket.holderName);
+      userManager.addCard(socket, card);
+      userManager.send(socket, { event: 'card-added', card });
       userManager.send(socket, {
         event: 'update-stats',
         pan: card.pan,

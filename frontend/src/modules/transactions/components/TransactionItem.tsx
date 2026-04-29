@@ -6,28 +6,50 @@ type Props = {
   transaction: Transaction;
 };
 
+const CATEGORY_EMOJI: Record<string, string> = {
+  music:    '🎵',
+  deposit:  '💼',
+  shopping: '📦',
+  travel:   '🏠',
+  media:    '🎬',
+  food:     '🍔',
+  transfer: '💸',
+};
+
+function getEmoji(category: string): string {
+  return CATEGORY_EMOJI[category?.toLowerCase()] ?? (category?.toLowerCase().includes('transfer') ? '💸' : '💳');
+}
+
 export const TransactionItem = ({ isIncome, transaction }: Props) => {
+  const emoji = getEmoji(transaction.category);
+
   return (
-    <div className="flex items-center gap-3 bg-white/5 border border-white/[0.07] rounded-2xl px-4 py-3 hover:bg-white/[0.08] transition-colors lg:border-white/[0.05]">
-      <div className="w-9 h-9 rounded-xl bg-white/10 flex items-center justify-center text-base flex-shrink-0">
-        {isIncome ? '↑' : '↓'}
+    <div style={{
+      display: 'flex',
+      alignItems: 'center',
+      gap: 12,
+      padding: '10px 0',
+      borderBottom: '1px solid rgba(255,255,255,0.05)',
+    }}>
+      <div style={{
+        width: 40, height: 40, borderRadius: 13, flexShrink: 0,
+        background: 'rgba(255,255,255,0.06)',
+        border: '1px solid rgba(255,255,255,0.07)',
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        fontSize: 18,
+      }}>
+        {emoji}
       </div>
-      <div className="flex-1 min-w-0">
-        <p className="text-[13px] font-semibold truncate">
+      <div style={{ flex: 1, minWidth: 0 }}>
+        <div style={{ fontSize: 13, fontWeight: 600, color: '#fff', marginBottom: 2, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
           {transaction.description}
-        </p>
-        <p className="text-[10px] text-white/40 uppercase tracking-wider">
+        </div>
+        <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.28)' }}>
           {formatTransactionDate(transaction.date)} · {transaction.category}
-        </p>
+        </div>
       </div>
-      <div className="text-right flex-shrink-0">
-        <p
-          className={`text-[13px] font-bold ${isIncome ? 'text-emerald-400' : 'text-white'}`}
-        >
-          {isIncome ? '+' : '-'}
-          {transaction.amount}
-          {transaction.currency}
-        </p>
+      <div style={{ fontSize: 13, fontWeight: 700, color: isIncome ? '#30e8a0' : 'rgba(255,255,255,0.7)', flexShrink: 0 }}>
+        {isIncome ? '+' : '-'}{transaction.amount}{transaction.currency}
       </div>
     </div>
   );

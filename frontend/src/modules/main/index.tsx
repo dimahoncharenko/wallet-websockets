@@ -1,98 +1,330 @@
-import { useEffect, useState } from 'react';
 import { Toaster } from 'react-hot-toast';
 import WalletCard from '@modules/wallet';
-import { useInitCard } from './hooks/useInitCard';
 import { CardPlaceholder } from '@modules/wallet/components/CardPlaceholder';
 import { CardControls } from '@modules/wallet/components/CardControls';
 import { Stats } from './components/Stats';
-import { useWebsocket } from '@hooks/useWebsocket';
+import { useAuth } from '@hooks/useAuth';
+import { useNotifications } from '@hooks/useNotifications';
+import { useModal } from '@hooks/useModal';
 import Transactions from '@modules/transactions';
-import { Header } from './components/Header';
 import { NotificationsPanel } from '@modules/notifications';
+import { SvgBell, SvgSearch } from '@components/Icons';
+import { BudgetBar } from './components/BudgetBar';
+import { Sidebar } from './components/Sidebar';
+import { MobileComposition } from './components/MobileComposition';
+import { useWebsocket } from '@hooks/useWebsocket';
+import { useEffect, useState } from 'react';
+import { supabase } from '@lib/supabase';
+import { getGreetings } from './helpers';
+import { useWalletCards } from '@hooks/useWalletCards';
+import { StatData } from 'types';
+import { useInitCard } from './hooks/useInitCards';
+import { RootActions, useRootActions } from '@hooks/useRootActions';
 
 export function App() {
-  const { card, balance, setBalance } = useInitCard();
-  const { connect, disconnect } = useWebsocket();
-  const [activeIndex, setActiveIndex] = useState(0);
+  const { updateBalance, sendAddCard } = useInitCard();
+  const { setRootActions } = useRootActions();
+  const { username } = useAuth();
+  const { socket, connect, disconnect } = useWebsocket();
+  const { setModal, modals } = useModal();
+  const { unreadCount } = useNotifications();
+  const { cards, currentCard, activeCardIndex, setActiveCardIndex, cardTheme } =
+    useWalletCards();
+  const [activeNav, setActiveNav] = useState('home');
+  const [income, setIncome] = useState<StatData>({ value: 0, sparkline: [0] });
+  const [spending, setSpending] = useState<StatData>({
+    value: 0,
+    sparkline: [0],
+  });
 
   useEffect(() => {
     connect();
     return () => disconnect();
   }, []);
 
-  const cards = card
-    ? [
-        { ...card, balance },
-        {
-          ...card,
-          balance: 12500.5,
-          pan: '5544 3322 1100 9988',
-          cardColor: 'emerald' as const,
-          cardNetwork: 'mastercard' as const,
-          expiry: '12/28',
-        },
-        {
-          ...card,
-          balance: 420.0,
-          pan: '4111 2222 3333 4444',
-          cardColor: 'rose' as const,
-          cardNetwork: 'visa' as const,
-          expiry: '09/27',
-        },
-      ]
-    : null;
+  useEffect(() => {
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((event, newSession) => {
+      if (
+        event === 'TOKEN_REFRESHED' &&
+        newSession &&
+        socket?.readyState === WebSocket.OPEN
+      ) {
+        socket.send(
+          JSON.stringify({
+            event: 'token_refresh',
+            token: newSession.access_token,
+          }),
+        );
+      }
+    });
+    return () => subscription.unsubscribe();
+  }, []);
 
-  const currentCard = cards ? cards[activeIndex] : null;
+  useEffect(() => {
+    if (!socket || !currentCard) return;
+    const handler = (e: MessageEvent) => {
+      try {
+        const msg = JSON.parse(e.data);
+        if (msg.event === 'update-stats' && msg.pan === currentCard.pan) {
+          setIncome(msg.income);
+          setSpending(msg.spending);
+        }
+      } catch {
+        /* ignore */
+      }
+    };
+    socket.addEventListener('message', handler);
+    return () => socket.removeEventListener('message', handler);
+  }, [socket, currentCard?.pan]);
+
+  const rootActions: RootActions = {
+    sendAddCard,
+    setSpending,
+    setIncome,
+    setActiveNav,
+    updateBalance,
+  };
+
+  useEffect(() => {
+    setRootActions?.(rootActions);
+  }, []);
+
+  console.log('[APP] currentCard: ', currentCard);
 
   return (
-    <main className="min-h-screen bg-slate-950 text-white px-4 py-10 lg:px-10 lg:py-8">
-      <div className="flex flex-col items-center gap-8 lg:max-w-6xl lg:mx-auto lg:items-stretch">
-        <Header />
-        <NotificationsPanel />
+    <>
+      {/* ── DESKTOP ───────────────────────────────────────────── */}
+      <div
+        className="hidden lg:flex h-screen overflow-hidden"
+        style={{ background: '#08080f' }}
+      >
+        <Sidebar activeNav={activeNav} />
 
-        {cards && currentCard ? (
-          <>
-            <div className="w-full flex flex-col items-center gap-8 lg:grid lg:grid-cols-[440px,1fr] lg:items-stretch lg:gap-6">
-              <div className="w-full max-w-sm lg:max-w-none flex flex-col gap-4">
-                <WalletCard
-                  cards={cards}
-                  activeIndex={activeIndex}
-                  onActiveIndexChange={setActiveIndex}
-                />
-                <CardControls
-                  card={currentCard}
-                  balance={currentCard.balance}
-                  setBalance={setBalance}
-                />
+        {/* Main area */}
+        <div
+          style={{
+            flex: 1,
+            display: 'flex',
+            flexDirection: 'column',
+            overflow: 'hidden',
+            position: 'relative',
+          }}
+        >
+          {/* Topbar */}
+          <div
+            style={{
+              height: 64,
+              flexShrink: 0,
+              display: 'flex',
+              alignItems: 'center',
+              padding: '0 32px',
+              borderBottom: '1px solid rgba(255,255,255,0.05)',
+              gap: 16,
+            }}
+          >
+            <div style={{ flex: 1 }}>
+              <div
+                style={{
+                  fontSize: 11,
+                  color: 'rgba(255,255,255,0.25)',
+                  letterSpacing: '0.1em',
+                  textTransform: 'uppercase',
+                  fontWeight: 500,
+                  marginBottom: 2,
+                }}
+              >
+                {getGreetings()}
               </div>
-
-              <div className="hidden lg:flex flex-col bg-white/[0.03] lg:mt-10 lg:mb-4 border border-white/[0.06] rounded-3xl overflow-hidden">
-                <Transactions currentCard={currentCard} />
+              <div
+                style={{
+                  fontSize: 18,
+                  fontWeight: 800,
+                  color: '#fff',
+                  letterSpacing: '-0.02em',
+                }}
+              >
+                {username ? `${username}'s Overview` : 'Overview'}
               </div>
             </div>
-
-            <div className="w-full max-w-sm lg:max-w-none">
-              <Stats currentCard={currentCard} />
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: 8,
+                background: 'rgba(255,255,255,0.05)',
+                border: '1px solid rgba(255,255,255,0.07)',
+                borderRadius: 10,
+                padding: '8px 14px',
+                width: 200,
+              }}
+            >
+              <SvgSearch color="rgba(255,255,255,0.25)" />
+              <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.2)' }}>
+                Search transactions…
+              </span>
             </div>
-
-            <div className="w-full max-w-sm lg:hidden">
-              <Transactions currentCard={currentCard} />
-            </div>
-          </>
-        ) : (
-          <div className="w-full max-w-sm">
-            <CardPlaceholder />
+            <button
+              onClick={() =>
+                setModal('notificationsPanel', !modals.notificationsPanel)
+              }
+              style={{
+                width: 40,
+                height: 40,
+                borderRadius: 12,
+                cursor: 'pointer',
+                position: 'relative',
+                background: modals.notificationsPanel
+                  ? `${cardTheme.dot}18`
+                  : 'rgba(255,255,255,0.06)',
+                border: `1px solid ${modals.notificationsPanel ? `${cardTheme.dot}44` : 'rgba(255,255,255,0.08)'}`,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                transition: 'background 0.2s, border 0.2s',
+              }}
+            >
+              <SvgBell
+                color={
+                  modals.notificationsPanel
+                    ? cardTheme.dot
+                    : 'rgba(255,255,255,0.6)'
+                }
+              />
+              {unreadCount > 0 && (
+                <div
+                  style={{
+                    position: 'absolute',
+                    top: 8,
+                    right: 8,
+                    width: 7,
+                    height: 7,
+                    borderRadius: '50%',
+                    background: '#ff6b8a',
+                    border: '1.5px solid #08080f',
+                  }}
+                />
+              )}
+            </button>
           </div>
-        )}
+
+          {/* Content */}
+          <div
+            style={{
+              flex: 1,
+              overflowY: 'auto',
+              padding: '28px 32px',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: 24,
+            }}
+          >
+            <div
+              style={{
+                maxWidth: 960,
+                width: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: 24,
+              }}
+            >
+              <div
+                style={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  width: '55%',
+                  height: '100%',
+                  background: `radial-gradient(ellipse 70% 55% at 35% 25%, ${cardTheme.dot}88 0%, ${cardTheme.dot}22 55%, transparent 78%)`,
+                  pointerEvents: 'none',
+                  transition: 'background 0.8s',
+                  animation: 'glowPulse 5s ease-in-out infinite',
+                }}
+              />
+
+              {currentCard ? (
+                <>
+                  <div
+                    style={{
+                      display: 'grid',
+                      gridTemplateColumns: '1fr 1fr',
+                      gap: 20,
+                    }}
+                  >
+                    <div
+                      style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: 16,
+                      }}
+                    >
+                      <WalletCard
+                        cards={cards}
+                        activeIndex={activeCardIndex}
+                        onActiveIndexChange={setActiveCardIndex}
+                        onAddCard={sendAddCard}
+                      />
+                      <CardControls
+                        card={currentCard}
+                        balance={currentCard.balance}
+                      />
+                    </div>
+                    <div
+                      style={{
+                        background: 'rgba(255,255,255,0.03)',
+                        border: '1px solid rgba(255,255,255,0.07)',
+                        borderRadius: 22,
+                        padding: '20px 22px',
+                        display: 'flex',
+                        flexDirection: 'column',
+                      }}
+                    >
+                      <Transactions currentCard={currentCard} />
+                    </div>
+                  </div>
+                  <Stats
+                    currentCard={currentCard}
+                    onStatsUpdate={(inc, spd) => {
+                      setIncome(inc);
+                      setSpending(spd);
+                    }}
+                  />
+                  <BudgetBar
+                    income={income.value}
+                    spending={spending.value}
+                    dot={cardTheme.dot}
+                  />
+                </>
+              ) : (
+                <div className="w-full max-w-sm mx-auto">
+                  <CardPlaceholder />
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
       </div>
 
+      {/* ── MOBILE ────────────────────────────────────────────── */}
+      <MobileComposition
+        activeNav={activeNav}
+        income={income}
+        spending={spending}
+      />
+
+      <NotificationsPanel />
       <Toaster
         position="top-center"
         toastOptions={{
-          style: { background: '#1e293b', color: '#fff' },
+          style: {
+            background: '#1e293b',
+            color: '#fff',
+            fontFamily: 'Sora, sans-serif',
+          },
         }}
       />
-    </main>
+    </>
   );
 }
 

@@ -1,6 +1,5 @@
-import { createContext, useContext, useState, useRef, useEffect } from 'react';
+import { createContext, useContext, useState, useRef } from 'react';
 import { useAuth } from '@hooks/useAuth';
-import { supabase } from '@lib/supabase';
 
 type Context = {
   socket: WebSocket | null;
@@ -25,27 +24,7 @@ export const WebsocketProvider = ({
 }) => {
   const [socket, setSocket] = useState<WebSocket | null>(null);
   const socketRef = useRef<WebSocket | null>(null);
-  const { logout, session } = useAuth();
-
-  useEffect(() => {
-    const {
-      data: { subscription },
-    } = supabase.auth.onAuthStateChange((event, newSession) => {
-      if (
-        event === 'TOKEN_REFRESHED' &&
-        newSession &&
-        socketRef.current?.readyState === WebSocket.OPEN
-      ) {
-        socketRef.current.send(
-          JSON.stringify({
-            event: 'token_refresh',
-            token: newSession.access_token,
-          }),
-        );
-      }
-    });
-    return () => subscription.unsubscribe();
-  }, []);
+  const { logout, session, username } = useAuth();
 
   const connect = () => {
     if (socketRef.current || !session) return;
@@ -62,7 +41,7 @@ export const WebsocketProvider = ({
         const msg = JSON.parse(event.data);
 
         if (msg.event === 'auth_result' && msg.success) {
-          ws.send(JSON.stringify({ event: 'ping' }));
+          ws.send(JSON.stringify({ event: 'ping', holderName: username }));
         }
       } catch (error) {
         console.error('Failed to parse WS message:', error);

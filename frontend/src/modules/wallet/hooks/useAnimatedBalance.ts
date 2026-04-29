@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-export function useAnimatedBalance(value: number, duration = 800) {
+export function useAnimatedBalance(value = 0, duration = 800) {
   const [displayValue, setDisplayValue] = useState(value);
 
   useEffect(() => {

@@ -19,4 +19,5 @@ export interface WalletProps {
   cards: CardData[];
   activeIndex?: number;
   onActiveIndexChange?: (index: number) => void;
+  onAddCard?: () => void;
 }

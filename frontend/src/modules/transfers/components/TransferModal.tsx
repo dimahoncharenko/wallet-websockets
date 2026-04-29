@@ -1,4 +1,6 @@
-import { useState, useEffect, SubmitEvent } from 'react';
+import { useState, SubmitEvent } from 'react';
+import { maskPan } from '../helpers';
+import { useOpenTransfers } from '../hooks/useOpenTransfers';
 
 export const TransferModal = ({
   isOpen,
@@ -12,27 +14,8 @@ export const TransferModal = ({
   const [pan, setPan] = useState('');
   const [amount, setAmount] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [mounted, setMounted] = useState(false);
 
-  useEffect(() => {
-    if (isOpen) {
-      requestAnimationFrame(() => setMounted(true));
-    } else {
-      setMounted(false);
-      setTimeout(() => {
-        setPan('');
-        setAmount('');
-      }, 300);
-    }
-  }, [isOpen]);
-
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose();
-    };
-    if (isOpen) window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isOpen, onClose]);
+  const mounted = useOpenTransfers({ isOpen, onClose, setAmount, setPan });
 
   if (!isOpen && !mounted && !pan && !amount) return null;
 
@@ -40,19 +23,21 @@ export const TransferModal = ({
     e.preventDefault();
     setIsSubmitting(true);
     setTimeout(() => {
-      onTransfer(pan.replace(/\s/g, ''), Number(amount));
+      const sanitizedPan = pan.replace(/\s/g, '');
+
+      onTransfer(sanitizedPan, Number(amount));
       setIsSubmitting(false);
       onClose();
     }, 600);
   };
 
   const handlePanChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const v = e.target.value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
-    let formatted = '';
-    for (let i = 0; i < v.length; i += 4) {
-      formatted += v.substring(i, i + 4) + ' ';
-    }
-    setPan(formatted.trim());
+    const sanitizedValue = e.target.value
+      .replace(/\s+/g, '')
+      .replace(/[^0-9]/gi, '');
+
+    const maskedPan = maskPan(sanitizedValue);
+    maskedPan && setPan(maskedPan);
   };
 
   return (
@@ -80,7 +65,7 @@ export const TransferModal = ({
             Transfer Funds
           </h2>
           <p className="text-sm text-white/50 mb-6">
-            Send money instantly to any 16-digit card.
+            Send money instantly to any card.
           </p>
 
           <form onSubmit={handleSubmit} className="flex flex-col gap-5">
