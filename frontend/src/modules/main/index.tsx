@@ -88,10 +88,8 @@ export function App() {
   };
 
   useEffect(() => {
-    setRootActions?.(rootActions);
+    setRootActions(rootActions);
   }, []);
-
-  console.log('[APP] currentCard: ', currentCard);
 
   return (
     <>

@@ -31,7 +31,7 @@ export const CardControls = ({ card, balance }: Props) => {
           creditPan: pan,
         }),
       );
-      updateBalance?.(card.pan, -amount);
+      updateBalance(card.pan, -amount);
     }
   };
 

@@ -175,8 +175,8 @@ export const MobileComposition = ({ income, spending, activeNav }: Props) => {
               <Stats
                 currentCard={currentCard}
                 onStatsUpdate={(inc, spd) => {
-                  setIncome?.(inc);
-                  setSpending?.(spd);
+                  setIncome(inc);
+                  setSpending(spd);
                 }}
               />
             </div>
@@ -230,7 +230,7 @@ export const MobileComposition = ({ income, spending, activeNav }: Props) => {
           return (
             <button
               key={id}
-              onClick={() => setActiveNav?.(id)}
+              onClick={() => setActiveNav(id)}
               style={{
                 flex: 1,
                 display: 'flex',

@@ -88,7 +88,7 @@ export const Sidebar = ({ activeNav }: Props) => {
           return (
             <button
               key={id}
-              onClick={() => setActiveNav?.(id)}
+              onClick={() => setActiveNav(id)}
               style={{
                 display: 'flex',
                 alignItems: 'center',
