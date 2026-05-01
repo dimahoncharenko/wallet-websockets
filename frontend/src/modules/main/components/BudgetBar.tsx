@@ -1,3 +1,5 @@
+import { colors, fontSize, fontWeight, radius, transition } from '@lib/theme';
+
 export const BudgetBar = ({
   income,
   spending,
@@ -15,9 +17,9 @@ export const BudgetBar = ({
   return (
     <div
       style={{
-        background: 'rgba(255,255,255,0.03)',
-        border: '1px solid rgba(255,255,255,0.07)',
-        borderRadius: 20,
+        background: colors.surfaceBare,
+        border: `1px solid ${colors.borderSubtle}`,
+        borderRadius: radius['2xl'],
         padding: '20px 24px',
       }}
     >
@@ -29,14 +31,14 @@ export const BudgetBar = ({
           marginBottom: 14,
         }}
       >
-        <span style={{ fontSize: 14, fontWeight: 700, color: '#fff' }}>
+        <span style={{ fontSize: fontSize.lg, fontWeight: fontWeight.bold, color: colors.textPrimary }}>
           Monthly Budget
         </span>
-        <span style={{ fontSize: 13, fontWeight: 700 }}>
-          <span style={{ color: dot, transition: 'color 0.6s' }}>
+        <span style={{ fontSize: fontSize.base, fontWeight: fontWeight.bold }}>
+          <span style={{ color: dot, transition: `color ${transition.slow}` }}>
             ${spending.toLocaleString('en-US', { minimumFractionDigits: 0 })}
           </span>
-          <span style={{ color: 'rgba(255,255,255,0.3)', fontWeight: 400 }}>
+          <span style={{ color: colors.textMuted, fontWeight: fontWeight.regular }}>
             {' '}
             / ${budget.toLocaleString('en-US', { minimumFractionDigits: 0 })}
           </span>
@@ -46,7 +48,7 @@ export const BudgetBar = ({
         style={{
           height: 8,
           borderRadius: 4,
-          background: 'rgba(255,255,255,0.07)',
+          background: colors.borderSubtle,
           overflow: 'hidden',
           marginBottom: 10,
         }}
@@ -57,25 +59,25 @@ export const BudgetBar = ({
             borderRadius: 4,
             width: `${pct}%`,
             background: `linear-gradient(90deg, ${dot}88, ${dot})`,
-            transition: 'width 1s ease, background 0.6s',
+            transition: `width 1s ease, background ${transition.slow}`,
           }}
         />
       </div>
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
         <span
           style={{
-            fontSize: 12,
-            color: 'rgba(255,255,255,0.28)',
-            fontWeight: 500,
+            fontSize: fontSize.md,
+            color: colors.textSubtle,
+            fontWeight: fontWeight.medium,
           }}
         >
           {pct}% used this month
         </span>
         <span
           style={{
-            fontSize: 12,
-            color: 'rgba(255,255,255,0.28)',
-            fontWeight: 500,
+            fontSize: fontSize.md,
+            color: colors.textSubtle,
+            fontWeight: fontWeight.medium,
           }}
         >
           ${remaining.toLocaleString('en-US', { minimumFractionDigits: 0 })}{' '}

@@ -6,9 +6,11 @@ import {
   SetStateAction,
   useCallback,
   useContext,
+  useEffect,
   useState,
 } from 'react';
-import { CardColor, CardData } from 'types';
+import { CardColor, CardData, StatData } from 'types';
+import { useWebsocket } from './useWebsocket';
 
 type Context = {
   cards: CardData[];
@@ -19,6 +21,10 @@ type Context = {
   cardTheme: CardTheme;
   setColor: (pan: string, color: CardColor) => void;
   colors: ColorMap;
+  income: StatData;
+  setIncome: Dispatch<SetStateAction<StatData>>;
+  spending: StatData;
+  setSpending: Dispatch<SetStateAction<StatData>>;
 };
 
 type ColorMap = Record<string, CardColor>;
@@ -34,15 +40,23 @@ export const useWalletCards = () => {
 };
 
 export const WalletCardsProvider = ({ children }: { children: ReactNode }) => {
+  const { socket } = useWebsocket();
   const [activeCardIndex, setActiveCardIndex] = useState(0);
   const [cards, setCards] = useState<CardData[]>([]);
   const [colors, setColors] = useState<ColorMap>(loadFromStorage);
+  const [income, setIncome] = useState<StatData>({ value: 0, sparkline: [0] });
+  const [spending, setSpending] = useState<StatData>({
+    value: 0,
+    sparkline: [0],
+  });
 
   const setColor = useCallback((pan: string, color: CardColor) => {
     localStorage.setItem(`card-color-${pan}`, color);
     setColors((prev) => ({ ...prev, [pan]: color }));
     setCards((prev) =>
-      prev.map((card) => (card.pan === pan ? { ...card, cardColor: color } : card)),
+      prev.map((card) =>
+        card.pan === pan ? { ...card, cardColor: color } : card,
+      ),
     );
   }, []);
 
@@ -53,6 +67,23 @@ export const WalletCardsProvider = ({ children }: { children: ReactNode }) => {
     ? (colors[currentCard.pan] ?? currentCard.cardColor ?? 'violet')
     : 'violet';
   const cardTheme = CARD_THEMES[activeColor];
+
+  useEffect(() => {
+    if (!socket || !currentCard) return;
+    const handler = (e: MessageEvent) => {
+      try {
+        const msg = JSON.parse(e.data);
+        if (msg.event === 'update-stats' && msg.pan === currentCard.pan) {
+          setIncome(msg.income);
+          setSpending(msg.spending);
+        }
+      } catch {
+        /* ignore */
+      }
+    };
+    socket.addEventListener('message', handler);
+    return () => socket.removeEventListener('message', handler);
+  }, [socket, currentCard?.pan]);
 
   return (
     <context.Provider
@@ -65,6 +96,10 @@ export const WalletCardsProvider = ({ children }: { children: ReactNode }) => {
         cardTheme,
         setColor,
         colors,
+        setIncome,
+        setSpending,
+        spending,
+        income,
       }}
     >
       {children}

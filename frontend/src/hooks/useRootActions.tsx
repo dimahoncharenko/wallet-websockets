@@ -1,19 +1,8 @@
-import {
-  createContext,
-  Dispatch,
-  ReactNode,
-  SetStateAction,
-  useContext,
-  useState,
-} from 'react';
-import { StatData } from 'types';
+import { createContext, ReactNode, useContext, useState } from 'react';
 
 export type RootActions = {
   updateBalance: (pan: string, delta: number) => void;
   sendAddCard: () => void;
-  setSpending: Dispatch<SetStateAction<StatData>>;
-  setIncome: Dispatch<SetStateAction<StatData>>;
-  setActiveNav: Dispatch<SetStateAction<string>>;
 };
 
 type Context = RootActions & {
@@ -38,15 +27,6 @@ export const RootActionsProvider = ({ children }: { children: ReactNode }) => {
       return;
     },
     sendAddCard: () => {
-      return;
-    },
-    setSpending: () => {
-      return;
-    },
-    setIncome: () => {
-      return;
-    },
-    setActiveNav: () => {
       return;
     },
   });

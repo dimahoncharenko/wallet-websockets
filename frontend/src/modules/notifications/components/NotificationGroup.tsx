@@ -51,7 +51,7 @@ export const NotificationGroup = ({ dismiss, group }: Props) => {
   );
 };
 
-function NotificationIcon({ type }: { type: AppNotification['type'] }) {
+const NotificationIcon = ({ type }: { type: AppNotification['type'] }) => {
   const config = NOTIFICATION_CONFIG[type];
 
   if (type === 'signin') {
@@ -88,4 +88,4 @@ function NotificationIcon({ type }: { type: AppNotification['type'] }) {
       </span>
     </div>
   );
-}
+};

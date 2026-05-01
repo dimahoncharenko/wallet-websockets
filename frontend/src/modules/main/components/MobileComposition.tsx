@@ -1,4 +1,14 @@
 import {
+  colors,
+  fontSize,
+  fontWeight,
+  letterSpacing,
+  radius,
+  layout,
+  zIndex,
+  transition,
+} from '@lib/theme';
+import {
   SvgBell,
   SvgCards,
   SvgHistory,
@@ -17,8 +27,7 @@ import { useAuth } from '@hooks/useAuth';
 import { useNotifications } from '@hooks/useNotifications';
 import { useWalletCards } from '@hooks/useWalletCards';
 import { getGreetings } from '../helpers';
-import { useRootActions } from '@hooks/useRootActions';
-import { StatData } from 'types';
+import { useNavigation } from '@hooks/useNavigation';
 
 const mobileNavItems = [
   { id: 'home', label: 'Home', Icon: SvgHome },
@@ -27,25 +36,52 @@ const mobileNavItems = [
   { id: 'profile', label: 'Profile', Icon: SvgProfile },
 ];
 
-type Props = {
-  income: StatData;
-  spending: StatData;
-  activeNav: string;
-};
-
-export const MobileComposition = ({ income, spending, activeNav }: Props) => {
+export const MobileComposition = () => {
   const { username } = useAuth();
   const { setModal, modals } = useModal();
-  const { cardTheme, currentCard } = useWalletCards();
+  const { cardTheme, currentCard, income, spending } = useWalletCards();
   const { unreadCount } = useNotifications();
-  const { setIncome, setSpending, setActiveNav } = useRootActions();
+  const { activeNav, setActiveNav } = useNavigation();
+
+  const renderCardAnalytics = () => {
+    if (!currentCard) {
+      return null;
+    }
+
+    return (
+      <>
+        <div
+          style={{
+            padding: '0 16px',
+            marginBottom: 16,
+            animation: 'fadeUp 0.4s ease 0.2s both',
+          }}
+        >
+          <Stats income={income} spending={spending} />
+        </div>
+        <div
+          style={{
+            padding: '0 16px',
+            marginBottom: 16,
+            animation: 'fadeUp 0.4s ease 0.24s both',
+          }}
+        >
+          <BudgetBar
+            income={income.value}
+            spending={spending.value}
+            dot={cardTheme.dot}
+          />
+        </div>
+      </>
+    );
+  };
 
   return (
     <div
       className="flex flex-col lg:hidden"
       style={{
         height: '100dvh',
-        background: '#0d0d18',
+        background: colors.bgAlt,
         position: 'relative',
         overflow: 'hidden',
       }}
@@ -72,10 +108,10 @@ export const MobileComposition = ({ income, spending, activeNav }: Props) => {
           <div>
             <div
               style={{
-                fontSize: 11,
-                fontWeight: 500,
-                color: 'rgba(255,255,255,0.28)',
-                letterSpacing: '0.14em',
+                fontSize: fontSize.sm,
+                fontWeight: fontWeight.medium,
+                color: colors.textSubtle,
+                letterSpacing: letterSpacing.wider,
                 textTransform: 'uppercase',
                 marginBottom: 5,
               }}
@@ -84,10 +120,10 @@ export const MobileComposition = ({ income, spending, activeNav }: Props) => {
             </div>
             <div
               style={{
-                fontSize: 28,
-                fontWeight: 800,
-                color: '#fff',
-                letterSpacing: '-0.03em',
+                fontSize: fontSize['4xl'],
+                fontWeight: fontWeight.extrabold,
+                color: colors.textPrimary,
+                letterSpacing: letterSpacing.tighter,
               }}
             >
               {username || 'Hi there'}
@@ -101,17 +137,17 @@ export const MobileComposition = ({ income, spending, activeNav }: Props) => {
               style={{
                 width: 40,
                 height: 40,
-                borderRadius: 14,
+                borderRadius: radius.xl,
                 cursor: 'pointer',
                 position: 'relative',
-                background: 'rgba(255,255,255,0.06)',
-                border: '1px solid rgba(255,255,255,0.08)',
+                background: colors.surfaceDefault,
+                border: `1px solid ${colors.borderDefault}`,
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
               }}
             >
-              <SvgBell color="rgba(255,255,255,0.6)" />
+              <SvgBell color={colors.textSecondary} />
               {unreadCount > 0 && (
                 <div
                   style={{
@@ -120,9 +156,9 @@ export const MobileComposition = ({ income, spending, activeNav }: Props) => {
                     right: 9,
                     width: 7,
                     height: 7,
-                    borderRadius: '50%',
-                    background: '#ff6b8a',
-                    border: '1.5px solid #0d0d18',
+                    borderRadius: radius.full,
+                    background: colors.notificationDot,
+                    border: `1.5px solid ${colors.bgAlt}`,
                   }}
                 />
               )}
@@ -131,16 +167,16 @@ export const MobileComposition = ({ income, spending, activeNav }: Props) => {
               style={{
                 width: 40,
                 height: 40,
-                borderRadius: 14,
-                background: 'rgba(255,255,255,0.06)',
-                border: '1px solid rgba(255,255,255,0.08)',
+                borderRadius: radius.xl,
+                background: colors.surfaceDefault,
+                border: `1px solid ${colors.borderDefault}`,
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 cursor: 'pointer',
               }}
             >
-              <SvgScan color="rgba(255,255,255,0.6)" />
+              <SvgScan color={colors.textSecondary} />
             </button>
           </div>
         </div>
@@ -165,34 +201,9 @@ export const MobileComposition = ({ income, spending, activeNav }: Props) => {
             >
               <CardControls card={currentCard} balance={currentCard.balance} />
             </div>
-            <div
-              style={{
-                padding: '0 16px',
-                marginBottom: 16,
-                animation: 'fadeUp 0.4s ease 0.2s both',
-              }}
-            >
-              <Stats
-                currentCard={currentCard}
-                onStatsUpdate={(inc, spd) => {
-                  setIncome(inc);
-                  setSpending(spd);
-                }}
-              />
-            </div>
-            <div
-              style={{
-                padding: '0 22px',
-                marginBottom: 16,
-                animation: 'fadeUp 0.4s ease 0.24s both',
-              }}
-            >
-              <BudgetBar
-                income={income.value}
-                spending={spending.value}
-                dot={cardTheme.dot}
-              />
-            </div>
+
+            {renderCardAnalytics()}
+
             <div
               style={{
                 padding: '0 22px 16px',
@@ -216,13 +227,13 @@ export const MobileComposition = ({ income, spending, activeNav }: Props) => {
           bottom: 0,
           left: 0,
           right: 0,
-          height: 72,
-          background: 'rgba(13,13,24,0.97)',
-          borderTop: '1px solid rgba(255,255,255,0.07)',
+          height: layout.bottomNavHeight,
+          background: colors.bgNavBar,
+          borderTop: `1px solid ${colors.borderSubtle}`,
           display: 'flex',
           alignItems: 'center',
           paddingBottom: 8,
-          zIndex: 100,
+          zIndex: zIndex.bottomNav,
         }}
       >
         {mobileNavItems.map(({ id, label, Icon }) => {
@@ -247,25 +258,25 @@ export const MobileComposition = ({ income, spending, activeNav }: Props) => {
                 style={{
                   width: 36,
                   height: 36,
-                  borderRadius: 12,
+                  borderRadius: radius.lg,
                   background: isActive ? `${cardTheme.dot}22` : 'transparent',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  transition: 'background 0.2s',
+                  transition: `background ${transition.default}`,
                 }}
               >
                 <Icon
-                  color={isActive ? cardTheme.dot : 'rgba(255,255,255,0.28)'}
+                  color={isActive ? cardTheme.dot : colors.textSubtle}
                   filled={isActive && id === 'home'}
                 />
               </div>
               <span
                 style={{
-                  fontSize: 10,
-                  fontWeight: isActive ? 700 : 400,
-                  color: isActive ? cardTheme.dot : 'rgba(255,255,255,0.28)',
-                  transition: 'color 0.2s',
+                  fontSize: fontSize.xs,
+                  fontWeight: isActive ? fontWeight.bold : fontWeight.regular,
+                  color: isActive ? cardTheme.dot : colors.textSubtle,
+                  transition: `color ${transition.default}`,
                 }}
               >
                 {label}

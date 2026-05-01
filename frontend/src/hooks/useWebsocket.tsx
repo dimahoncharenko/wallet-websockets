@@ -1,5 +1,6 @@
-import { createContext, useContext, useState, useRef } from 'react';
+import { createContext, useContext, useState, useRef, useEffect } from 'react';
 import { useAuth } from '@hooks/useAuth';
+import { supabase } from '@lib/supabase';
 
 type Context = {
   socket: WebSocket | null;
@@ -64,6 +65,31 @@ export const WebsocketProvider = ({
     socketRef.current = null;
     setSocket(null);
   };
+
+  useEffect(() => {
+    connect();
+    return () => disconnect();
+  }, []);
+
+  useEffect(() => {
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((event, newSession) => {
+      if (
+        event === 'TOKEN_REFRESHED' &&
+        newSession &&
+        socket?.readyState === WebSocket.OPEN
+      ) {
+        socket.send(
+          JSON.stringify({
+            event: 'token_refresh',
+            token: newSession.access_token,
+          }),
+        );
+      }
+    });
+    return () => subscription.unsubscribe();
+  }, []);
 
   return (
     <context.Provider value={{ socket, connect, disconnect }}>

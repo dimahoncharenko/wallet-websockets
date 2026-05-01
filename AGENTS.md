@@ -151,7 +151,7 @@ type WebsocketMessage =
       message: string;
     }
   | { event: 'update-history'; transaction: Transaction }
-  | { event: 'update-stats'; pan: string; income: number; spending: number }
+  | { event: 'update-stats'; pan: string; income: StatData; spending: StatData }
   | {
       event: 'proceed-transfer';
       amount: number;
@@ -257,10 +257,26 @@ Particle/sparkle effects use CSS `@keyframes` injected via `<style>` tags inside
 
 ## Styling Conventions
 
-- **Tailwind utility classes** for all styling — no CSS modules, no styled-components.
+- **Tailwind utility classes** for layout and utility styling — no CSS modules, no styled-components.
 - **Glassmorphism** is the design language: `bg-white/[opacity]`, `backdrop-blur-md`, `border-white/[opacity]`.
 - **Dynamic styles** (animation transforms, per-card gradients) use inline `style` props.
-- **Gradients and color themes** are defined as constants in `const.ts`, not inline strings.
+- **Design tokens** (colors, font sizes, font weights, letter spacings, radii, layout dimensions, z-index, transitions) are centralized in `frontend/src/lib/theme.ts`. Import via `@lib/theme`. Do not hardcode raw CSS values — always reference a named token.
+- **Per-module constants** (e.g. card theme color arrays, label maps) stay in the module's `const.ts`. The shared theme file is for universal UI primitives, not feature-specific data.
+
+### Theme usage rule
+
+**Always use theme variables. Never write raw CSS values in components.**
+
+```typescript
+// ✗ wrong
+style={{ background: '#0d0d14', fontSize: '13px', borderRadius: 12 }}
+
+// ✓ correct
+import { colors, fontSize, radius } from '@lib/theme';
+style={{ background: colors.bg, fontSize: fontSize.sm, borderRadius: radius.lg }}
+```
+
+This applies to every inline `style` prop and every Tailwind arbitrary value (e.g. `bg-[#0d0d14]` → use a CSS variable or move the value to theme). The only accepted exceptions are card-overlay translucent whites (`rgba(255,255,255,0.N)`) that are painted on top of a dynamic card gradient and are inherently card-surface-specific, not app-UI tokens.
 
 ---
 
@@ -305,3 +321,4 @@ esbuild targets CommonJS for the server. Source maps are enabled in development 
 
 - Never use nested ternary operators
 - You can define a module specific but not important type in module's types.ts file. But entity types, or shared, place into types monorepo
+- Emojis should be wrapped in <span role="img" aria-label="some label">

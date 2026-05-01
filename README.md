@@ -9,6 +9,8 @@ A modern, real-time wallet application built with React and Node.js. This projec
 - **Interactive Wallet Card**: 3D tilt effects and subtle levitation animations on hover.
 - **Transaction History**: Real-time updates for debit and credit transactions.
 - **Secure Fund Transfers**: Functional transfer mechanism between masked PANs.
+- **Financial Analytics**: Income, spending, and savings stats with sparkline charts and real period-over-period percentage change.
+- **Centralized Design Token System**: All colors, typography, spacing, and motion values live in `frontend/src/lib/theme.ts` — no magic strings in components.
 - **Premium Design System**: Sleek glassmorphism aesthetic with modern typography.
 
 ## 🛠️ Tech Stack

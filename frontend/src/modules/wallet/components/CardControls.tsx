@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { colors } from '@lib/theme';
 import { COLOR_OPTIONS } from '../const';
 import { TransferModal } from '@modules/transfers/components/TransferModal';
 import { useWebsocket } from '@hooks/useWebsocket';
@@ -177,12 +178,12 @@ export const CardControls = ({ card, balance }: Props) => {
                     ? {
                         background: `linear-gradient(135deg, ${cardTheme.dot}cc, ${cardTheme.dot}88)`,
                         boxShadow: `0 8px 20px ${cardTheme.glow}`,
-                        color: '#fff',
+                        color: colors.textPrimary,
                       }
                     : {
-                        background: 'rgba(255,255,255,0.06)',
-                        border: '1px solid rgba(255,255,255,0.08)',
-                        color: 'rgba(255,255,255,0.6)',
+                        background: colors.surfaceDefault,
+                        border: `1px solid ${colors.borderDefault}`,
+                        color: colors.textSecondary,
                       }
                 }
               >

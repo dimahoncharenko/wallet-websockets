@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { colors, fontSize, fontWeight, letterSpacing, radius, transition } from '@lib/theme';
 import { useAuth } from '@hooks/useAuth';
 import { EyeOpenIcon } from './EyeOpenIcon';
 import { CheckIcon } from './CheckIcon';
@@ -51,15 +52,15 @@ export function WalletCard({ card }: Props) {
   return (
     <div
       style={{
-        borderRadius: 26,
+        borderRadius: radius.card,
         background: `linear-gradient(140deg, ${theme.a} 0%, ${theme.b} 48%, ${theme.c} 100%)`,
         padding: '24px 26px 22px',
         minHeight: 200,
         position: 'relative',
         overflow: 'hidden',
-        boxShadow: `0 8px 32px rgba(0,0,0,0.55)`,
+        boxShadow: `0 8px 32px ${colors.shadowDark}`,
         userSelect: 'none',
-        transition: 'box-shadow 0.6s ease',
+        transition: `box-shadow ${transition.slow} ease`,
       }}
     >
       {/* Radial light overlay */}
@@ -67,7 +68,7 @@ export function WalletCard({ card }: Props) {
         style={{
           position: 'absolute',
           inset: 0,
-          borderRadius: 26,
+          borderRadius: radius.card,
           background:
             'radial-gradient(ellipse at 28% 16%, rgba(255,255,255,0.2) 0%, transparent 52%)',
           pointerEvents: 'none',
@@ -86,7 +87,7 @@ export function WalletCard({ card }: Props) {
           backgroundSize: '200% 100%',
           animation: 'shimmer 3.5s linear infinite',
           pointerEvents: 'none',
-          borderRadius: 26,
+          borderRadius: radius.card,
         }}
       />
       {/* Decorative circle */}
@@ -97,8 +98,8 @@ export function WalletCard({ card }: Props) {
           right: -35,
           width: 190,
           height: 190,
-          borderRadius: '50%',
-          background: 'rgba(0,0,0,0.13)',
+          borderRadius: radius.full,
+          background: colors.shadowLight,
           pointerEvents: 'none',
         }}
       />
@@ -124,14 +125,14 @@ export function WalletCard({ card }: Props) {
               style={{
                 width: 6,
                 height: 6,
-                borderRadius: '50%',
+                borderRadius: radius.full,
                 background: 'rgba(255,255,255,0.85)',
               }}
             />
             <span
               style={{
-                fontSize: 10,
-                fontWeight: 700,
+                fontSize: fontSize.xs,
+                fontWeight: fontWeight.bold,
                 color: 'rgba(255,255,255,0.75)',
                 letterSpacing: '0.18em',
                 textTransform: 'uppercase',
@@ -176,8 +177,8 @@ export function WalletCard({ card }: Props) {
           >
             <span
               style={{
-                fontSize: 10,
-                fontWeight: 600,
+                fontSize: fontSize.xs,
+                fontWeight: fontWeight.semibold,
                 color: 'rgba(255,255,255,0.55)',
                 letterSpacing: '0.15em',
                 textTransform: 'uppercase',
@@ -206,10 +207,10 @@ export function WalletCard({ card }: Props) {
           </div>
           <p
             style={{
-              fontSize: 34,
-              fontWeight: 800,
-              color: '#fff',
-              letterSpacing: '-0.03em',
+              fontSize: fontSize['5xl'],
+              fontWeight: fontWeight.extrabold,
+              color: colors.textPrimary,
+              letterSpacing: letterSpacing.tighter,
               lineHeight: 1,
             }}
           >
@@ -227,7 +228,7 @@ export function WalletCard({ card }: Props) {
         <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
           <span
             style={{
-              fontSize: 13,
+              fontSize: fontSize.base,
               color: 'rgba(255,255,255,0.75)',
               letterSpacing: '0.22em',
               fontVariantNumeric: 'tabular-nums',
@@ -283,8 +284,8 @@ export function WalletCard({ card }: Props) {
             <div>
               <div
                 style={{
-                  fontSize: 9,
-                  fontWeight: 600,
+                  fontSize: fontSize.xxs,
+                  fontWeight: fontWeight.semibold,
                   color: 'rgba(255,255,255,0.5)',
                   letterSpacing: '0.12em',
                   textTransform: 'uppercase',
@@ -293,15 +294,15 @@ export function WalletCard({ card }: Props) {
               >
                 Holder
               </div>
-              <div style={{ fontSize: 13, fontWeight: 700, color: '#fff' }}>
+              <div style={{ fontSize: fontSize.base, fontWeight: fontWeight.bold, color: colors.textPrimary }}>
                 {username || renderCard.holderName}
               </div>
             </div>
             <div>
               <div
                 style={{
-                  fontSize: 9,
-                  fontWeight: 600,
+                  fontSize: fontSize.xxs,
+                  fontWeight: fontWeight.semibold,
                   color: 'rgba(255,255,255,0.5)',
                   letterSpacing: '0.12em',
                   textTransform: 'uppercase',
@@ -310,7 +311,7 @@ export function WalletCard({ card }: Props) {
               >
                 Expires
               </div>
-              <div style={{ fontSize: 13, fontWeight: 700, color: '#fff' }}>
+              <div style={{ fontSize: fontSize.base, fontWeight: fontWeight.bold, color: colors.textPrimary }}>
                 {renderCard.expiry}
               </div>
             </div>
