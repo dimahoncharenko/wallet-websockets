@@ -208,6 +208,8 @@ Emojis must be wrapped in a `<span>` with `role="img"` and a descriptive `aria-l
 {errors.email && <span id="email-error" role="alert">{errors.email}</span>}
 ```
 
+> **`aria-describedby` over `aria-description`**: Never use the `aria-description` attribute. It is not translated by browser auto-translation services, stranding users who rely on them. Always associate descriptions via `aria-describedby` pointing to a visible DOM element — translators and auto-translation tools can reach that text. If you're tempted to visually hide the description node, ask first whether the content is useful to all users; if it is, make it visible rather than hiding it.
+
 ### Keyboard Navigation
 
 - All interactive elements must be reachable via `Tab` and activatable via `Enter` or `Space`.
