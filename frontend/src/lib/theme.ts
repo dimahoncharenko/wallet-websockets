@@ -119,3 +119,7 @@ export const mediaQueries = {
   laptop: '(min-width: 1024px)',
   tablet: '(min-width: 764px)',
 } as const;
+
+export const prefersReducedMotion =
+  typeof window !== 'undefined' &&
+  window.matchMedia('(prefers-reduced-motion: reduce)').matches;

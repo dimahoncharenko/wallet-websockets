@@ -38,21 +38,25 @@ export default function Transactions({
           marginBottom: 16,
         }}
       >
-        <span
-          style={{ fontSize: 14, fontWeight: 700, color: colors.textPrimary }}
+        <h2
+          style={{ fontSize: 14, fontWeight: 700, color: colors.textPrimary, margin: 0 }}
         >
           Recent Transactions
-        </span>
-        <span
+        </h2>
+        <button
+          type="button"
           style={{
             fontSize: 12,
             fontWeight: 600,
             color: 'rgba(167,139,250,0.8)',
             cursor: 'pointer',
+            background: 'none',
+            border: 'none',
+            padding: 0,
           }}
         >
-          See all →
-        </span>
+          <span aria-hidden="true">→ </span>See all
+        </button>
       </div>
 
       {transactionsToShow.length === 0 ? (
@@ -82,7 +86,7 @@ export default function Transactions({
           </div>
         </div>
       ) : (
-        <div style={{ flex: 1, overflowY: 'auto' }}>
+        <div aria-live="polite" aria-label="Transaction list" style={{ flex: 1, overflowY: 'auto' }}>
           {transactionsToShow.map((tx, i) => (
             <TransactionItem
               key={i}

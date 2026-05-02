@@ -1,6 +1,7 @@
 export const ChipIcon = () => {
   return (
     <svg
+      aria-hidden="true"
       width="46"
       height="36"
       viewBox="0 0 46 36"

@@ -38,6 +38,7 @@ export const TransactionItem = ({ isIncome, transaction }: Props) => {
       }}
     >
       <div
+        aria-hidden="true"
         style={{
           width: 40,
           height: 40,

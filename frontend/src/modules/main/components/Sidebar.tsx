@@ -54,6 +54,7 @@ export const Sidebar = () => {
         }}
       >
         <div
+          aria-hidden="true"
           style={{
             width: 32,
             height: 32,
@@ -80,7 +81,8 @@ export const Sidebar = () => {
         </span>
       </div>
 
-      <div
+      <nav
+        aria-label="Main navigation"
         style={{
           flex: 1,
           padding: '0 12px',
@@ -95,7 +97,7 @@ export const Sidebar = () => {
           activeNav={activeNav}
           cardTheme={cardTheme}
         />
-      </div>
+      </nav>
 
       <div
         style={{
@@ -106,7 +108,7 @@ export const Sidebar = () => {
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
           <span
             role="img"
-            aria-label="profile-icon"
+            aria-label="person"
             style={{
               width: 36,
               height: 36,
@@ -141,6 +143,7 @@ export const Sidebar = () => {
           </div>
           <button
             onClick={logout}
+            aria-label="Log out"
             style={{
               background: 'none',
               border: 'none',
@@ -150,7 +153,6 @@ export const Sidebar = () => {
               alignItems: 'center',
               borderRadius: radius.sm,
             }}
-            title="Logout"
           >
             <SvgLogout color={colors.textMuted} />
           </button>
@@ -177,6 +179,7 @@ const NavItems = ({
       <button
         key={id}
         onClick={() => setActiveNav(id)}
+        aria-current={isActive ? 'page' : undefined}
         style={{
           display: 'flex',
           alignItems: 'center',
@@ -206,6 +209,7 @@ const NavItems = ({
         </span>
         {isActive && (
           <div
+            aria-hidden="true"
             style={{
               marginLeft: 'auto',
               width: 4,

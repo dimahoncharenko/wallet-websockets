@@ -11,6 +11,10 @@ import { useAnimatedBalance } from '../hooks/useAnimatedBalance';
 import { useWalletCards } from '@hooks/useWalletCards';
 import { CardData } from 'types';
 
+const prefersReducedMotion =
+  typeof window !== 'undefined' &&
+  window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 type Props = {
   card?: CardData;
 };
@@ -51,6 +55,8 @@ export function WalletCard({ card }: Props) {
 
   return (
     <div
+      role="region"
+      aria-label={`Card ending in ${groups[groups.length - 1] ?? '****'}`}
       style={{
         borderRadius: radius.card,
         background: `linear-gradient(140deg, ${theme.a} 0%, ${theme.b} 48%, ${theme.c} 100%)`,
@@ -63,8 +69,8 @@ export function WalletCard({ card }: Props) {
         transition: `box-shadow ${transition.slow} ease`,
       }}
     >
-      {/* Radial light overlay */}
       <div
+        aria-hidden="true"
         style={{
           position: 'absolute',
           inset: 0,
@@ -74,8 +80,8 @@ export function WalletCard({ card }: Props) {
           pointerEvents: 'none',
         }}
       />
-      {/* Shimmer */}
       <div
+        aria-hidden="true"
         style={{
           position: 'absolute',
           top: 0,
@@ -85,13 +91,13 @@ export function WalletCard({ card }: Props) {
           background:
             'linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.07) 50%, transparent 60%)',
           backgroundSize: '200% 100%',
-          animation: 'shimmer 3.5s linear infinite',
+          animation: prefersReducedMotion ? undefined : 'shimmer 3.5s linear infinite',
           pointerEvents: 'none',
           borderRadius: radius.card,
         }}
       />
-      {/* Decorative circle */}
       <div
+        aria-hidden="true"
         style={{
           position: 'absolute',
           bottom: -55,
@@ -122,6 +128,7 @@ export function WalletCard({ card }: Props) {
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
             <div
+              aria-hidden="true"
               style={{
                 width: 6,
                 height: 6,
@@ -141,8 +148,8 @@ export function WalletCard({ card }: Props) {
               My Wallet
             </span>
           </div>
-          {/* Chip grid */}
           <div
+            aria-hidden="true"
             style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(3, 7px)',
@@ -206,6 +213,12 @@ export function WalletCard({ card }: Props) {
             </button>
           </div>
           <p
+            aria-live="polite"
+            aria-label={
+              showBalance
+                ? `Balance: ${renderCard.currency}${formattedBalance}`
+                : 'Balance hidden'
+            }
             style={{
               fontSize: fontSize['5xl'],
               fontWeight: fontWeight.extrabold,
@@ -251,7 +264,7 @@ export function WalletCard({ card }: Props) {
               display: 'flex',
               alignItems: 'center',
             }}
-            title={showPan ? 'Mask card number' : 'Reveal card number'}
+            aria-label={showPan ? 'Mask card number' : 'Reveal card number'}
           >
             {showPan ? <EyeOpenIcon /> : <EyeClosedIcon />}
           </button>
@@ -266,7 +279,7 @@ export function WalletCard({ card }: Props) {
               display: 'flex',
               alignItems: 'center',
             }}
-            title="Copy card number"
+            aria-label={copied ? 'Copied!' : 'Copy card number'}
           >
             {copied ? <CheckIcon /> : <CopyIcon />}
           </button>

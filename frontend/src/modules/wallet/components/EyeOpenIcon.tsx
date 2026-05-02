@@ -1,6 +1,7 @@
 export const EyeOpenIcon = () => {
   return (
     <svg
+      aria-hidden="true"
       className="w-[15px] h-[15px]"
       fill="none"
       stroke="currentColor"

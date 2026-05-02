@@ -19,14 +19,15 @@ export const Header = () => {
   const bellButton = (
     <button
       className="w-10 h-10 relative rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-lg hover:bg-white/10 transition-colors"
-      aria-label="Notifications"
+      aria-label={unreadCount > 0 ? `Notifications, ${unreadCount} unread` : 'Notifications'}
       onClick={() => setModal('notificationsPanel', true)}
     >
-      <span role="img" aria-label="Notifications">
-        🔔
-      </span>
+      <span aria-hidden="true">🔔</span>
       {unreadCount > 0 && (
-        <span className="absolute -top-1 text-[10px] -right-2 size-5 flex items-center justify-center rounded-full bg-rose-500">
+        <span
+          aria-hidden="true"
+          className="absolute -top-1 text-[10px] -right-2 size-5 flex items-center justify-center rounded-full bg-rose-500"
+        >
           {unreadCount > 99 ? '99+' : unreadCount}
         </span>
       )}
@@ -40,7 +41,7 @@ export const Header = () => {
           {greeting}
         </p>
         <h1 className="text-xl font-bold tracking-wide mt-0.5">
-          {username || 'Guest'} ✦
+          {username || 'Guest'} <span aria-hidden="true">✦</span>
         </h1>
       </div>
 
@@ -60,10 +61,11 @@ export const Header = () => {
 
       <div className="hidden lg:flex items-center gap-3">
         <div className="relative flex items-center text-white/30">
-          <span className="absolute left-3.5 pointer-events-none">
+          <span aria-hidden="true" className="absolute left-3.5 pointer-events-none">
             <SearchIcon />
           </span>
           <input
+            aria-label="Search transactions"
             placeholder="Search transactions..."
             className="bg-white/[0.05] border border-white/10 rounded-full pl-10 pr-5 py-2.5 text-sm text-white/70 placeholder-white/30 focus:outline-none focus:border-white/20 w-60 transition-colors"
           />
@@ -78,6 +80,7 @@ export const Header = () => {
 const SearchIcon = () => {
   return (
     <svg
+      aria-hidden="true"
       width="15"
       height="15"
       viewBox="0 0 24 24"
@@ -102,6 +105,7 @@ const LogoutButton = ({ onClick }: { onClick: () => void }) => {
       title="Logout"
     >
       <svg
+        aria-hidden="true"
         width="18"
         height="18"
         viewBox="0 0 24 24"

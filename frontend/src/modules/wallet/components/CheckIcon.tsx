@@ -1,6 +1,7 @@
 export const CheckIcon = () => {
   return (
     <svg
+      aria-hidden="true"
       className="w-[15px] h-[15px] text-emerald-400"
       fill="none"
       stroke="currentColor"

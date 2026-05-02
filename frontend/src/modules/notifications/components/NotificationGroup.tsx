@@ -34,9 +34,10 @@ export const NotificationGroup = ({ dismiss, group }: Props) => {
                   : formatSectionDate(notification.timestamp)}
               </span>
               <button
+                type="button"
                 onClick={() => dismiss(notification.id)}
                 className="text-white/30 hover:text-white/70 transition-colors leading-none"
-                aria-label="Dismiss"
+                aria-label={`Dismiss: ${notification.title}`}
               >
                 ×
               </button>
@@ -57,6 +58,7 @@ const NotificationIcon = ({ type }: { type: AppNotification['type'] }) => {
   if (type === 'signin') {
     return (
       <div
+        aria-hidden="true"
         className={`w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 ${config.bg} ${config.color}`}
       >
         <LockIcon />
@@ -67,6 +69,7 @@ const NotificationIcon = ({ type }: { type: AppNotification['type'] }) => {
   if (type === 'security') {
     return (
       <div
+        aria-hidden="true"
         className={`w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 ${config.bg} ${config.color}`}
       >
         <ShieldIcon />
@@ -76,6 +79,7 @@ const NotificationIcon = ({ type }: { type: AppNotification['type'] }) => {
 
   return (
     <div
+      aria-hidden="true"
       className={`w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 text-base ${config.bg} ${config.color}`}
     >
       <span

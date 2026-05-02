@@ -54,12 +54,18 @@ export default function Wallet({
   return (
     <div className="relative w-full">
       {Array.isArray(cards) && cards.length > 1 && (
-        <div className="bg-white/5 ml-auto max-w-24 backdrop-blur-md border border-white/10 px-3 py-1 rounded-full text-[10px] font-medium tracking-wider uppercase lg:hidden text-white/60">
+        <div
+          aria-live="polite"
+          aria-atomic="true"
+          className="bg-white/5 ml-auto max-w-24 backdrop-blur-md border border-white/10 px-3 py-1 rounded-full text-[10px] font-medium tracking-wider uppercase lg:hidden text-white/60"
+        >
           Card {activeIndex + 1} of {cards.length}
         </div>
       )}
       <div
         ref={scrollRef}
+        role="region"
+        aria-label="Payment cards"
         onScroll={handleScroll}
         className="flex overflow-x-auto snap-x snap-mandatory no-scrollbar cursor-grab active:cursor-grabbing pb-24 pt-10"
       >
@@ -94,6 +100,7 @@ export default function Wallet({
                 }}
               >
                 <div
+                  aria-hidden="true"
                   style={{
                     width: isActive ? 22 : 8,
                     height: 8,
@@ -113,7 +120,7 @@ export default function Wallet({
           onClick={onAddCard}
           className="hidden lg:flex items-center gap-1.5 text-[12px] text-white/40 hover:text-white/70 transition-colors font-medium"
         >
-          <span className="text-base leading-none">+</span> Add card
+          <span aria-hidden="true" className="text-base leading-none">+</span> Add card
         </button>
       </div>
     </div>

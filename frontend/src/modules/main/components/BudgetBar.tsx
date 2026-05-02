@@ -45,6 +45,12 @@ export const BudgetBar = ({
         </span>
       </div>
       <div
+        role="progressbar"
+        aria-valuenow={pct}
+        aria-valuemin={0}
+        aria-valuemax={100}
+        aria-valuetext={`${pct}% of monthly budget used`}
+        aria-label="Monthly budget usage"
         style={{
           height: 8,
           borderRadius: 4,
@@ -54,6 +60,7 @@ export const BudgetBar = ({
         }}
       >
         <div
+          aria-hidden="true"
           style={{
             height: '100%',
             borderRadius: 4,

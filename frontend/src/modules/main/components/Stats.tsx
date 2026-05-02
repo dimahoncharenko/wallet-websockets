@@ -116,6 +116,7 @@ export const Stats = ({ income, spending }: StatsProps) => {
               }}
             >
               <div
+                aria-hidden="true"
                 style={{
                   width: 32,
                   height: 32,
@@ -165,6 +166,7 @@ export const Stats = ({ income, spending }: StatsProps) => {
               {label}
             </div>
             <div
+              aria-hidden="true"
               style={{
                 position: 'absolute',
                 bottom: 0,

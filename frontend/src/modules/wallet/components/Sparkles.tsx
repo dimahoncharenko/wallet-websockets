@@ -61,7 +61,7 @@ export const Sparkles = ({ count = 14 }: { count?: number }) => {
   }, [count]);
 
   return (
-    <>
+    <div aria-hidden="true">
       {sparks.map((s) => (
         <span
           key={s.id}
@@ -79,6 +79,6 @@ export const Sparkles = ({ count = 14 }: { count?: number }) => {
           }}
         />
       ))}
-    </>
+    </div>
   );
 };

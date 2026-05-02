@@ -89,6 +89,7 @@ export const DesktopComposition = () => {
             }}
           >
             <div
+              aria-hidden="true"
               style={{
                 position: 'absolute',
                 top: 0,
@@ -175,7 +176,7 @@ const TopBar = () => {
       }}
     >
       <div style={{ flex: 1 }}>
-        <div
+        <p
           style={{
             fontSize: fontSize.sm,
             color: colors.textPlaceholder,
@@ -186,8 +187,8 @@ const TopBar = () => {
           }}
         >
           {getGreetings()}
-        </div>
-        <div
+        </p>
+        <h1
           style={{
             fontSize: fontSize['2xl'],
             fontWeight: fontWeight.extrabold,
@@ -196,9 +197,10 @@ const TopBar = () => {
           }}
         >
           {username ? `${username}'s Overview` : 'Overview'}
-        </div>
+        </h1>
       </div>
-      <div
+      <button
+        aria-label="Search transactions"
         style={{
           display: 'flex',
           alignItems: 'center',
@@ -208,14 +210,18 @@ const TopBar = () => {
           borderRadius: radius.md,
           padding: '8px 14px',
           width: 200,
+          cursor: 'pointer',
         }}
       >
         <SvgSearch color={colors.textPlaceholder} />
         <span style={{ fontSize: fontSize.md, color: colors.textFaint }}>
           Search transactions…
         </span>
-      </div>
+      </button>
       <button
+        aria-label={unreadCount > 0 ? `Notifications, ${unreadCount} unread` : 'Notifications'}
+        aria-expanded={modals.notificationsPanel}
+        aria-controls="notifications-panel"
         onClick={() =>
           setModal('notificationsPanel', !modals.notificationsPanel)
         }
@@ -242,6 +248,7 @@ const TopBar = () => {
         />
         {unreadCount > 0 && (
           <div
+            aria-hidden="true"
             style={{
               position: 'absolute',
               top: 8,
