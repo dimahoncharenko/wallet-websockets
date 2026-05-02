@@ -45,8 +45,7 @@ export const AuthenticationForm = ({ mode, onModeChange }: Props) => {
     }
   };
 
-  let heading = mode === 'login' ? 'Access Wallet' : 'Create Account';
-  if (loading) heading = '...';
+  const heading = mode === 'login' ? 'Access Wallet' : 'Create Account';
 
   const renderHeader = () => {
     return (['login', 'signup'] as Mode[]).map((m) => (
@@ -70,7 +69,7 @@ export const AuthenticationForm = ({ mode, onModeChange }: Props) => {
 
   return (
     <div className="flex flex-col gap-5">
-      <div className="flex bg-white/[0.05] border border-white/10 rounded-xl p-1 gap-1">
+      <div role="group" aria-label="Authentication mode" className="flex bg-white/[0.05] border border-white/10 rounded-xl p-1 gap-1">
         {renderHeader()}
       </div>
 
@@ -78,6 +77,7 @@ export const AuthenticationForm = ({ mode, onModeChange }: Props) => {
         {mode === 'signup' && (
           <input
             type="text"
+            aria-label="Display name"
             placeholder="Display name"
             value={displayName}
             onChange={(e) => setDisplayName(e.target.value)}
@@ -87,6 +87,7 @@ export const AuthenticationForm = ({ mode, onModeChange }: Props) => {
 
         <input
           type="email"
+          aria-label="Email address"
           placeholder="Email"
           value={email}
           onChange={(e) => {
@@ -98,6 +99,7 @@ export const AuthenticationForm = ({ mode, onModeChange }: Props) => {
 
         <input
           type="password"
+          aria-label="Password"
           placeholder="Password"
           value={password}
           onChange={(e) => {
@@ -108,15 +110,20 @@ export const AuthenticationForm = ({ mode, onModeChange }: Props) => {
         />
       </div>
 
-      {error && <p className="text-rose-400 text-xs ml-1 -mt-2">{error}</p>}
+      {error && (
+        <p role="alert" aria-live="assertive" className="text-rose-400 text-xs ml-1 -mt-2">
+          {error}
+        </p>
+      )}
 
       <button
         type="button"
         onClick={handleSubmit}
         disabled={loading}
+        aria-busy={loading}
         className="w-full bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-semibold py-3.5 rounded-xl shadow-lg shadow-emerald-500/20 hover:scale-[1.02] active:scale-[0.98] disabled:opacity-60 disabled:scale-100 transition-all relative overflow-hidden group"
       >
-        <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+        <div aria-hidden="true" className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
         <span className="relative">{heading}</span>
       </button>
     </div>

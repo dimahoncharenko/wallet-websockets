@@ -42,6 +42,7 @@ export const CardControls = ({ card, balance }: Props) => {
       accent: true,
       icon: (
         <svg
+          aria-hidden="true"
           width="18"
           height="18"
           viewBox="0 0 24 24"
@@ -61,6 +62,7 @@ export const CardControls = ({ card, balance }: Props) => {
       label: 'Receive',
       icon: (
         <svg
+          aria-hidden="true"
           width="18"
           height="18"
           viewBox="0 0 24 24"
@@ -79,6 +81,7 @@ export const CardControls = ({ card, balance }: Props) => {
       label: 'Top Up',
       icon: (
         <svg
+          aria-hidden="true"
           width="18"
           height="18"
           viewBox="0 0 24 24"
@@ -97,7 +100,7 @@ export const CardControls = ({ card, balance }: Props) => {
     {
       label: 'More',
       icon: (
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+        <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
           <circle cx="5" cy="12" r="2" />
           <circle cx="12" cy="12" r="2" />
           <circle cx="19" cy="12" r="2" />
@@ -107,12 +110,18 @@ export const CardControls = ({ card, balance }: Props) => {
   ];
 
   const colorPicker = (
-    <div className="flex items-center gap-3 bg-white/5 p-2 rounded-full border border-white/5">
+    <div
+      role="radiogroup"
+      aria-label="Card color theme"
+      className="flex items-center gap-3 bg-white/5 p-2 rounded-full border border-white/5"
+    >
       {COLOR_OPTIONS.map(({ color, bg, ring }) => (
         <button
           key={color}
+          role="radio"
+          aria-checked={currentCard?.cardColor === color}
           onClick={() => setColor(card.pan, color)}
-          aria-label={`Switch to ${color} card`}
+          aria-label={`${color} theme`}
           className={`
             w-6 h-6 rounded-full transition-all duration-200
             ${bg}
@@ -142,7 +151,7 @@ export const CardControls = ({ card, balance }: Props) => {
               background: `linear-gradient(135deg, ${cardTheme.a}cc, ${cardTheme.b})`,
             }}
           />
-          <span className="relative flex items-center justify-center w-5 h-5 rounded-full bg-white/20">
+          <span aria-hidden="true" className="relative flex items-center justify-center w-5 h-5 rounded-full bg-white/20">
             <svg
               width="12"
               height="12"
@@ -166,12 +175,14 @@ export const CardControls = ({ card, balance }: Props) => {
       <div className="hidden lg:flex items-center justify-between w-full pt-2">
         <div className="flex items-center gap-5">
           {actions.map((a) => (
-            <div
+            <button
               key={a.label}
-              className="flex flex-col items-center gap-2 group cursor-pointer"
+              type="button"
               onClick={a.onClick}
+              className="flex flex-col items-center gap-2 group cursor-pointer bg-transparent border-none p-0"
             >
               <div
+                aria-hidden="true"
                 className="w-12 h-12 rounded-[15px] flex items-center justify-center transition-all"
                 style={
                   a.accent
@@ -192,7 +203,7 @@ export const CardControls = ({ card, balance }: Props) => {
               <span className="text-[11px] font-medium text-white/35 group-hover:text-white/70 transition-colors">
                 {a.label}
               </span>
-            </div>
+            </button>
           ))}
         </div>
         {colorPicker}

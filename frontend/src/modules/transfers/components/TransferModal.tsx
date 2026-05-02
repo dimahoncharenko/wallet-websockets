@@ -47,21 +47,25 @@ export const TransferModal = ({
       }`}
     >
       <div
+        aria-hidden="true"
         className="absolute inset-0 bg-slate-950/60 backdrop-blur-md"
         onClick={onClose}
       />
 
       <div
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="transfer-modal-title"
         className={`relative w-full max-w-sm bg-slate-900 border border-white/10 rounded-3xl shadow-2xl overflow-hidden transition-all duration-300 transform ${
           isOpen && mounted
             ? 'scale-100 translate-y-0'
             : 'scale-95 translate-y-4'
         }`}
       >
-        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-violet-500 via-fuchsia-500 to-emerald-500" />
+        <div aria-hidden="true" className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-violet-500 via-fuchsia-500 to-emerald-500" />
 
         <div className="p-6">
-          <h2 className="text-xl font-bold tracking-wide text-white mb-1">
+          <h2 id="transfer-modal-title" className="text-xl font-bold tracking-wide text-white mb-1">
             Transfer Funds
           </h2>
           <p className="text-sm text-white/50 mb-6">
@@ -70,12 +74,13 @@ export const TransferModal = ({
 
           <form onSubmit={handleSubmit} className="flex flex-col gap-5">
             <div>
-              <label className="block text-[10px] uppercase tracking-widest text-white/40 font-semibold mb-2 ml-1">
+              <label htmlFor="transfer-pan" className="block text-[10px] uppercase tracking-widest text-white/40 font-semibold mb-2 ml-1">
                 Recipient Card Number
               </label>
               <div className="relative group">
-                <div className="absolute -inset-0.5 bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-xl blur opacity-0 group-focus-within:opacity-30 transition duration-500"></div>
+                <div aria-hidden="true" className="absolute -inset-0.5 bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-xl blur opacity-0 group-focus-within:opacity-30 transition duration-500"></div>
                 <input
+                  id="transfer-pan"
                   type="text"
                   value={pan}
                   onChange={handlePanChange}
@@ -88,15 +93,16 @@ export const TransferModal = ({
             </div>
 
             <div>
-              <label className="block text-[10px] uppercase tracking-widest text-white/40 font-semibold mb-2 ml-1">
+              <label htmlFor="transfer-amount" className="block text-[10px] uppercase tracking-widest text-white/40 font-semibold mb-2 ml-1">
                 Amount
               </label>
               <div className="relative group">
-                <div className="absolute -inset-0.5 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-xl blur opacity-0 group-focus-within:opacity-30 transition duration-500"></div>
-                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-white/40 font-mono text-sm font-semibold z-10">
+                <div aria-hidden="true" className="absolute -inset-0.5 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-xl blur opacity-0 group-focus-within:opacity-30 transition duration-500"></div>
+                <span aria-hidden="true" className="absolute left-4 top-1/2 -translate-y-1/2 text-white/40 font-mono text-sm font-semibold z-10">
                   $
                 </span>
                 <input
+                  id="transfer-amount"
                   type="number"
                   value={amount}
                   onChange={(e) => setAmount(e.target.value)}
@@ -104,6 +110,7 @@ export const TransferModal = ({
                   min="0.01"
                   step="0.01"
                   required
+                  aria-label="Amount in dollars"
                   className="relative w-full bg-slate-950/50 border border-white/10 rounded-xl pl-8 pr-4 py-3.5 text-sm font-mono text-white placeholder-white/20 focus:outline-none focus:border-white/20 transition-all font-semibold"
                 />
               </div>
@@ -120,13 +127,14 @@ export const TransferModal = ({
               <button
                 type="submit"
                 disabled={isSubmitting || pan.length < 19 || !amount}
+                aria-busy={isSubmitting}
                 className="flex-1 relative py-3.5 px-4 rounded-xl text-sm font-bold text-white shadow-lg overflow-hidden group disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-violet-600 to-fuchsia-600 group-hover:scale-105 transition-transform duration-300"></div>
+                <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-violet-600 to-fuchsia-600 group-hover:scale-105 transition-transform duration-300"></div>
                 <span className="relative z-10 flex items-center justify-center gap-2">
                   {isSubmitting ? (
                     <>
-                      <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                      <div aria-hidden="true" className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                       Processing...
                     </>
                   ) : (

@@ -8,6 +8,7 @@ import { colors } from '@lib/theme';
 function CloseIcon() {
   return (
     <svg
+      aria-hidden="true"
       width="11"
       height="11"
       viewBox="0 0 14 14"
@@ -72,18 +73,21 @@ export function NotificationsPanel() {
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-          <span
+          <h2
+            id="notifications-panel-title"
             style={{
               fontSize: 16,
               fontWeight: 800,
               color: colors.textPrimary,
               letterSpacing: '-0.02em',
+              margin: 0,
             }}
           >
             Notifications
-          </span>
+          </h2>
           {unreadCount > 0 && (
             <div
+              aria-hidden="true"
               style={{
                 background: '#a78bfa',
                 color: '#000',
@@ -102,7 +106,8 @@ export function NotificationsPanel() {
           )}
         </div>
         {unreadCount > 0 && (
-          <span
+          <button
+            type="button"
             onClick={markAllRead}
             style={{
               fontSize: 11,
@@ -110,10 +115,13 @@ export function NotificationsPanel() {
               color: '#a78bfa',
               cursor: 'pointer',
               opacity: 0.85,
+              background: 'none',
+              border: 'none',
+              padding: 0,
             }}
           >
             Mark all read
-          </span>
+          </button>
         )}
       </div>
 
@@ -131,7 +139,7 @@ export function NotificationsPanel() {
               paddingTop: 40,
             }}
           >
-            <div style={{ fontSize: 32, opacity: 0.25 }}>🔔</div>
+            <div aria-hidden="true" style={{ fontSize: 32, opacity: 0.25 }}>🔔</div>
             <div
               style={{
                 fontSize: 13,
@@ -173,6 +181,7 @@ export function NotificationsPanel() {
                 >
                   {!n.interacted && (
                     <div
+                      aria-hidden="true"
                       style={{
                         position: 'absolute',
                         left: 0,
@@ -186,6 +195,7 @@ export function NotificationsPanel() {
                     />
                   )}
                   <div
+                    aria-hidden="true"
                     style={{
                       width: 36,
                       height: 36,
@@ -245,7 +255,9 @@ export function NotificationsPanel() {
                     </div>
                   </div>
                   <button
+                    type="button"
                     onClick={() => dismiss(n.id)}
+                    aria-label={`Dismiss: ${n.title}`}
                     style={{
                       width: 22,
                       height: 22,
@@ -273,6 +285,10 @@ export function NotificationsPanel() {
 
   return (
     <div
+      id="notifications-panel"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="notifications-panel-title"
       ref={panelRef}
       style={{
         position: 'fixed',
@@ -292,8 +308,8 @@ export function NotificationsPanel() {
         zIndex: 500,
       }}
     >
-      {/* Accent top line */}
       <div
+        aria-hidden="true"
         style={{
           height: 2,
           background:

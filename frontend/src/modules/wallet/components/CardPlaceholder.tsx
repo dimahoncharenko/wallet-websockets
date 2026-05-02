@@ -1,6 +1,8 @@
 export const CardPlaceholder = () => {
   return (
     <div
+      role="status"
+      aria-label="Loading card"
       className="w-full rounded-2xl bg-white/5 border border-white/10 animate-pulse relative overflow-hidden shadow-2xl"
       style={{ aspectRatio: '1.586' }}
     >

@@ -7,6 +7,7 @@ import {
   layout,
   zIndex,
   transition,
+  prefersReducedMotion,
 } from '@lib/theme';
 import {
   SvgBell,
@@ -36,6 +37,9 @@ const mobileNavItems = [
   { id: 'profile', label: 'Profile', Icon: SvgProfile },
 ];
 
+const anim = (delay: string, duration = '0.4s') =>
+  prefersReducedMotion ? undefined : `fadeUp ${duration} ease ${delay} both`;
+
 export const MobileComposition = () => {
   const { username } = useAuth();
   const { setModal, modals } = useModal();
@@ -54,7 +58,7 @@ export const MobileComposition = () => {
           style={{
             padding: '0 16px',
             marginBottom: 16,
-            animation: 'fadeUp 0.4s ease 0.2s both',
+            animation: anim('0.2s'),
           }}
         >
           <Stats income={income} spending={spending} />
@@ -63,7 +67,7 @@ export const MobileComposition = () => {
           style={{
             padding: '0 16px',
             marginBottom: 16,
-            animation: 'fadeUp 0.4s ease 0.24s both',
+            animation: anim('0.24s'),
           }}
         >
           <BudgetBar
@@ -102,11 +106,11 @@ export const MobileComposition = () => {
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'flex-start',
-            animation: 'fadeUp 0.4s ease 0.05s both',
+            animation: anim('0.05s'),
           }}
         >
           <div>
-            <div
+            <p
               style={{
                 fontSize: fontSize.sm,
                 fontWeight: fontWeight.medium,
@@ -117,8 +121,8 @@ export const MobileComposition = () => {
               }}
             >
               {getGreetings()}
-            </div>
-            <div
+            </p>
+            <h1
               style={{
                 fontSize: fontSize['4xl'],
                 fontWeight: fontWeight.extrabold,
@@ -127,10 +131,17 @@ export const MobileComposition = () => {
               }}
             >
               {username || 'Hi there'}
-            </div>
+            </h1>
           </div>
           <div style={{ display: 'flex', gap: 8, marginTop: 4 }}>
             <button
+              aria-label={
+                unreadCount > 0
+                  ? `Notifications, ${unreadCount} unread`
+                  : 'Notifications'
+              }
+              aria-expanded={modals.notificationsPanel}
+              aria-controls="notifications-panel"
               onClick={() =>
                 setModal('notificationsPanel', !modals.notificationsPanel)
               }
@@ -150,6 +161,7 @@ export const MobileComposition = () => {
               <SvgBell color={colors.textSecondary} />
               {unreadCount > 0 && (
                 <div
+                  aria-hidden="true"
                   style={{
                     position: 'absolute',
                     top: 9,
@@ -164,6 +176,7 @@ export const MobileComposition = () => {
               )}
             </button>
             <button
+              aria-label="Scan QR code"
               style={{
                 width: 40,
                 height: 40,
@@ -187,7 +200,7 @@ export const MobileComposition = () => {
               style={{
                 padding: '0 22px',
                 marginBottom: 16,
-                animation: 'fadeUp 0.5s ease 0.1s both',
+                animation: anim('0.1s', '0.5s'),
               }}
             >
               <WalletCard />
@@ -196,7 +209,7 @@ export const MobileComposition = () => {
               style={{
                 padding: '0 22px',
                 marginBottom: 24,
-                animation: 'fadeUp 0.4s ease 0.16s both',
+                animation: anim('0.16s'),
               }}
             >
               <CardControls card={currentCard} balance={currentCard.balance} />
@@ -207,7 +220,7 @@ export const MobileComposition = () => {
             <div
               style={{
                 padding: '0 22px 16px',
-                animation: 'fadeUp 0.4s ease 0.28s both',
+                animation: anim('0.28s'),
               }}
             >
               <Transactions currentCard={currentCard} />
@@ -221,7 +234,8 @@ export const MobileComposition = () => {
       </div>
 
       {/* Bottom nav */}
-      <div
+      <nav
+        aria-label="Main navigation"
         style={{
           position: 'absolute',
           bottom: 0,
@@ -242,6 +256,7 @@ export const MobileComposition = () => {
             <button
               key={id}
               onClick={() => setActiveNav(id)}
+              aria-current={isActive ? 'page' : undefined}
               style={{
                 flex: 1,
                 display: 'flex',
@@ -255,6 +270,7 @@ export const MobileComposition = () => {
               }}
             >
               <div
+                aria-hidden="true"
                 style={{
                   width: 36,
                   height: 36,
@@ -284,7 +300,7 @@ export const MobileComposition = () => {
             </button>
           );
         })}
-      </div>
+      </nav>
     </div>
   );
 };
