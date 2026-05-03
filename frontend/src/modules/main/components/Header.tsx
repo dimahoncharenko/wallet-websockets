@@ -1,20 +1,12 @@
-import { useMemo } from 'react';
 import { useAuth } from '@hooks/useAuth';
 import { useNotifications } from '@hooks/useNotifications';
 import { useModal } from '@hooks/useModal';
+import { getGreetings } from '../helpers';
 
 export const Header = () => {
   const { logout, username } = useAuth();
   const { unreadCount } = useNotifications();
   const { setModal } = useModal();
-
-  const greeting = useMemo(() => {
-    const hour = new Date().getHours();
-    if (hour >= 5 && hour < 12) return 'Good morning';
-    if (hour >= 12 && hour < 18) return 'Good afternoon';
-    if (hour >= 18 && hour < 23) return 'Good evening';
-    return 'Good night';
-  }, []);
 
   const bellButton = (
     <button
@@ -32,6 +24,8 @@ export const Header = () => {
       )}
     </button>
   );
+
+  const greeting = getGreetings();
 
   return (
     <div className="w-full max-w-sm lg:max-w-none flex justify-between items-center">

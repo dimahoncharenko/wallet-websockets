@@ -1,3 +1,5 @@
+import { colors } from '@lib/theme';
+
 type Props = {
   unreadCount: number;
   markAllRead: () => void;
@@ -5,26 +7,60 @@ type Props = {
 
 export const Header = ({ unreadCount, markAllRead }: Props) => {
   return (
-    <>
-      <div className="flex justify-between items-center px-5 pt-5 pb-3">
-        <div className="flex items-center gap-2">
-          <span className="text-base font-bold">Notifications</span>
-          {unreadCount > 0 && (
-            <span className="text-[11px] px-1.5 py-0.5 rounded-full bg-emerald-500 text-white font-semibold leading-none">
-              {unreadCount > 99 ? '99+' : unreadCount}
-            </span>
-          )}
-        </div>
+    <div
+      style={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        padding: '0 0 14px',
+        borderBottom: '1px solid rgba(255,255,255,0.06)',
+        flexShrink: 0,
+      }}
+    >
+      <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+        <span
+          style={{
+            fontSize: 16,
+            fontWeight: 800,
+            color: colors.textPrimary,
+            letterSpacing: '-0.02em',
+          }}
+        >
+          Notifications
+        </span>
         {unreadCount > 0 && (
-          <button
-            onClick={markAllRead}
-            className="text-xs text-emerald-400 hover:text-emerald-300 transition-colors"
+          <div
+            style={{
+              background: '#a78bfa',
+              color: '#000',
+              fontSize: 10,
+              fontWeight: 700,
+              width: 18,
+              height: 18,
+              borderRadius: 9,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
           >
-            Mark all read
-          </button>
+            {unreadCount}
+          </div>
         )}
       </div>
-      <div className="border-t border-white/[0.06]" />
-    </>
+      {unreadCount > 0 && (
+        <span
+          onClick={markAllRead}
+          style={{
+            fontSize: 11,
+            fontWeight: 600,
+            color: '#a78bfa',
+            cursor: 'pointer',
+            opacity: 0.85,
+          }}
+        >
+          Mark all read
+        </span>
+      )}
+    </div>
   );
 };

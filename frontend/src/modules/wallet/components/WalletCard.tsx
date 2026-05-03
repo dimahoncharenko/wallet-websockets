@@ -1,5 +1,12 @@
-import { useState } from 'react';
-import { colors, fontSize, fontWeight, letterSpacing, radius, transition } from '@lib/theme';
+import { Dispatch, MouseEvent, SetStateAction, useState } from 'react';
+import {
+  colors,
+  fontSize,
+  fontWeight,
+  letterSpacing,
+  radius,
+  transition,
+} from '@lib/theme';
 import { useAuth } from '@hooks/useAuth';
 import { EyeOpenIcon } from './EyeOpenIcon';
 import { CheckIcon } from './CheckIcon';
@@ -17,7 +24,6 @@ type Props = {
 
 export function WalletCard({ card }: Props) {
   const { currentCard, cardTheme } = useWalletCards();
-  const { username } = useAuth();
   const [showBalance, setShowBalance] = useState(false);
   const [showPan, setShowPan] = useState(false);
   const [copied, setCopied] = useState(false);
@@ -63,46 +69,9 @@ export function WalletCard({ card }: Props) {
         transition: `box-shadow ${transition.slow} ease`,
       }}
     >
-      {/* Radial light overlay */}
-      <div
-        style={{
-          position: 'absolute',
-          inset: 0,
-          borderRadius: radius.card,
-          background:
-            'radial-gradient(ellipse at 28% 16%, rgba(255,255,255,0.2) 0%, transparent 52%)',
-          pointerEvents: 'none',
-        }}
-      />
-      {/* Shimmer */}
-      <div
-        style={{
-          position: 'absolute',
-          top: 0,
-          left: '-200%',
-          right: 0,
-          bottom: 0,
-          background:
-            'linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.07) 50%, transparent 60%)',
-          backgroundSize: '200% 100%',
-          animation: 'shimmer 3.5s linear infinite',
-          pointerEvents: 'none',
-          borderRadius: radius.card,
-        }}
-      />
-      {/* Decorative circle */}
-      <div
-        style={{
-          position: 'absolute',
-          bottom: -55,
-          right: -35,
-          width: 190,
-          height: 190,
-          borderRadius: radius.full,
-          background: colors.shadowLight,
-          pointerEvents: 'none',
-        }}
-      />
+      <RadialLightEffect />
+      <ShimmerEffect />
+      <DecorativeCircle />
 
       <div
         style={{
@@ -112,7 +81,6 @@ export function WalletCard({ card }: Props) {
           gap: 18,
         }}
       >
-        {/* Top row */}
         <div
           style={{
             display: 'flex',
@@ -141,188 +109,301 @@ export function WalletCard({ card }: Props) {
               My Wallet
             </span>
           </div>
-          {/* Chip grid */}
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(3, 7px)',
-              gap: 3.5,
-            }}
-          >
-            {Array(9)
-              .fill(0)
-              .map((_, i) => (
-                <div
-                  key={i}
-                  style={{
-                    width: 7,
-                    height: 7,
-                    borderRadius: 2,
-                    background: 'rgba(255,200,50,0.88)',
-                  }}
-                />
-              ))}
-          </div>
+          <NFCChip />
         </div>
 
-        {/* Balance */}
-        <div>
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: 6,
-              marginBottom: 4,
-            }}
-          >
-            <span
-              style={{
-                fontSize: fontSize.xs,
-                fontWeight: fontWeight.semibold,
-                color: 'rgba(255,255,255,0.55)',
-                letterSpacing: '0.15em',
-                textTransform: 'uppercase',
-              }}
-            >
-              Balance
-            </span>
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setShowBalance((v) => !v);
-              }}
-              style={{
-                color: 'rgba(255,255,255,0.5)',
-                background: 'none',
-                border: 'none',
-                cursor: 'pointer',
-                padding: 0,
-                display: 'flex',
-                alignItems: 'center',
-              }}
-              aria-label={showBalance ? 'Hide balance' : 'Show balance'}
-            >
-              {showBalance ? <EyeOpenIcon /> : <EyeClosedIcon />}
-            </button>
-          </div>
-          <p
-            style={{
-              fontSize: fontSize['5xl'],
-              fontWeight: fontWeight.extrabold,
-              color: colors.textPrimary,
-              letterSpacing: letterSpacing.tighter,
-              lineHeight: 1,
-            }}
-          >
-            {showBalance ? (
-              `${renderCard.currency}${formattedBalance}`
-            ) : (
-              <span style={{ letterSpacing: '0.2em', fontSize: 20 }}>
-                ••••••
-              </span>
-            )}
-          </p>
-        </div>
+        <CardBalance
+          setShowBalance={setShowBalance}
+          showBalance={showBalance}
+          card={renderCard}
+          balance={formattedBalance}
+        />
 
-        {/* PAN */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-          <span
-            style={{
-              fontSize: fontSize.base,
-              color: 'rgba(255,255,255,0.75)',
-              letterSpacing: '0.22em',
-              fontVariantNumeric: 'tabular-nums',
-              flex: 1,
-            }}
-          >
-            {displayGroups.join('  ')}
-          </span>
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              setShowPan((v) => !v);
-            }}
-            style={{
-              color: 'rgba(255,255,255,0.5)',
-              background: 'none',
-              border: 'none',
-              cursor: 'pointer',
-              padding: 0,
-              display: 'flex',
-              alignItems: 'center',
-            }}
-            title={showPan ? 'Mask card number' : 'Reveal card number'}
-          >
-            {showPan ? <EyeOpenIcon /> : <EyeClosedIcon />}
-          </button>
-          <button
-            onClick={handleCopy}
-            style={{
-              color: 'rgba(255,255,255,0.5)',
-              background: 'none',
-              border: 'none',
-              cursor: 'pointer',
-              padding: 0,
-              display: 'flex',
-              alignItems: 'center',
-            }}
-            title="Copy card number"
-          >
-            {copied ? <CheckIcon /> : <CopyIcon />}
-          </button>
-        </div>
+        <CardPan
+          displayGroups={displayGroups}
+          handleCopy={handleCopy}
+          copied={copied}
+          setShowPan={setShowPan}
+          showPan={showPan}
+        />
 
-        {/* Bottom row */}
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'flex-end',
-          }}
-        >
-          <div style={{ display: 'flex', gap: 24 }}>
-            <div>
-              <div
-                style={{
-                  fontSize: fontSize.xxs,
-                  fontWeight: fontWeight.semibold,
-                  color: 'rgba(255,255,255,0.5)',
-                  letterSpacing: '0.12em',
-                  textTransform: 'uppercase',
-                  marginBottom: 3,
-                }}
-              >
-                Holder
-              </div>
-              <div style={{ fontSize: fontSize.base, fontWeight: fontWeight.bold, color: colors.textPrimary }}>
-                {username || renderCard.holderName}
-              </div>
-            </div>
-            <div>
-              <div
-                style={{
-                  fontSize: fontSize.xxs,
-                  fontWeight: fontWeight.semibold,
-                  color: 'rgba(255,255,255,0.5)',
-                  letterSpacing: '0.12em',
-                  textTransform: 'uppercase',
-                  marginBottom: 3,
-                }}
-              >
-                Expires
-              </div>
-              <div style={{ fontSize: fontSize.base, fontWeight: fontWeight.bold, color: colors.textPrimary }}>
-                {renderCard.expiry}
-              </div>
-            </div>
-          </div>
-          {renderCard.cardNetwork === 'visa' ? (
-            <VisaIcon />
-          ) : (
-            <MastercardIcon />
-          )}
-        </div>
+        <CardMetadata card={renderCard} />
       </div>
     </div>
   );
 }
+
+const RadialLightEffect = () => {
+  return (
+    <div
+      style={{
+        position: 'absolute',
+        inset: 0,
+        borderRadius: radius.card,
+        background:
+          'radial-gradient(ellipse at 28% 16%, rgba(255,255,255,0.2) 0%, transparent 52%)',
+        pointerEvents: 'none',
+      }}
+    />
+  );
+};
+
+const ShimmerEffect = () => {
+  return (
+    <div
+      style={{
+        position: 'absolute',
+        top: 0,
+        left: '-200%',
+        right: 0,
+        bottom: 0,
+        background:
+          'linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.07) 50%, transparent 60%)',
+        backgroundSize: '200% 100%',
+        animation: 'shimmer 3.5s linear infinite',
+        pointerEvents: 'none',
+        borderRadius: radius.card,
+      }}
+    />
+  );
+};
+
+const DecorativeCircle = () => {
+  return (
+    <div
+      style={{
+        position: 'absolute',
+        bottom: -55,
+        right: -35,
+        width: 190,
+        height: 190,
+        borderRadius: radius.full,
+        background: colors.shadowLight,
+        pointerEvents: 'none',
+      }}
+    />
+  );
+};
+
+const NFCChip = () => {
+  return (
+    <div
+      style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(3, 7px)',
+        gap: 3.5,
+      }}
+    >
+      {Array(9)
+        .fill(0)
+        .map((_, i) => (
+          <div
+            key={i}
+            style={{
+              width: 7,
+              height: 7,
+              borderRadius: 2,
+              background: 'rgba(255,200,50,0.88)',
+            }}
+          />
+        ))}
+    </div>
+  );
+};
+
+const CardPan = ({
+  copied,
+  handleCopy,
+  displayGroups,
+  setShowPan,
+  showPan,
+}: {
+  displayGroups: string[];
+  setShowPan: Dispatch<SetStateAction<boolean>>;
+  showPan: boolean;
+  handleCopy: (e: MouseEvent) => void;
+  copied: boolean;
+}) => {
+  return (
+    <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+      <span
+        style={{
+          fontSize: fontSize.base,
+          color: 'rgba(255,255,255,0.75)',
+          letterSpacing: '0.22em',
+          fontVariantNumeric: 'tabular-nums',
+          flex: 1,
+        }}
+      >
+        {displayGroups.join('  ')}
+      </span>
+      <button
+        onClick={(e) => {
+          e.stopPropagation();
+          setShowPan((v) => !v);
+        }}
+        style={{
+          color: 'rgba(255,255,255,0.5)',
+          background: 'none',
+          border: 'none',
+          cursor: 'pointer',
+          padding: 0,
+          display: 'flex',
+          alignItems: 'center',
+        }}
+        title={showPan ? 'Mask card number' : 'Reveal card number'}
+      >
+        {showPan ? <EyeOpenIcon /> : <EyeClosedIcon />}
+      </button>
+      <button
+        onClick={handleCopy}
+        style={{
+          color: 'rgba(255,255,255,0.5)',
+          background: 'none',
+          border: 'none',
+          cursor: 'pointer',
+          padding: 0,
+          display: 'flex',
+          alignItems: 'center',
+        }}
+        title="Copy card number"
+      >
+        {copied ? <CheckIcon /> : <CopyIcon />}
+      </button>
+    </div>
+  );
+};
+
+const CardBalance = ({
+  setShowBalance,
+  showBalance,
+  balance,
+  card,
+}: {
+  card: CardData;
+  showBalance: boolean;
+  balance: string;
+  setShowBalance: Dispatch<SetStateAction<boolean>>;
+}) => {
+  return (
+    <div>
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: 6,
+          marginBottom: 4,
+        }}
+      >
+        <span
+          style={{
+            fontSize: fontSize.xs,
+            fontWeight: fontWeight.semibold,
+            color: 'rgba(255,255,255,0.55)',
+            letterSpacing: '0.15em',
+            textTransform: 'uppercase',
+          }}
+        >
+          Balance
+        </span>
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            setShowBalance((v) => !v);
+          }}
+          style={{
+            color: 'rgba(255,255,255,0.5)',
+            background: 'none',
+            border: 'none',
+            cursor: 'pointer',
+            padding: 0,
+            display: 'flex',
+            alignItems: 'center',
+          }}
+          aria-label={showBalance ? 'Hide balance' : 'Show balance'}
+        >
+          {showBalance ? <EyeOpenIcon /> : <EyeClosedIcon />}
+        </button>
+      </div>
+      <p
+        style={{
+          fontSize: fontSize['5xl'],
+          fontWeight: fontWeight.extrabold,
+          color: colors.textPrimary,
+          letterSpacing: letterSpacing.tighter,
+          lineHeight: 1,
+        }}
+      >
+        {showBalance ? (
+          `${card.currency}${balance}`
+        ) : (
+          <span style={{ letterSpacing: '0.2em', fontSize: 20 }}>••••••</span>
+        )}
+      </p>
+    </div>
+  );
+};
+
+export const CardMetadata = ({ card }: { card: CardData }) => {
+  const { username } = useAuth();
+
+  return (
+    <div
+      style={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'flex-end',
+      }}
+    >
+      <div style={{ display: 'flex', gap: 24 }}>
+        <div>
+          <div
+            style={{
+              fontSize: fontSize.xxs,
+              fontWeight: fontWeight.semibold,
+              color: 'rgba(255,255,255,0.5)',
+              letterSpacing: '0.12em',
+              textTransform: 'uppercase',
+              marginBottom: 3,
+            }}
+          >
+            Holder
+          </div>
+          <div
+            style={{
+              fontSize: fontSize.base,
+              fontWeight: fontWeight.bold,
+              color: colors.textPrimary,
+            }}
+          >
+            {username || card.holderName}
+          </div>
+        </div>
+        <div>
+          <div
+            style={{
+              fontSize: fontSize.xxs,
+              fontWeight: fontWeight.semibold,
+              color: 'rgba(255,255,255,0.5)',
+              letterSpacing: '0.12em',
+              textTransform: 'uppercase',
+              marginBottom: 3,
+            }}
+          >
+            Expires
+          </div>
+          <div
+            style={{
+              fontSize: fontSize.base,
+              fontWeight: fontWeight.bold,
+              color: colors.textPrimary,
+            }}
+          >
+            {card.expiry}
+          </div>
+        </div>
+      </div>
+      {card.cardNetwork === 'visa' ? <VisaIcon /> : <MastercardIcon />}
+    </div>
+  );
+};

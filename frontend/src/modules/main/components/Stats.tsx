@@ -5,7 +5,20 @@ import {
   letterSpacing,
   radius,
 } from '@lib/theme';
+import { JSX } from 'react';
 import { StatData } from 'types';
+import { percentageChange } from '../helpers';
+
+type StatItem = {
+  label: string;
+  value: string;
+  change: string;
+  positive: boolean;
+  color: string;
+  bgColor: string;
+  sparkline: number[];
+  icon: JSX.Element;
+};
 
 interface StatsProps {
   income: StatData;
@@ -18,11 +31,11 @@ export const Stats = ({ income, spending }: StatsProps) => {
     Math.max(v - (spending.sparkline[i] ?? 0), 0),
   );
 
-  const statsList = [
+  const statsList: StatItem[] = [
     {
       label: 'Total Income',
       value: `$${income.value.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 2 })}`,
-      change: pctChange(income.sparkline),
+      change: percentageChange(income.sparkline),
       positive: true,
       color: colors.income,
       bgColor: colors.incomeBg,
@@ -46,7 +59,7 @@ export const Stats = ({ income, spending }: StatsProps) => {
     {
       label: 'Total Spending',
       value: `$${spending.value.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 2 })}`,
-      change: pctChange(spending.sparkline),
+      change: percentageChange(spending.sparkline),
       positive: false,
       color: colors.spending,
       bgColor: colors.spendingBg,
@@ -70,7 +83,7 @@ export const Stats = ({ income, spending }: StatsProps) => {
     {
       label: 'Savings',
       value: `$${savings.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 2 })}`,
-      change: pctChange(savingsSpk),
+      change: percentageChange(savingsSpk),
       positive: true,
       color: colors.savings,
       bgColor: colors.savingsBg,
@@ -85,104 +98,94 @@ export const Stats = ({ income, spending }: StatsProps) => {
 
   return (
     <div className="grid grid-cols-3 gap-3 w-full">
-      {statsList.map(
-        ({
-          label,
-          value,
-          change,
-          positive,
-          color,
-          bgColor,
-          sparkline,
-          icon,
-        }) => (
+      <StatsList list={statsList} />
+    </div>
+  );
+};
+
+const StatsList = ({ list }: { list: StatItem[] }) => {
+  return list.map(
+    ({ label, value, change, positive, color, bgColor, sparkline, icon }) => (
+      <div
+        key={label}
+        style={{
+          background: colors.surfaceFaint,
+          border: `1px solid ${colors.borderSubtle}`,
+          borderRadius: radius['2xl'],
+          padding: '18px 20px 14px',
+          position: 'relative',
+          overflow: 'hidden',
+        }}
+      >
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'flex-start',
+            marginBottom: 14,
+          }}
+        >
           <div
-            key={label}
             style={{
-              background: colors.surfaceFaint,
-              border: `1px solid ${colors.borderSubtle}`,
-              borderRadius: radius['2xl'],
-              padding: '18px 20px 14px',
-              position: 'relative',
-              overflow: 'hidden',
+              width: 32,
+              height: 32,
+              borderRadius: radius.md,
+              background: bgColor,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
             }}
           >
-            <div
-              style={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'flex-start',
-                marginBottom: 14,
-              }}
-            >
-              <div
-                style={{
-                  width: 32,
-                  height: 32,
-                  borderRadius: radius.md,
-                  background: bgColor,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}
-              >
-                {icon}
-              </div>
-              <div
-                style={{
-                  fontSize: fontSize.md,
-                  fontWeight: fontWeight.bold,
-                  color: positive ? colors.income : colors.spending,
-                  background: positive ? colors.incomeBg : colors.spendingBg,
-                  padding: '3px 9px',
-                  borderRadius: radius.sm,
-                }}
-              >
-                {change}
-              </div>
-            </div>
-            <div
-              style={{
-                fontSize: fontSize['3xl'],
-                fontWeight: fontWeight.extrabold,
-                color: colors.textPrimary,
-                letterSpacing: letterSpacing.tighter,
-                marginBottom: 4,
-              }}
-            >
-              {value}
-            </div>
-            <div
-              style={{
-                fontSize: fontSize.sm,
-                fontWeight: fontWeight.medium,
-                color: colors.textMuted,
-                textTransform: 'uppercase',
-                letterSpacing: letterSpacing.normal,
-                marginBottom: 12,
-              }}
-            >
-              {label}
-            </div>
-            <div
-              style={{
-                position: 'absolute',
-                bottom: 0,
-                right: 0,
-                opacity: 0.65,
-              }}
-            >
-              <Sparkline
-                data={sparkline}
-                color={color}
-                width={100}
-                height={36}
-              />
-            </div>
+            {icon}
           </div>
-        ),
-      )}
-    </div>
+          <div
+            style={{
+              fontSize: fontSize.md,
+              fontWeight: fontWeight.bold,
+              color: positive ? colors.income : colors.spending,
+              background: positive ? colors.incomeBg : colors.spendingBg,
+              padding: '3px 9px',
+              borderRadius: radius.sm,
+            }}
+          >
+            {change}
+          </div>
+        </div>
+        <div
+          style={{
+            fontSize: fontSize['3xl'],
+            fontWeight: fontWeight.extrabold,
+            color: colors.textPrimary,
+            letterSpacing: letterSpacing.tighter,
+            marginBottom: 4,
+          }}
+        >
+          {value}
+        </div>
+        <div
+          style={{
+            fontSize: fontSize.sm,
+            fontWeight: fontWeight.medium,
+            color: colors.textMuted,
+            textTransform: 'uppercase',
+            letterSpacing: letterSpacing.normal,
+            marginBottom: 12,
+          }}
+        >
+          {label}
+        </div>
+        <div
+          style={{
+            position: 'absolute',
+            bottom: 0,
+            right: 0,
+            opacity: 0.65,
+          }}
+        >
+          <Sparkline data={sparkline} color={color} width={100} height={36} />
+        </div>
+      </div>
+    ),
   );
 };
 
@@ -242,10 +245,4 @@ const Sparkline = ({
       />
     </svg>
   );
-};
-
-const pctChange = (arr: number[]): string => {
-  if (arr.length < 2 || arr[0] === 0) return '0%';
-  const delta = Math.round(((arr[arr.length - 1] - arr[0]) / arr[0]) * 100);
-  return delta >= 0 ? `+${delta}%` : `${delta}%`;
 };

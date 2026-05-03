@@ -130,7 +130,7 @@ export const CardControls = ({ card, balance }: Props) => {
   return (
     <>
       {/* Mobile layout */}
-      <div className="flex items-center justify-between w-full max-w-sm lg:hidden">
+      <div className="flex items-center justify-between w-full lg:hidden">
         <button
           onClick={() => setIsTransferOpen(true)}
           className="group relative flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold text-white overflow-hidden transition-all hover:scale-105 active:scale-95"

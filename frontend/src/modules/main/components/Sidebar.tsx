@@ -29,7 +29,6 @@ const navItems = [
 ];
 
 export const Sidebar = () => {
-  const { username, logout } = useAuth();
   const { cardTheme } = useWalletCards();
   const { activeNav, setActiveNav } = useNavigation();
 
@@ -97,65 +96,7 @@ export const Sidebar = () => {
         />
       </div>
 
-      <div
-        style={{
-          padding: '20px 24px 0',
-          borderTop: `1px solid ${colors.surfaceDefault}`,
-        }}
-      >
-        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          <span
-            role="img"
-            aria-label="profile-icon"
-            style={{
-              width: 36,
-              height: 36,
-              borderRadius: radius.lg,
-              flexShrink: 0,
-              background: `linear-gradient(135deg, ${cardTheme.a}88, ${cardTheme.b}88)`,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              fontSize: fontSize.xl,
-              transition: `background ${transition.slow}`,
-            }}
-          >
-            🧑
-          </span>
-          <div style={{ flex: 1, minWidth: 0 }}>
-            <div
-              style={{
-                fontSize: fontSize.md,
-                fontWeight: fontWeight.bold,
-                color: colors.textPrimary,
-                overflow: 'hidden',
-                textOverflow: 'ellipsis',
-                whiteSpace: 'nowrap',
-              }}
-            >
-              {username || 'User'}
-            </div>
-            <div style={{ fontSize: fontSize.xs, color: colors.textMuted }}>
-              Personal
-            </div>
-          </div>
-          <button
-            onClick={logout}
-            style={{
-              background: 'none',
-              border: 'none',
-              cursor: 'pointer',
-              padding: 4,
-              display: 'flex',
-              alignItems: 'center',
-              borderRadius: radius.sm,
-            }}
-            title="Logout"
-          >
-            <SvgLogout color={colors.textMuted} />
-          </button>
-        </div>
-      </div>
+      <NavFooter cardTheme={cardTheme} />
     </div>
   );
 };
@@ -218,4 +159,70 @@ const NavItems = ({
       </button>
     );
   });
+};
+
+const NavFooter = ({ cardTheme }: { cardTheme: CardTheme }) => {
+  const { username, logout } = useAuth();
+
+  return (
+    <div
+      style={{
+        padding: '20px 24px 0',
+        borderTop: `1px solid ${colors.surfaceDefault}`,
+      }}
+    >
+      <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+        <span
+          role="img"
+          aria-label="profile-icon"
+          style={{
+            width: 36,
+            height: 36,
+            borderRadius: radius.lg,
+            flexShrink: 0,
+            background: `linear-gradient(135deg, ${cardTheme.a}88, ${cardTheme.b}88)`,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: fontSize.xl,
+            transition: `background ${transition.slow}`,
+          }}
+        >
+          🧑
+        </span>
+        <div style={{ flex: 1, minWidth: 0 }}>
+          <div
+            style={{
+              fontSize: fontSize.md,
+              fontWeight: fontWeight.bold,
+              color: colors.textPrimary,
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+              whiteSpace: 'nowrap',
+            }}
+          >
+            {username || 'Guest'}
+          </div>
+          <div style={{ fontSize: fontSize.xs, color: colors.textMuted }}>
+            Personal
+          </div>
+        </div>
+        <button
+          onClick={logout}
+          style={{
+            background: 'none',
+            border: 'none',
+            cursor: 'pointer',
+            padding: 4,
+            display: 'flex',
+            alignItems: 'center',
+            borderRadius: radius.sm,
+          }}
+          title="Logout"
+        >
+          <SvgLogout color={colors.textMuted} />
+        </button>
+      </div>
+    </div>
+  );
 };

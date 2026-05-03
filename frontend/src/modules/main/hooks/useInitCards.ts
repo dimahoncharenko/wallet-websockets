@@ -1,11 +1,14 @@
 import { useWalletCards } from '@hooks/useWalletCards';
 import { useWebsocket } from '@hooks/useWebsocket';
+import { useNotifications } from '@hooks/useNotifications';
 import { useEffect } from 'react';
+import toast from 'react-hot-toast';
 import { WebsocketMessage } from 'types';
 
 export const useInitCard = () => {
   const { setCards } = useWalletCards();
   const { socket } = useWebsocket();
+  const { addNotification } = useNotifications();
 
   useEffect(() => {
     if (!socket) return;
@@ -28,12 +31,14 @@ export const useInitCard = () => {
         }
       } catch (error) {
         console.error('Failed to parse WS message:', error);
+        toast.error('A real-time update could not be processed.');
+        addNotification('security', 'Connection issue', 'A real-time update could not be processed.');
       }
     };
 
     socket.addEventListener('message', handleMessage);
     return () => socket.removeEventListener('message', handleMessage);
-  }, [socket]);
+  }, [socket, setCards, addNotification]);
 
   const updateBalance = (pan: string, delta: number) =>
     setCards((prev) =>
