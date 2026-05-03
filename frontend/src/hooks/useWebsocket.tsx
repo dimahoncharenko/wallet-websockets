@@ -27,6 +27,8 @@ export const WebsocketProvider = ({
   const socketRef = useRef<WebSocket | null>(null);
   const { logout, session, username } = useAuth();
 
+  const sessionUserId = session?.user.id ?? null;
+
   const connect = () => {
     if (socketRef.current || !session) return;
     const ws = new WebSocket('ws://localhost:3000');
@@ -69,7 +71,7 @@ export const WebsocketProvider = ({
   useEffect(() => {
     connect();
     return () => disconnect();
-  }, [session]);
+  }, [sessionUserId]);
 
   useEffect(() => {
     const {

@@ -4,7 +4,7 @@ import { useEffect, useRef } from 'react';
 export const useNotificationsModal = () => {
   const { modals, setModal } = useModal();
   const panelRef = useRef<HTMLDivElement>(null);
-  const deferredTimeoutRef = useRef<number>(null);
+  const deferredTimeoutRef = useRef<number | null>(null);
   const isOpen = modals.notificationsPanel;
 
   useEffect(() => {
@@ -23,8 +23,11 @@ export const useNotificationsModal = () => {
       0,
     );
     return () => {
-      deferredTimeoutRef.current &&
+      if (deferredTimeoutRef.current) {
         window.clearTimeout(deferredTimeoutRef.current);
+        deferredTimeoutRef.current = null;
+      }
+
       document.removeEventListener('keydown', onKeyDown);
       document.removeEventListener('mousedown', onClickOutside);
     };
