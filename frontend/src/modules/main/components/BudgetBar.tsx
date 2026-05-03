@@ -1,3 +1,6 @@
+import { colors, fontSize, fontWeight, radius, transition } from '@lib/theme';
+import { useBudget } from '../hooks/useBudget';
+
 export const BudgetBar = ({
   income,
   spending,
@@ -7,81 +10,124 @@ export const BudgetBar = ({
   spending: number;
   dot: string;
 }) => {
-  const budget = income > 0 ? income : 5000;
-  const pct =
-    budget > 0 ? Math.min(Math.round((spending / budget) * 100), 100) : 0;
-  const remaining = Math.max(budget - spending, 0);
+  const { percentage, remaining, budget } = useBudget({ income, spending });
 
   return (
     <div
       style={{
-        background: 'rgba(255,255,255,0.03)',
-        border: '1px solid rgba(255,255,255,0.07)',
-        borderRadius: 20,
+        background: colors.surfaceBare,
+        border: `1px solid ${colors.borderSubtle}`,
+        borderRadius: radius['2xl'],
         padding: '20px 24px',
+      }}
+    >
+      <BudgetHeader dot={dot} spending={spending} budget={budget} />
+      <ProgressBar percentage={percentage} dot={dot} />
+      <BudgetFooter remaining={remaining} percentage={percentage} />
+    </div>
+  );
+};
+
+const BudgetHeader = ({
+  dot,
+  spending,
+  budget,
+}: {
+  dot: string;
+  spending: number;
+  budget: number;
+}) => {
+  return (
+    <div
+      style={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginBottom: 14,
+      }}
+    >
+      <span
+        style={{
+          fontSize: fontSize.lg,
+          fontWeight: fontWeight.bold,
+          color: colors.textPrimary,
+        }}
+      >
+        Monthly Budget
+      </span>
+      <span style={{ fontSize: fontSize.base, fontWeight: fontWeight.bold }}>
+        <span style={{ color: dot, transition: `color ${transition.slow}` }}>
+          ${spending.toLocaleString('en-US', { minimumFractionDigits: 0 })}
+        </span>
+        <span
+          style={{ color: colors.textMuted, fontWeight: fontWeight.regular }}
+        >
+          {' '}
+          / ${budget.toLocaleString('en-US', { minimumFractionDigits: 0 })}
+        </span>
+      </span>
+    </div>
+  );
+};
+
+const ProgressBar = ({
+  dot,
+  percentage,
+}: {
+  dot: string;
+  percentage: number;
+}) => {
+  return (
+    <div
+      style={{
+        height: 8,
+        borderRadius: 4,
+        background: colors.borderSubtle,
+        overflow: 'hidden',
+        marginBottom: 10,
       }}
     >
       <div
         style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          marginBottom: 14,
-        }}
-      >
-        <span style={{ fontSize: 14, fontWeight: 700, color: '#fff' }}>
-          Monthly Budget
-        </span>
-        <span style={{ fontSize: 13, fontWeight: 700 }}>
-          <span style={{ color: dot, transition: 'color 0.6s' }}>
-            ${spending.toLocaleString('en-US', { minimumFractionDigits: 0 })}
-          </span>
-          <span style={{ color: 'rgba(255,255,255,0.3)', fontWeight: 400 }}>
-            {' '}
-            / ${budget.toLocaleString('en-US', { minimumFractionDigits: 0 })}
-          </span>
-        </span>
-      </div>
-      <div
-        style={{
-          height: 8,
+          height: '100%',
           borderRadius: 4,
-          background: 'rgba(255,255,255,0.07)',
-          overflow: 'hidden',
-          marginBottom: 10,
+          width: `${percentage}%`,
+          background: `linear-gradient(90deg, ${dot}88, ${dot})`,
+          transition: `width 1s ease, background ${transition.slow}`,
+        }}
+      />
+    </div>
+  );
+};
+
+const BudgetFooter = ({
+  percentage,
+  remaining,
+}: {
+  percentage: number;
+  remaining: number;
+}) => {
+  return (
+    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+      <span
+        style={{
+          fontSize: fontSize.md,
+          color: colors.textSubtle,
+          fontWeight: fontWeight.medium,
         }}
       >
-        <div
-          style={{
-            height: '100%',
-            borderRadius: 4,
-            width: `${pct}%`,
-            background: `linear-gradient(90deg, ${dot}88, ${dot})`,
-            transition: 'width 1s ease, background 0.6s',
-          }}
-        />
-      </div>
-      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-        <span
-          style={{
-            fontSize: 12,
-            color: 'rgba(255,255,255,0.28)',
-            fontWeight: 500,
-          }}
-        >
-          {pct}% used this month
-        </span>
-        <span
-          style={{
-            fontSize: 12,
-            color: 'rgba(255,255,255,0.28)',
-            fontWeight: 500,
-          }}
-        >
-          ${remaining.toLocaleString('en-US', { minimumFractionDigits: 0 })}{' '}
-          remaining
-        </span>
-      </div>
+        {percentage}% used this month
+      </span>
+      <span
+        style={{
+          fontSize: fontSize.md,
+          color: colors.textSubtle,
+          fontWeight: fontWeight.medium,
+        }}
+      >
+        ${remaining.toLocaleString('en-US', { minimumFractionDigits: 0 })}{' '}
+        remaining
+      </span>
     </div>
   );
 };

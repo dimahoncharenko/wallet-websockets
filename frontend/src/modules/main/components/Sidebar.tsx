@@ -1,4 +1,13 @@
 import {
+  colors,
+  fontSize,
+  fontWeight,
+  letterSpacing,
+  radius,
+  layout,
+  transition,
+} from '@lib/theme';
+import {
   SvgCards,
   SvgHistory,
   SvgHome,
@@ -7,8 +16,9 @@ import {
   SvgSettings,
 } from '@components/Icons';
 import { useAuth } from '@hooks/useAuth';
-import { useRootActions } from '@hooks/useRootActions';
+import { useNavigation } from '@hooks/useNavigation';
 import { useWalletCards } from '@hooks/useWalletCards';
+import { CardTheme } from '@modules/wallet/const';
 
 const navItems = [
   { id: 'home', label: 'Overview', Icon: SvgHome },
@@ -18,22 +28,17 @@ const navItems = [
   { id: 'settings', label: 'Settings', Icon: SvgSettings },
 ];
 
-type Props = {
-  activeNav: string;
-};
-
-export const Sidebar = ({ activeNav }: Props) => {
-  const { username, logout } = useAuth();
+export const Sidebar = () => {
   const { cardTheme } = useWalletCards();
-  const { setActiveNav } = useRootActions();
+  const { activeNav, setActiveNav } = useNavigation();
 
   return (
     <div
       style={{
-        width: 220,
+        width: layout.sidebarWidth,
         flexShrink: 0,
-        background: '#0c0c1a',
-        borderRight: '1px solid rgba(255,255,255,0.06)',
+        background: colors.bgSidebar,
+        borderRight: `1px solid ${colors.surfaceDefault}`,
         display: 'flex',
         flexDirection: 'column',
         padding: '32px 0',
@@ -51,23 +56,23 @@ export const Sidebar = ({ activeNav }: Props) => {
           style={{
             width: 32,
             height: 32,
-            borderRadius: 10,
+            borderRadius: radius.md,
             background: `linear-gradient(135deg, ${cardTheme.a}, ${cardTheme.b})`,
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            fontSize: 14,
-            transition: 'background 0.6s',
+            fontSize: fontSize.lg,
+            transition: `background ${transition.slow}`,
           }}
         >
           ◈
         </div>
         <span
           style={{
-            fontSize: 16,
-            fontWeight: 800,
-            color: '#fff',
-            letterSpacing: '-0.02em',
+            fontSize: fontSize.xl,
+            fontWeight: fontWeight.extrabold,
+            color: colors.textPrimary,
+            letterSpacing: letterSpacing.tight,
           }}
         >
           Wallet
@@ -83,113 +88,140 @@ export const Sidebar = ({ activeNav }: Props) => {
           gap: 2,
         }}
       >
-        {navItems.map(({ id, label, Icon }) => {
-          const isActive = activeNav === id;
-          return (
-            <button
-              key={id}
-              onClick={() => setActiveNav?.(id)}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: 12,
-                padding: '10px 14px',
-                borderRadius: 12,
-                cursor: 'pointer',
-                background: isActive ? `${cardTheme.dot}14` : 'transparent',
-                border: 'none',
-                width: '100%',
-                transition: 'background 0.15s',
-              }}
-            >
-              <Icon
-                color={isActive ? cardTheme.dot : 'rgba(255,255,255,0.3)'}
-                filled={isActive && id === 'home'}
-              />
-              <span
-                style={{
-                  fontSize: 13,
-                  fontWeight: isActive ? 700 : 500,
-                  color: isActive ? cardTheme.dot : 'rgba(255,255,255,0.4)',
-                  transition: 'color 0.15s',
-                }}
-              >
-                {label}
-              </span>
-              {isActive && (
-                <div
-                  style={{
-                    marginLeft: 'auto',
-                    width: 4,
-                    height: 16,
-                    borderRadius: 2,
-                    background: cardTheme.dot,
-                  }}
-                />
-              )}
-            </button>
-          );
-        })}
+        <NavItems
+          items={navItems}
+          setActiveNav={setActiveNav}
+          activeNav={activeNav}
+          cardTheme={cardTheme}
+        />
       </div>
 
-      <div
+      <NavFooter cardTheme={cardTheme} />
+    </div>
+  );
+};
+
+const NavItems = ({
+  items,
+  activeNav,
+  setActiveNav,
+  cardTheme,
+}: {
+  items: typeof navItems;
+  activeNav: string;
+  setActiveNav: (param: string) => void;
+  cardTheme: CardTheme;
+}) => {
+  return items.map(({ id, label, Icon }) => {
+    const isActive = activeNav === id;
+    return (
+      <button
+        key={id}
+        onClick={() => setActiveNav(id)}
         style={{
-          padding: '20px 24px 0',
-          borderTop: '1px solid rgba(255,255,255,0.06)',
+          display: 'flex',
+          alignItems: 'center',
+          gap: 12,
+          padding: '10px 14px',
+          borderRadius: radius.lg,
+          cursor: 'pointer',
+          background: isActive ? `${cardTheme.dot}14` : 'transparent',
+          border: 'none',
+          width: '100%',
+          transition: `background ${transition.fast}`,
         }}
       >
-        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          <span
-            role="img"
-            aria-label="profile-icon"
+        <Icon
+          color={isActive ? cardTheme.dot : colors.textMuted}
+          filled={isActive && id === 'home'}
+        />
+        <span
+          style={{
+            fontSize: fontSize.base,
+            fontWeight: isActive ? fontWeight.bold : fontWeight.medium,
+            color: isActive ? cardTheme.dot : colors.textTertiary,
+            transition: `color ${transition.fast}`,
+          }}
+        >
+          {label}
+        </span>
+        {isActive && (
+          <div
             style={{
-              width: 36,
-              height: 36,
-              borderRadius: 12,
-              flexShrink: 0,
-              background: `linear-gradient(135deg, ${cardTheme.a}88, ${cardTheme.b}88)`,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              fontSize: 16,
-              transition: 'background 0.6s',
+              marginLeft: 'auto',
+              width: 4,
+              height: 16,
+              borderRadius: 2,
+              background: cardTheme.dot,
+            }}
+          />
+        )}
+      </button>
+    );
+  });
+};
+
+const NavFooter = ({ cardTheme }: { cardTheme: CardTheme }) => {
+  const { username, logout } = useAuth();
+
+  return (
+    <div
+      style={{
+        padding: '20px 24px 0',
+        borderTop: `1px solid ${colors.surfaceDefault}`,
+      }}
+    >
+      <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+        <span
+          role="img"
+          aria-label="profile-icon"
+          style={{
+            width: 36,
+            height: 36,
+            borderRadius: radius.lg,
+            flexShrink: 0,
+            background: `linear-gradient(135deg, ${cardTheme.a}88, ${cardTheme.b}88)`,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: fontSize.xl,
+            transition: `background ${transition.slow}`,
+          }}
+        >
+          🧑
+        </span>
+        <div style={{ flex: 1, minWidth: 0 }}>
+          <div
+            style={{
+              fontSize: fontSize.md,
+              fontWeight: fontWeight.bold,
+              color: colors.textPrimary,
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+              whiteSpace: 'nowrap',
             }}
           >
-            🧑
-          </span>
-          <div style={{ flex: 1, minWidth: 0 }}>
-            <div
-              style={{
-                fontSize: 12,
-                fontWeight: 700,
-                color: '#fff',
-                overflow: 'hidden',
-                textOverflow: 'ellipsis',
-                whiteSpace: 'nowrap',
-              }}
-            >
-              {username || 'User'}
-            </div>
-            <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.3)' }}>
-              Personal
-            </div>
+            {username || 'Guest'}
           </div>
-          <button
-            onClick={logout}
-            style={{
-              background: 'none',
-              border: 'none',
-              cursor: 'pointer',
-              padding: 4,
-              display: 'flex',
-              alignItems: 'center',
-              borderRadius: 8,
-            }}
-            title="Logout"
-          >
-            <SvgLogout color="rgba(255,255,255,0.3)" />
-          </button>
+          <div style={{ fontSize: fontSize.xs, color: colors.textMuted }}>
+            Personal
+          </div>
         </div>
+        <button
+          onClick={logout}
+          style={{
+            background: 'none',
+            border: 'none',
+            cursor: 'pointer',
+            padding: 4,
+            display: 'flex',
+            alignItems: 'center',
+            borderRadius: radius.sm,
+          }}
+          title="Logout"
+        >
+          <SvgLogout color={colors.textMuted} />
+        </button>
       </div>
     </div>
   );

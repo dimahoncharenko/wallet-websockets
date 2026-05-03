@@ -8,17 +8,20 @@ import { WebsocketProvider } from '@hooks/useWebsocket';
 import { NotificationsProvider } from '@hooks/useNotifications';
 import { WalletCardsProvider } from '@hooks/useWalletCards';
 import { RootActionsProvider } from '@hooks/useRootActions';
+import { NavigationProvider } from '@hooks/useNavigation';
 
 export const Providers = ({ children }: { children: ReactNode }) => {
   return (
     <AuthProvider>
       <WebsocketProvider>
         <Provider store={store}>
-          <PersistGate loading={null} persistor={persistor}>
+          <PersistGate persistor={persistor}>
             <WalletCardsProvider>
               <NotificationsProvider>
                 <ModalProvider>
-                  <RootActionsProvider>{children}</RootActionsProvider>
+                  <RootActionsProvider>
+                    <NavigationProvider>{children}</NavigationProvider>
+                  </RootActionsProvider>
                 </ModalProvider>
               </NotificationsProvider>
             </WalletCardsProvider>

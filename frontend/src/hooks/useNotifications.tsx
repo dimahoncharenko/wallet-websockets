@@ -6,6 +6,7 @@ import { useWebsocket } from './useWebsocket';
 type NotificationsContextType = {
   notifications: AppNotification[];
   unreadCount: number;
+  addNotification: (type: NotificationType, title: string, description: string) => void;
   markAllRead: () => void;
   dismiss: (id: string) => void;
 };
@@ -94,6 +95,10 @@ export const NotificationsProvider = ({
 
   const unreadCount = notifications.filter((n) => !n.interacted).length;
 
+  const addNotification = (type: NotificationType, title: string, description: string) => {
+    setNotifications((prev) => [makeNotification(type, title, description), ...prev]);
+  };
+
   const markAllRead = () => {
     setNotifications((prev) => prev.map((n) => ({ ...n, interacted: true })));
   };
@@ -103,7 +108,7 @@ export const NotificationsProvider = ({
   };
 
   return (
-    <context.Provider value={{ notifications, unreadCount, markAllRead, dismiss }}>
+    <context.Provider value={{ notifications, unreadCount, addNotification, markAllRead, dismiss }}>
       {children}
     </context.Provider>
   );

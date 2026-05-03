@@ -1,23 +1,15 @@
-import {
-  createContext,
-  Dispatch,
-  ReactNode,
-  SetStateAction,
-  useContext,
-  useState,
-} from 'react';
-import { StatData } from 'types';
+import { createContext, ReactNode, useContext, useState } from 'react';
 
-export type RootActions = Partial<{
+export type RootActions = {
   updateBalance: (pan: string, delta: number) => void;
   sendAddCard: () => void;
-  setRootActions: (actions: Omit<RootActions, 'setRootActions'>) => void;
-  setSpending: Dispatch<SetStateAction<StatData>>;
-  setIncome: Dispatch<SetStateAction<StatData>>;
-  setActiveNav: Dispatch<SetStateAction<string>>;
-}>;
+};
 
-const context = createContext<RootActions | undefined>(undefined);
+type Context = RootActions & {
+  setRootActions: (actions: Omit<RootActions, 'setRootActions'>) => void;
+};
+
+const context = createContext<Context | undefined>(undefined);
 
 export const useRootActions = () => {
   const contextValue = useContext(context);
@@ -30,7 +22,14 @@ export const useRootActions = () => {
 };
 
 export const RootActionsProvider = ({ children }: { children: ReactNode }) => {
-  const [rootActions, setRootActions] = useState<RootActions>({});
+  const [rootActions, setRootActions] = useState<RootActions>({
+    updateBalance: () => {
+      return;
+    },
+    sendAddCard: () => {
+      return;
+    },
+  });
 
   return (
     <context.Provider value={{ ...rootActions, setRootActions }}>
