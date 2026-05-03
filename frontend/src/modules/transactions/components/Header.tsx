@@ -15,7 +15,7 @@ export const Header = () => {
       >
         Recent Transactions
       </span>
-      <span
+      <button
         style={{
           fontSize: 12,
           fontWeight: 600,
@@ -24,7 +24,7 @@ export const Header = () => {
         }}
       >
         See all →
-      </span>
+      </button>
     </div>
   );
 };

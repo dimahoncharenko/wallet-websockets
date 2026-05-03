@@ -200,14 +200,13 @@ const Sparkline = ({
   width?: number;
   height?: number;
 }) => {
-  const safeData = data.length >= 2 ? data : [0, 0];
-  const min = Math.min(...safeData);
-  const max = Math.max(...safeData);
+  const min = Math.min(...data);
+  const max = Math.max(...data);
   const range = max - min || 1;
-  const pts = safeData
+  const pts = data
     .map(
       (v, i) =>
-        `${(i / (safeData.length - 1)) * width},${height - ((v - min) / range) * height}`,
+        `${(i / (data.length - 1)) * width},${height - ((v - min) / range) * height}`,
     )
     .join(' ');
   const id = `sg${color.replace(/[^a-z0-9]/gi, '')}`;
@@ -239,7 +238,7 @@ const Sparkline = ({
       />
       <circle
         cx={width}
-        cy={height - ((safeData[safeData.length - 1] - min) / range) * height}
+        cy={height - ((data[data.length - 1] - min) / range) * height}
         r="2.5"
         fill={color}
       />

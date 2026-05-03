@@ -48,7 +48,7 @@ export const Header = ({ unreadCount, markAllRead }: Props) => {
         )}
       </div>
       {unreadCount > 0 && (
-        <span
+        <button
           onClick={markAllRead}
           style={{
             fontSize: 11,
@@ -59,7 +59,7 @@ export const Header = ({ unreadCount, markAllRead }: Props) => {
           }}
         >
           Mark all read
-        </span>
+        </button>
       )}
     </div>
   );

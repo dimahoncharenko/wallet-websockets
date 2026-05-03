@@ -11,7 +11,7 @@ export const Empty = () => {
         paddingTop: 40,
       }}
     >
-      <span role="img" aria-hidden style={{ fontSize: 32, opacity: 0.25 }}>
+      <span aria-hidden style={{ fontSize: 32, opacity: 0.25 }}>
         🔔
       </span>
       <div

@@ -69,7 +69,7 @@ export const WebsocketProvider = ({
   useEffect(() => {
     connect();
     return () => disconnect();
-  }, []);
+  }, [session]);
 
   useEffect(() => {
     const {
@@ -78,9 +78,9 @@ export const WebsocketProvider = ({
       if (
         event === 'TOKEN_REFRESHED' &&
         newSession &&
-        socket?.readyState === WebSocket.OPEN
+        socketRef.current?.readyState === WebSocket.OPEN
       ) {
-        socket.send(
+        socketRef.current.send(
           JSON.stringify({
             event: 'token_refresh',
             token: newSession.access_token,

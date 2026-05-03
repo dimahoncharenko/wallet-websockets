@@ -184,6 +184,9 @@ const Header = () => {
       </div>
       <div style={{ display: 'flex', gap: 8, marginTop: 4 }}>
         <button
+          type="button"
+          aria-label="Toggle notifications panel"
+          aria-pressed={modals.notificationsPanel}
           onClick={() =>
             setModal('notificationsPanel', !modals.notificationsPanel)
           }
@@ -217,6 +220,8 @@ const Header = () => {
           )}
         </button>
         <button
+          aria-label="Scan"
+          type="button"
           style={{
             width: 40,
             height: 40,

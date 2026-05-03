@@ -69,6 +69,11 @@ export const WalletCardsProvider = ({ children }: { children: ReactNode }) => {
   const cardTheme = CARD_THEMES[activeColor];
 
   useEffect(() => {
+    setIncome({ value: 0, sparkline: [0] });
+    setSpending({ value: 0, sparkline: [0] });
+  }, [currentCard?.pan]);
+
+  useEffect(() => {
     if (!socket || !currentCard) return;
     const handler = (e: MessageEvent) => {
       try {

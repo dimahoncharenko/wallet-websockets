@@ -19,9 +19,9 @@ export default function Transactions({
         <Empty />
       ) : (
         <div style={{ flex: 1, overflowY: 'auto' }}>
-          {transactions.map((tx, i) => (
+          {transactions.map((tx) => (
             <TransactionItem
-              key={i}
+              key={tx.id}
               isIncome={tx.type === 'credit'}
               transaction={tx}
             />

@@ -1,13 +1,7 @@
 import { AppNotification } from 'types';
 import { formatTime } from '../helpers';
 import { colors } from '@lib/theme';
-
-const NOTIF_ICON: Record<string, string> = {
-  signin: '🔐',
-  money_received: '💸',
-  money_sent: '📤',
-  system: '🎯',
-};
+import { NOTIFICATION_ICONS } from '../const';
 
 type Props = {
   dismiss: (id: string) => void;
@@ -76,7 +70,7 @@ export const NotificationGroups = ({ dismiss, groups }: Props) => {
               fontSize: 16,
             }}
           >
-            {NOTIF_ICON[n.type] ?? '🔔'}
+            {NOTIFICATION_ICONS[n.type] ?? '🔔'}
           </div>
           <div style={{ flex: 1, minWidth: 0 }}>
             <div
@@ -121,6 +115,7 @@ export const NotificationGroups = ({ dismiss, groups }: Props) => {
           </div>
           <button
             onClick={() => dismiss(n.id)}
+            aria-label="Dismiss"
             style={{
               width: 22,
               height: 22,
@@ -146,6 +141,7 @@ export const NotificationGroups = ({ dismiss, groups }: Props) => {
 const CloseIcon = () => {
   return (
     <svg
+      aria-hidden
       width="11"
       height="11"
       viewBox="0 0 14 14"

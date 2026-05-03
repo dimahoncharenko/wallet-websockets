@@ -216,6 +216,9 @@ const TopBar = () => {
         </span>
       </div>
       <button
+        type="button"
+        aria-label="Toggle notifications panel"
+        aria-pressed={modals.notificationsPanel}
         onClick={() =>
           setModal('notificationsPanel', !modals.notificationsPanel)
         }

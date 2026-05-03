@@ -118,6 +118,7 @@ export const SvgSearch = ({ color }: { color: string }) => (
 
 export const SvgScan = ({ color }: { color: string }) => (
   <svg
+    aria-hidden
     width="16"
     height="16"
     viewBox="0 0 24 24"

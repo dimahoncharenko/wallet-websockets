@@ -242,6 +242,7 @@ const CardPan = ({
           e.stopPropagation();
           setShowPan((v) => !v);
         }}
+        aria-label={showPan ? 'Mask card number' : 'Reveal card number'}
         style={{
           color: 'rgba(255,255,255,0.5)',
           background: 'none',
@@ -257,6 +258,7 @@ const CardPan = ({
       </button>
       <button
         onClick={handleCopy}
+        aria-label="Copy card number"
         style={{
           color: 'rgba(255,255,255,0.5)',
           background: 'none',

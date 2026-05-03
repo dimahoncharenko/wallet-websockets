@@ -39,6 +39,10 @@ export const useWalletSlider = ({
   };
 
   useEffect(() => {
+    if (!scrollRef.current) return;
+
+    const el = scrollRef.current;
+
     const handleKeyUp = (e: KeyboardEvent) => {
       if (e.key === 'ArrowLeft') {
         scrollTo(Math.max(0, activeIndex - 1));
@@ -46,8 +50,9 @@ export const useWalletSlider = ({
         scrollTo(Math.min(cards.length - 1, activeIndex + 1));
       }
     };
-    window.addEventListener('keyup', handleKeyUp);
-    return () => window.removeEventListener('keyup', handleKeyUp);
+
+    el.addEventListener('keyup', handleKeyUp);
+    return () => el.removeEventListener('keyup', handleKeyUp);
   }, [activeIndex, cards.length]);
 
   return {

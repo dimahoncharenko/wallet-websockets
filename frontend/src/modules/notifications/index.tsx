@@ -35,7 +35,7 @@ export function NotificationsPanel() {
         position: 'fixed',
         top,
         right: 16,
-        width: 360,
+        width: 'min(360px, calc(100vw - 32px))',
         maxHeight: 480,
         background: '#0f0f22',
         border: '1px solid rgba(255,255,255,0.1)',

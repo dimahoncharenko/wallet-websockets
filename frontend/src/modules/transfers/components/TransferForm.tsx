@@ -1,4 +1,4 @@
-import { SubmitEvent, useState } from 'react';
+import { SubmitEvent, useEffect, useRef, useState } from 'react';
 import { maskPan } from '../helpers';
 
 type Props = {
@@ -19,11 +19,18 @@ export const TransferForm = ({
   amount,
 }: Props) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (timerRef.current !== null) clearTimeout(timerRef.current);
+    };
+  }, []);
 
   const handleSubmit = (e: SubmitEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setTimeout(() => {
+    timerRef.current = setTimeout(() => {
       const sanitizedPan = pan.replace(/\s/g, '');
 
       onTransfer(sanitizedPan, Number(amount));
@@ -38,7 +45,7 @@ export const TransferForm = ({
       .replace(/[^0-9]/gi, '');
 
     const maskedPan = maskPan(sanitizedValue);
-    maskedPan && setPan(maskedPan);
+    setPan(maskedPan);
   };
 
   return (
