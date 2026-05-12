@@ -3,10 +3,6 @@ import { CardNetwork } from 'types';
 export const luhn = (accountNumber: string) => {
   const digitsOnly = accountNumber.replace(/\D/g, '');
 
-  if (digitsOnly.length < 12) {
-    return false;
-  }
-
   let totalSum = 0;
   let shouldDouble = false;
 
