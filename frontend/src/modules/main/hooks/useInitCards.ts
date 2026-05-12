@@ -1,14 +1,25 @@
-import { useWalletCards } from '@hooks/useWalletCards';
 import { useWebsocket } from '@hooks/useWebsocket';
 import { useNotifications } from '@hooks/useNotifications';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import toast from 'react-hot-toast';
 import { WebsocketMessage } from 'types';
+import { setCards, addCard, updateCardBalance, setIncome, setSpending } from '@modules/wallet/store';
+import type { RootState, AppDispatch } from '../store';
 
 export const useInitCard = () => {
-  const { setCards } = useWalletCards();
   const { socket } = useWebsocket();
   const { addNotification } = useNotifications();
+  const dispatch = useDispatch<AppDispatch>();
+
+  const currentCardPan = useSelector((state: RootState) => {
+    const { cards, activeCardIndex } = state.wallet;
+    return cards.length > 0 ? (cards[activeCardIndex] ?? cards[0])?.pan ?? null : null;
+  });
+  const currentCardPanRef = useRef(currentCardPan);
+  useEffect(() => {
+    currentCardPanRef.current = currentCardPan;
+  }, [currentCardPan]);
 
   useEffect(() => {
     if (!socket) return;
@@ -17,41 +28,27 @@ export const useInitCard = () => {
       try {
         const msg: WebsocketMessage = JSON.parse(event.data);
         if (msg.event === 'init-cards') {
-          setCards(msg.cards);
+          dispatch(setCards(msg.cards));
         } else if (msg.event === 'card-added') {
-          setCards((prev) => [...prev, msg.card]);
+          dispatch(addCard(msg.card));
         } else if (msg.event === 'change-balance') {
-          setCards((prev) =>
-            prev.map((c) =>
-              c.pan === msg.creditPan
-                ? { ...c, balance: c.balance + Number(msg.balance) }
-                : c,
-            ),
-          );
+          dispatch(updateCardBalance({ pan: msg.creditPan, delta: Number(msg.balance) }));
+        } else if (msg.event === 'update-stats' && msg.pan === currentCardPanRef.current) {
+          dispatch(setIncome(msg.income));
+          dispatch(setSpending(msg.spending));
         }
       } catch (error) {
         console.error('Failed to parse WS message:', error);
         toast.error('A real-time update could not be processed.');
-        addNotification('security', 'Connection issue', 'A real-time update could not be processed.');
+        addNotification(
+          'security',
+          'Connection issue',
+          'A real-time update could not be processed.',
+        );
       }
     };
 
     socket.addEventListener('message', handleMessage);
     return () => socket.removeEventListener('message', handleMessage);
-  }, [socket, setCards, addNotification]);
-
-  const updateBalance = (pan: string, delta: number) =>
-    setCards((prev) =>
-      prev.map((c) =>
-        c.pan === pan ? { ...c, balance: c.balance + delta } : c,
-      ),
-    );
-
-  const sendAddCard = () => {
-    if (socket?.readyState === WebSocket.OPEN) {
-      socket.send(JSON.stringify({ event: 'add-card' }));
-    }
-  };
-
-  return { updateBalance, sendAddCard };
+  }, [socket, addNotification, dispatch]);
 };

@@ -322,3 +322,4 @@ esbuild targets CommonJS for the server. Source maps are enabled in development 
 - Never use nested ternary operators
 - You can define a module specific but not important type in module's types.ts file. But entity types, or shared, place into types monorepo
 - Emojis should be wrapped in <span role="img" aria-label="some label">
+- Prefer using functional expressions like `const func = () => {...}`

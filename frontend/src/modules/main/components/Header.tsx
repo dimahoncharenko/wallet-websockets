@@ -1,6 +1,7 @@
 import { useAuth } from '@hooks/useAuth';
 import { useNotifications } from '@hooks/useNotifications';
 import { useModal } from '@hooks/useModal';
+import { SvgLogout, SvgSearch } from '@components/Icons';
 import { getGreetings } from '../helpers';
 
 export const Header = () => {
@@ -55,7 +56,7 @@ export const Header = () => {
       <div className="hidden lg:flex items-center gap-3">
         <div className="relative flex items-center text-white/30">
           <span className="absolute left-3.5 pointer-events-none">
-            <SearchIcon />
+            <SvgSearch color="currentColor" />
           </span>
           <input
             placeholder="Search transactions..."
@@ -69,24 +70,6 @@ export const Header = () => {
   );
 };
 
-const SearchIcon = () => {
-  return (
-    <svg
-      width="15"
-      height="15"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <circle cx="11" cy="11" r="8" />
-      <line x1="21" y1="21" x2="16.65" y2="16.65" />
-    </svg>
-  );
-};
-
 const LogoutButton = ({ onClick }: { onClick: () => void }) => {
   return (
     <button
@@ -95,20 +78,7 @@ const LogoutButton = ({ onClick }: { onClick: () => void }) => {
       aria-label="Logout"
       title="Logout"
     >
-      <svg
-        width="18"
-        height="18"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
-        <polyline points="16 17 21 12 16 7" />
-        <line x1="21" y1="12" x2="9" y2="12" />
-      </svg>
+      <SvgLogout color="currentColor" size={18} />
     </button>
   );
 };
