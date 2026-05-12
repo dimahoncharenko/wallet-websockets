@@ -13,6 +13,7 @@ import {
   SvgCards,
   SvgHistory,
   SvgHome,
+  SvgPlusCircle,
   SvgProfile,
   SvgScan,
 } from '@components/Icons';
@@ -235,6 +236,25 @@ const Header = () => {
           }}
         >
           <SvgScan color={colors.textSecondary} />
+        </button>
+        <button
+          aria-label="Add card"
+          type="button"
+          onClick={() => setModal('addCardModal', true)}
+          style={{
+            width: 40,
+            height: 40,
+            borderRadius: radius.xl,
+            background: colors.surfaceDefault,
+            border: `1px solid ${colors.borderDefault}`,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            cursor: 'pointer',
+            color: colors.textSecondary,
+          }}
+        >
+          <SvgPlusCircle size={16} />
         </button>
       </div>
     </div>
