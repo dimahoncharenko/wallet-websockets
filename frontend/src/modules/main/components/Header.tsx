@@ -56,7 +56,7 @@ export const Header = () => {
       <div className="hidden lg:flex items-center gap-3">
         <div className="relative flex items-center text-white/30">
           <span className="absolute left-3.5 pointer-events-none">
-            <SvgSearch color="currentColor" />
+            <SvgSearch />
           </span>
           <input
             placeholder="Search transactions..."
@@ -78,7 +78,7 @@ const LogoutButton = ({ onClick }: { onClick: () => void }) => {
       aria-label="Logout"
       title="Logout"
     >
-      <SvgLogout color="currentColor" size={18} />
+      <SvgLogout size={18} />
     </button>
   );
 };

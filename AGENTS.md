@@ -46,17 +46,37 @@ Path aliases are declared in `tsconfig.base.json` and resolved at build time by 
 
 ### Provider Stack
 
-All cross-cutting concerns are composed in a single `Providers` wrapper at the app root:
+All cross-cutting concerns are composed in `frontend/src/modules/main/providers.tsx`:
 
 ```
 <Redux Provider>
   <PersistGate>
-    <WebsocketProvider>
-      <ModalProvider>
-        {children}
+    <AppInitializer>        ← blocks tree until Supabase session resolves
+      <WebsocketProvider>
+        <NotificationsProvider>  ← side-effect only; attaches WS listeners
+          <ModalProvider>
+            {children}
 ```
 
-Add new global providers here — do not spread context setup across feature modules.
+- `AppInitializer` subscribes to Supabase auth state and dispatches `setSession` to the `auth` slice. It renders `null` until `auth.initialized` is `true`.
+- `NotificationsProvider` has no context of its own — it only attaches socket listeners that dispatch to the `app` slice.
+- `WalletCardsProvider` no longer exists — wallet state lives entirely in the `wallet` Redux slice.
+
+Add new global providers inside `AppInitializer` (if they need auth) or inside `WebsocketProvider` (if they need the socket). Do not spread context setup across feature modules.
+
+### Redux Slices
+
+All application state lives in three slices, configured in `frontend/src/modules/main/store.ts`:
+
+| Slice    | State fields                                              | Persisted?                              |
+| -------- | --------------------------------------------------------- | --------------------------------------- |
+| `auth`   | `session`, `initialized`                                  | No (blacklisted)                        |
+| `app`    | `activeNav`, `notifications`                              | No (blacklisted)                        |
+| `wallet` | `cards`, `activeCardIndex`, `colors`, `income`, `spending`| `colors` only (nested `persistReducer`) |
+
+**Wallet persistence detail:** the wallet slice uses a nested `persistReducer` with `whitelist: ['colors']`. The root persist config blacklists `wallet` so only the nested config (key `persist:wallet`) writes to localStorage. `cards`, `income`, and `spending` are always ephemeral — they come from WebSocket on connect.
+
+Never put non-serializable values (functions, class instances) in any slice. If a component needs to trigger side effects in another part of the tree, dispatch a serializable action and handle the effect in the appropriate hook.
 
 ### Feature Modules
 
@@ -64,27 +84,38 @@ Frontend is organized by domain under `frontend/src/modules/`:
 
 ```
 modules/
-├── auth/           # login/signup form, auth page
-│   ├── index.tsx         # page component — owns mode state
-│   ├── types.ts          # module-local types (e.g. Mode)
-│   ├── const.ts          # UI constants (e.g. headings per mode)
+├── app/            # AppInitializer + app-level Redux slice (nav, notifications)
+│   ├── AppInitializer.tsx
+│   └── store.ts
+├── auth/           # login/signup form, auth Redux slice
+│   ├── index.tsx
+│   ├── store.ts
+│   ├── types.ts
+│   ├── const.ts
 │   └── components/
 │       └── AuthenticationForm.tsx
-├── main/           # dashboard layout, header, stats
-├── wallet/         # card display, color picker, animations
+├── main/           # dashboard layout, header, stats, providers, root store
+│   ├── store.ts          # configureStore, RootState, AppDispatch
+│   ├── providers.tsx
+│   ├── index.tsx
+│   ├── components/
+│   └── hooks/
+│       └── useInitCards.ts   # WS message dispatcher for wallet events
+├── wallet/         # card display, color picker, animations, wallet Redux slice
+│   ├── store.ts
+│   └── components/
+├── notifications/  # notification panel UI
 └── transactions/   # transaction history list
 ```
 
 Each module owns its `components/` and `hooks/` subdirectories. Shared atoms live in `frontend/src/components/`.
 
-When a component needs to drive sibling or parent UI (e.g. a tab switch that changes a page-level heading), lift the state to the nearest common ancestor and pass it as props — do not reach up via context for simple local toggles.
-
 ### Shared Types Package
 
-All interfaces shared between server and frontend live in `types/src/lib/`. Import via the path alias:
+All interfaces shared between server and frontend live in `types/src/lib/`. Import via the bare specifier:
 
 ```typescript
-import { CardData, WebsocketMessage } from '@wallet-websocket-app/types';
+import { CardData, WebsocketMessage } from 'types';
 ```
 
 Never duplicate type definitions across packages.
@@ -106,20 +137,32 @@ Never duplicate type definitions across packages.
 
 ### State Ownership
 
-| State                  | Where it lives               |
-| ---------------------- | ---------------------------- |
-| Auth (login/logout)    | Redux slice (`authSlice`)    |
-| WebSocket connection   | `WebsocketContext`           |
-| Modal visibility       | `ModalContext`               |
-| Card color per PAN     | localStorage + custom events |
-| Balance / transactions | Component-local via hooks    |
-| Auth form mode         | `auth/index.tsx` (page)      |
-
-Redux is only used for auth. Keep it that way — do not add new slices for feature-level state.
+| State                    | Where it lives                                   |
+| ------------------------ | ------------------------------------------------ |
+| Auth session / user      | Redux `auth` slice; initialized via `AppInitializer` |
+| Active nav tab           | Redux `app` slice (`activeNav`)                  |
+| Notifications            | Redux `app` slice (`notifications`)              |
+| Card list + balances     | Redux `wallet` slice (`cards`)                   |
+| Active card index        | Redux `wallet` slice (`activeCardIndex`)          |
+| Card color overrides     | Redux `wallet` slice (`colors`), persisted       |
+| Income / spending stats  | Redux `wallet` slice (`income`, `spending`)      |
+| WebSocket connection     | `WebsocketContext` (not in Redux — not serializable) |
+| Modal visibility         | `ModalContext`                                   |
+| Auth form mode           | `auth/index.tsx` (page-local)                    |
 
 ### Component Structure
 
-Use functional components with hooks exclusively — no class components. Structure a component file as:
+Use functional components with hooks exclusively — no class components. Prefer `const` arrow functions:
+
+```typescript
+// ✓ correct
+export const MyComponent = () => { ... };
+
+// ✗ avoid
+export function MyComponent() { ... }
+```
+
+Structure a component file as:
 
 1. Imports
 2. Props type definition
@@ -129,6 +172,48 @@ Use functional components with hooks exclusively — no class components. Struct
 ### Constants
 
 Static configuration lives in a `const.ts` file co-located with the module that owns it. Do not inline magic values in components.
+
+---
+
+## SVG Icons
+
+All SVG icon components live in `frontend/src/components/Icons.tsx`. Never create standalone icon files or inline SVGs in feature components.
+
+**Naming:** `Svg` prefix + PascalCase descriptor — `SvgArrowUp`, `SvgBell`, `SvgClose`.
+
+**Color prop convention:**
+- Icons used as standalone decorative elements (nav, stats, header) accept an optional `color?: string` prop defaulting to `colors.textPrimary`.
+- Icons used as interactive affordances inside styled containers (`SvgEyeOpen`, `SvgCopy`, `SvgCheck`, `SvgPlusCircle`, `SvgDots`) use `currentColor`, inheriting from the parent element's `color` CSS property. Do not add a `color` prop to these.
+- Most icons also accept an optional `size?: number` (defaults vary per icon).
+
+```typescript
+// standalone icon — explicit color with theme default
+<SvgBell color={cardTheme.dot} />
+<SvgBell />                          // falls back to colors.textPrimary
+
+// container-themed icon — parent controls color via CSS
+<button style={{ color: 'rgba(255,255,255,0.5)' }}>
+  <SvgCopy />                        // inherits rgba(255,255,255,0.5)
+</button>
+```
+
+---
+
+## Per-Card Theming
+
+Each `WalletCard` derives its own gradient theme from its own `card` prop — not from the globally active card. This is critical when multiple cards are visible in the carousel:
+
+```typescript
+// ✓ correct — per-card theme
+const { colors: cardColors } = useWalletCards();
+const activeColor = card ? (cardColors[card.pan] ?? card.cardColor ?? 'violet') : 'violet';
+const theme = CARD_THEMES[activeColor];
+
+// ✗ wrong — all cards share the active card's theme
+const { cardTheme } = useWalletCards();
+```
+
+`cardTheme` from `useWalletCards()` is only appropriate for UI chrome that should match the active card (slider dots, glow gradients, accent buttons).
 
 ---
 
@@ -143,21 +228,12 @@ type WebsocketMessage =
   | { event: 'ping' }
   | { event: 'auth'; token: string }
   | { event: 'auth_result'; success: boolean; expiresIn: number }
-  | { event: 'init-card'; card: CardData }
-  | {
-      event: 'change-balance';
-      balance: number;
-      creditPan: string;
-      message: string;
-    }
+  | { event: 'init-cards'; cards: CardData[] }
+  | { event: 'card-added'; card: CardData }
+  | { event: 'change-balance'; balance: string; creditPan: string; message?: string }
   | { event: 'update-history'; transaction: Transaction }
   | { event: 'update-stats'; pan: string; income: StatData; spending: StatData }
-  | {
-      event: 'proceed-transfer';
-      amount: number;
-      debitPan: string;
-      creditPan: string;
-    }
+  | { event: 'proceed-transfer'; amount: number; debitPan: string; creditPan: string }
   | { event: 'token_refresh'; token: string }
   | { event: 'token_refreshed'; success: boolean; expiresIn: number };
 ```
@@ -167,7 +243,7 @@ Add new message types to `types/src/lib/ws-message.ts` before implementing handl
 ### Connection Lifecycle
 
 ```
-connect → auth (5s timeout) → ping → init-card → [event loop] → disconnect
+connect → auth (5s timeout) → ping → init-cards → [event loop] → disconnect
 ```
 
 - Server enforces a **5-second auth timeout** and a **20-second session lifetime**.
@@ -182,6 +258,17 @@ Always check readyState before sending:
 if (socket.readyState === WebSocket.OPEN) {
   socket.send(JSON.stringify(message));
 }
+```
+
+### Handling Messages (Frontend)
+
+All wallet-domain WS messages (`init-cards`, `card-added`, `change-balance`, `update-stats`) are handled in `useInitCards` and dispatched to the `wallet` slice. Do not add wallet message handlers elsewhere.
+
+For `update-stats`, the handler compares `msg.pan` against the current card's PAN via a `useRef` (to avoid re-attaching the listener on every card switch):
+
+```typescript
+const currentCardPanRef = useRef(currentCardPan);
+useEffect(() => { currentCardPanRef.current = currentCardPan; }, [currentCardPan]);
 ```
 
 ### Adding a New Event
@@ -204,10 +291,6 @@ if (socket.readyState === WebSocket.OPEN) {
 
 Use `sendByPan(pan, message)` for targeted delivery, `sendAll(message)` for broadcasts.
 
-### No Persistence
-
-All server state is in-memory and resets on restart. Do not add a database without discussing the impact on session handling and the auth flow.
-
 ---
 
 ## Frontend WebSocket Hooks Pattern
@@ -216,19 +299,20 @@ Listen to messages inside a `useEffect` that cleans up on unmount:
 
 ```typescript
 useEffect(() => {
+  if (!socket) return;
   const handler = (event: MessageEvent) => {
     try {
       const msg: WebsocketMessage = JSON.parse(event.data);
       if (msg.event === 'change-balance') {
-        setBalance(msg.balance);
+        dispatch(updateCardBalance({ pan: msg.creditPan, delta: Number(msg.balance) }));
       }
     } catch {
       // ignore malformed messages
     }
   };
-  socket?.addEventListener('message', handler);
-  return () => socket?.removeEventListener('message', handler);
-}, [socket]);
+  socket.addEventListener('message', handler);
+  return () => socket.removeEventListener('message', handler);
+}, [socket, dispatch]);
 ```
 
 Never attach listeners outside of `useEffect` — it causes duplicate registrations and memory leaks.
@@ -276,7 +360,7 @@ import { colors, fontSize, radius } from '@lib/theme';
 style={{ background: colors.bg, fontSize: fontSize.sm, borderRadius: radius.lg }}
 ```
 
-This applies to every inline `style` prop and every Tailwind arbitrary value (e.g. `bg-[#0d0d14]` → use a CSS variable or move the value to theme). The only accepted exceptions are card-overlay translucent whites (`rgba(255,255,255,0.N)`) that are painted on top of a dynamic card gradient and are inherently card-surface-specific, not app-UI tokens.
+The only accepted exceptions are card-overlay translucent whites (`rgba(255,255,255,0.N)`) painted on top of a dynamic card gradient — these are inherently card-surface-specific, not app-UI tokens.
 
 ---
 
@@ -317,9 +401,11 @@ esbuild targets CommonJS for the server. Source maps are enabled in development 
 
 `server/main.ts` validates WebSocket message structure inline. For new events with complex payloads, use AJV (already a dependency in `/types`) to validate against a JSON schema before processing.
 
-## Code guidelines
+---
+
+## Code Guidelines
 
 - Never use nested ternary operators
-- You can define a module specific but not important type in module's types.ts file. But entity types, or shared, place into types monorepo
-- Emojis should be wrapped in <span role="img" aria-label="some label">
-- Prefer using functional expressions like `const func = () => {...}`
+- Module-specific non-entity types go in the module's `types.ts`. Entity types or anything shared between packages go in the `types` monorepo package.
+- Emojis must be wrapped in `<span role="img" aria-label="description">`.
+- Prefer `const` arrow function expressions over `function` declarations for components and hooks.

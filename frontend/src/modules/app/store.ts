@@ -12,7 +12,7 @@ function makeNotification(
   description: string,
 ): AppNotification {
   return {
-    id: `${Date.now()}-${Math.random()}`,
+    id: crypto.randomUUID(),
     type,
     title,
     description,
@@ -43,7 +43,9 @@ const appSlice = createSlice({
       for (const n of state.notifications) n.interacted = true;
     },
     dismissNotification(state, action: PayloadAction<string>) {
-      state.notifications = state.notifications.filter((n) => n.id !== action.payload);
+      state.notifications = state.notifications.filter(
+        (n) => n.id !== action.payload,
+      );
     },
   },
 });

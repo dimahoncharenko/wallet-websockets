@@ -1,10 +1,11 @@
+import { colors } from '@lib/theme';
 import { JSX } from 'react';
 
 export const SvgHome = ({
-  color,
+  color = colors.textPrimary,
   filled,
 }: {
-  color: string;
+  color?: string;
   filled?: boolean;
 }) => (
   <svg
@@ -22,7 +23,11 @@ export const SvgHome = ({
   </svg>
 );
 
-export const SvgCards = ({ color }: { color: string }) => (
+export const SvgCards = ({
+  color = colors.textPrimary,
+}: {
+  color?: string;
+}) => (
   <svg
     width="20"
     height="20"
@@ -38,7 +43,11 @@ export const SvgCards = ({ color }: { color: string }) => (
   </svg>
 );
 
-export const SvgHistory = ({ color }: { color: string }) => (
+export const SvgHistory = ({
+  color = colors.textPrimary,
+}: {
+  color?: string;
+}) => (
   <svg
     width="20"
     height="20"
@@ -54,7 +63,11 @@ export const SvgHistory = ({ color }: { color: string }) => (
   </svg>
 );
 
-export const SvgProfile = ({ color }: { color: string }) => (
+export const SvgProfile = ({
+  color = colors.textPrimary,
+}: {
+  color?: string;
+}) => (
   <svg
     width="20"
     height="20"
@@ -70,7 +83,11 @@ export const SvgProfile = ({ color }: { color: string }) => (
   </svg>
 );
 
-export const SvgSettings = ({ color }: { color: string }) => (
+export const SvgSettings = ({
+  color = colors.textPrimary,
+}: {
+  color?: string;
+}) => (
   <svg
     width="16"
     height="16"
@@ -86,7 +103,7 @@ export const SvgSettings = ({ color }: { color: string }) => (
   </svg>
 );
 
-export const SvgBell = ({ color }: { color: string }) => (
+export const SvgBell = ({ color = colors.textPrimary }: { color?: string }) => (
   <svg
     width="16"
     height="16"
@@ -102,7 +119,11 @@ export const SvgBell = ({ color }: { color: string }) => (
   </svg>
 );
 
-export const SvgSearch = ({ color }: { color: string }) => (
+export const SvgSearch = ({
+  color = colors.textPrimary,
+}: {
+  color?: string;
+}) => (
   <svg
     width="15"
     height="15"
@@ -118,7 +139,7 @@ export const SvgSearch = ({ color }: { color: string }) => (
   </svg>
 );
 
-export const SvgScan = ({ color }: { color: string }) => (
+export const SvgScan = ({ color = colors.textPrimary }: { color?: string }) => (
   <svg
     aria-hidden
     width="16"
@@ -139,10 +160,10 @@ export const SvgScan = ({ color }: { color: string }) => (
 );
 
 export const SvgLogout = ({
-  color,
+  color = colors.textPrimary,
   size = 16,
 }: {
-  color: string;
+  color?: string;
   size?: number;
 }) => (
   <svg
@@ -162,7 +183,7 @@ export const SvgLogout = ({
 );
 
 export const SvgArrowUp = ({
-  color = 'currentColor',
+  color = colors.textPrimary,
   size = 18,
   strokeWidth = 2.2,
 }: {
@@ -186,7 +207,7 @@ export const SvgArrowUp = ({
 );
 
 export const SvgArrowDown = ({
-  color = 'currentColor',
+  color = colors.textPrimary,
   size = 18,
   strokeWidth = 2.2,
 }: {
@@ -235,7 +256,7 @@ export const SvgDots = ({ size = 18 }: { size?: number }) => (
 );
 
 export const SvgDiamond = ({
-  color = 'currentColor',
+  color = colors.textPrimary,
   size = 12,
 }: {
   color?: string;
@@ -246,14 +267,17 @@ export const SvgDiamond = ({
   </svg>
 );
 
-export const SvgClose = () => (
+export const SvgClose = ({
+  color = colors.textPrimary,
+  size = 11,
+}: { color?: string; size?: number } = {}) => (
   <svg
     aria-hidden
-    width="11"
-    height="11"
+    width={size}
+    height={size}
     viewBox="0 0 14 14"
     fill="none"
-    stroke="rgba(255,255,255,0.5)"
+    stroke={color}
     strokeWidth="2"
     strokeLinecap="round"
   >
@@ -262,11 +286,16 @@ export const SvgClose = () => (
   </svg>
 );
 
-export const SvgCheck = () => (
+export const SvgCheck = ({
+  size = 15,
+  color = colors.textPrimary,
+}: { size?: number; color?: string } = {}) => (
   <svg
     className="w-[15px] h-[15px] text-emerald-400"
+    height={size}
+    width={size}
     fill="none"
-    stroke="currentColor"
+    stroke={color}
     viewBox="0 0 24 24"
   >
     <path
@@ -278,9 +307,10 @@ export const SvgCheck = () => (
   </svg>
 );
 
-export const SvgCopy = () => (
+export const SvgCopy = ({ size = 15 }: { size?: number } = {}) => (
   <svg
-    className="w-[15px] h-[15px]"
+    height={size}
+    width={size}
     fill="none"
     stroke="currentColor"
     viewBox="0 0 24 24"
@@ -295,9 +325,10 @@ export const SvgCopy = () => (
   </svg>
 );
 
-export const SvgEyeOpen = () => (
+export const SvgEyeOpen = ({ size = 15 }: { size?: number } = {}) => (
   <svg
-    className="w-[15px] h-[15px]"
+    height={size}
+    width={size}
     fill="none"
     stroke="currentColor"
     viewBox="0 0 24 24"
@@ -318,9 +349,10 @@ export const SvgEyeOpen = () => (
   </svg>
 );
 
-export const SvgEyeClosed = () => (
+export const SvgEyeClosed = ({ size = 15 }: { size?: number } = {}) => (
   <svg
-    className="w-[15px] h-[15px]"
+    height={size}
+    width={size}
     fill="none"
     stroke="currentColor"
     viewBox="0 0 24 24"

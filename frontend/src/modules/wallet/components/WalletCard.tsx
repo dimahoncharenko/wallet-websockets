@@ -13,6 +13,7 @@ import { VisaIcon } from './VisaIcon';
 import { MastercardIcon } from './MastercardIcon';
 import { useAnimatedBalance } from '../hooks/useAnimatedBalance';
 import { useWalletCards } from '@hooks/useWalletCards';
+import { CARD_THEMES } from '../const';
 import { CardData } from 'types';
 
 type Props = {
@@ -20,14 +21,17 @@ type Props = {
 };
 
 export function WalletCard({ card }: Props) {
-  const { currentCard, cardTheme } = useWalletCards();
+  const { currentCard, colors: cardColors } = useWalletCards();
   const [showBalance, setShowBalance] = useState(false);
   const [showPan, setShowPan] = useState(false);
   const [copied, setCopied] = useState(false);
 
   const renderCard = card || currentCard;
 
-  const theme = cardTheme;
+  const activeColor = renderCard
+    ? (cardColors[renderCard.pan] ?? renderCard.cardColor ?? 'violet')
+    : 'violet';
+  const theme = CARD_THEMES[activeColor];
   const animatedBalance = useAnimatedBalance(renderCard?.balance);
 
   const raw = renderCard?.pan.replace(/\s/g, '') ?? '';
