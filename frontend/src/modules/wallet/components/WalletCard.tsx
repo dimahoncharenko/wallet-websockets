@@ -4,17 +4,14 @@ import {
   fontSize,
   fontWeight,
   letterSpacing,
-  radius,
-  transition,
 } from '@lib/theme';
 import { useAuth } from '@hooks/useAuth';
 import { SvgCheck, SvgCopy, SvgEyeClosed, SvgEyeOpen } from '@components/Icons';
-import { VisaIcon } from './VisaIcon';
-import { MastercardIcon } from './MastercardIcon';
 import { useAnimatedBalance } from '../hooks/useAnimatedBalance';
 import { useWalletCards } from '@hooks/useWalletCards';
 import { CARD_THEMES } from '../const';
 import { CardData } from 'types';
+import { BaseCard, CardTopRow, CardMetaRow } from './BaseCard';
 
 type Props = {
   card?: CardData;
@@ -22,6 +19,7 @@ type Props = {
 
 export function WalletCard({ card }: Props) {
   const { currentCard, colors: cardColors } = useWalletCards();
+  const { username } = useAuth();
   const [showBalance, setShowBalance] = useState(false);
   const [showPan, setShowPan] = useState(false);
   const [copied, setCopied] = useState(false);
@@ -57,160 +55,29 @@ export function WalletCard({ card }: Props) {
   if (!renderCard) return;
 
   return (
-    <div
-      style={{
-        borderRadius: radius.card,
-        background: `linear-gradient(140deg, ${theme.a} 0%, ${theme.b} 48%, ${theme.c} 100%)`,
-        padding: '24px 26px 22px',
-        minHeight: 200,
-        position: 'relative',
-        overflow: 'hidden',
-        boxShadow: `0 8px 32px ${colors.shadowDark}`,
-        userSelect: 'none',
-        transition: `box-shadow ${transition.slow} ease`,
-      }}
-    >
-      <RadialLightEffect />
-      <ShimmerEffect />
-      <DecorativeCircle />
-
-      <div
-        style={{
-          position: 'relative',
-          display: 'flex',
-          flexDirection: 'column',
-          gap: 18,
-        }}
-      >
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-          }}
-        >
-          <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-            <div
-              style={{
-                width: 6,
-                height: 6,
-                borderRadius: radius.full,
-                background: 'rgba(255,255,255,0.85)',
-              }}
-            />
-            <span
-              style={{
-                fontSize: fontSize.xs,
-                fontWeight: fontWeight.bold,
-                color: 'rgba(255,255,255,0.75)',
-                letterSpacing: '0.18em',
-                textTransform: 'uppercase',
-              }}
-            >
-              My Wallet
-            </span>
-          </div>
-          <NFCChip />
-        </div>
-
-        <CardBalance
-          setShowBalance={setShowBalance}
-          showBalance={showBalance}
-          card={renderCard}
-          balance={formattedBalance}
-        />
-
-        <CardPan
-          displayGroups={displayGroups}
-          handleCopy={handleCopy}
-          copied={copied}
-          setShowPan={setShowPan}
-          showPan={showPan}
-        />
-
-        <CardMetadata card={renderCard} />
-      </div>
-    </div>
+    <BaseCard theme={theme}>
+      <CardTopRow label="My Wallet" />
+      <CardBalance
+        setShowBalance={setShowBalance}
+        showBalance={showBalance}
+        card={renderCard}
+        balance={formattedBalance}
+      />
+      <CardPan
+        displayGroups={displayGroups}
+        handleCopy={handleCopy}
+        copied={copied}
+        setShowPan={setShowPan}
+        showPan={showPan}
+      />
+      <CardMetaRow
+        holderName={username || renderCard.holderName}
+        expiry={renderCard.expiry}
+        cardNetwork={renderCard.cardNetwork}
+      />
+    </BaseCard>
   );
 }
-
-const RadialLightEffect = () => {
-  return (
-    <div
-      style={{
-        position: 'absolute',
-        inset: 0,
-        borderRadius: radius.card,
-        background:
-          'radial-gradient(ellipse at 28% 16%, rgba(255,255,255,0.2) 0%, transparent 52%)',
-        pointerEvents: 'none',
-      }}
-    />
-  );
-};
-
-const ShimmerEffect = () => {
-  return (
-    <div
-      style={{
-        position: 'absolute',
-        top: 0,
-        left: '-200%',
-        right: 0,
-        bottom: 0,
-        background:
-          'linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.07) 50%, transparent 60%)',
-        backgroundSize: '200% 100%',
-        animation: 'shimmer 3.5s linear infinite',
-        pointerEvents: 'none',
-        borderRadius: radius.card,
-      }}
-    />
-  );
-};
-
-const DecorativeCircle = () => {
-  return (
-    <div
-      style={{
-        position: 'absolute',
-        bottom: -55,
-        right: -35,
-        width: 190,
-        height: 190,
-        borderRadius: radius.full,
-        background: colors.shadowLight,
-        pointerEvents: 'none',
-      }}
-    />
-  );
-};
-
-const NFCChip = () => {
-  return (
-    <div
-      style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(3, 7px)',
-        gap: 3.5,
-      }}
-    >
-      {Array(9)
-        .fill(0)
-        .map((_, i) => (
-          <div
-            key={i}
-            style={{
-              width: 7,
-              height: 7,
-              borderRadius: 2,
-              background: 'rgba(255,200,50,0.88)',
-            }}
-          />
-        ))}
-    </div>
-  );
-};
 
 const CardPan = ({
   copied,
@@ -343,70 +210,6 @@ const CardBalance = ({
           <span style={{ letterSpacing: '0.2em', fontSize: 20 }}>••••••</span>
         )}
       </p>
-    </div>
-  );
-};
-
-export const CardMetadata = ({ card }: { card: CardData }) => {
-  const { username } = useAuth();
-
-  return (
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'flex-end',
-      }}
-    >
-      <div style={{ display: 'flex', gap: 24 }}>
-        <div>
-          <div
-            style={{
-              fontSize: fontSize.xxs,
-              fontWeight: fontWeight.semibold,
-              color: 'rgba(255,255,255,0.5)',
-              letterSpacing: '0.12em',
-              textTransform: 'uppercase',
-              marginBottom: 3,
-            }}
-          >
-            Holder
-          </div>
-          <div
-            style={{
-              fontSize: fontSize.base,
-              fontWeight: fontWeight.bold,
-              color: colors.textPrimary,
-            }}
-          >
-            {username || card.holderName}
-          </div>
-        </div>
-        <div>
-          <div
-            style={{
-              fontSize: fontSize.xxs,
-              fontWeight: fontWeight.semibold,
-              color: 'rgba(255,255,255,0.5)',
-              letterSpacing: '0.12em',
-              textTransform: 'uppercase',
-              marginBottom: 3,
-            }}
-          >
-            Expires
-          </div>
-          <div
-            style={{
-              fontSize: fontSize.base,
-              fontWeight: fontWeight.bold,
-              color: colors.textPrimary,
-            }}
-          >
-            {card.expiry}
-          </div>
-        </div>
-      </div>
-      {card.cardNetwork === 'visa' ? <VisaIcon /> : <MastercardIcon />}
     </div>
   );
 };

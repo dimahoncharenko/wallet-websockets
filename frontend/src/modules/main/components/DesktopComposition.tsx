@@ -7,7 +7,6 @@ import {
   layout,
   transition,
 } from '@lib/theme';
-import { useRootActions } from '@hooks/useRootActions';
 import { Sidebar } from './Sidebar';
 import { getGreetings } from '../helpers';
 import { useAuth } from '@hooks/useAuth';
@@ -23,7 +22,7 @@ import { useWalletCards } from '@hooks/useWalletCards';
 import { useNotifications } from '@hooks/useNotifications';
 
 export const DesktopComposition = () => {
-  const { sendAddCard } = useRootActions();
+  const { setModal } = useModal();
   const {
     cards,
     cardTheme,
@@ -122,7 +121,7 @@ export const DesktopComposition = () => {
                       cards={cards}
                       activeIndex={activeCardIndex}
                       onActiveIndexChange={setActiveCardIndex}
-                      onAddCard={sendAddCard}
+                      onAddCard={() => setModal('addCardModal', true)}
                     />
                     <CardControls
                       card={currentCard}

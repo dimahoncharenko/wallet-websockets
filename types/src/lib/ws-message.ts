@@ -1,5 +1,5 @@
 import { Transaction } from './transaction';
-import { CardData } from './wallet';
+import { CardColor, CardData, CardNetwork } from './wallet';
 
 export type WebsocketMessage =
   | InitBalance
@@ -8,7 +8,14 @@ export type WebsocketMessage =
   | UpdateHistory
   | CardAdded
   | { event: 'ping'; holderName: string }
-  | { event: 'add-card' }
+  | {
+      event: 'add-card';
+      pan: string;
+      expiry: string;
+      holderName: string;
+      cardNetwork: CardNetwork;
+      cardColor?: CardColor;
+    }
   | { event: 'auth'; token: string }
   | { event: 'auth_result'; success: boolean; expiresIn: number }
   | { event: 'token_refresh'; token: string }
