@@ -8,6 +8,7 @@ import {
 import { JSX } from 'react';
 import { StatData } from 'types';
 import { percentageChange } from '../helpers';
+import { SvgArrowDown, SvgArrowUp, SvgDiamond } from '@components/Icons';
 
 type StatItem = {
   label: string;
@@ -40,21 +41,7 @@ export const Stats = ({ income, spending }: StatsProps) => {
       color: colors.income,
       bgColor: colors.incomeBg,
       sparkline: income.sparkline,
-      icon: (
-        <svg
-          width="13"
-          height="13"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke={colors.income}
-          strokeWidth="2.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <line x1="12" y1="19" x2="12" y2="5" />
-          <polyline points="5 12 12 5 19 12" />
-        </svg>
-      ),
+      icon: <SvgArrowUp color={colors.income} size={13} strokeWidth={2.5} />,
     },
     {
       label: 'Total Spending',
@@ -64,21 +51,7 @@ export const Stats = ({ income, spending }: StatsProps) => {
       color: colors.spending,
       bgColor: colors.spendingBg,
       sparkline: spending.sparkline,
-      icon: (
-        <svg
-          width="13"
-          height="13"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke={colors.spending}
-          strokeWidth="2.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <line x1="12" y1="5" x2="12" y2="19" />
-          <polyline points="19 12 12 19 5 12" />
-        </svg>
-      ),
+      icon: <SvgArrowDown color={colors.spending} size={13} strokeWidth={2.5} />,
     },
     {
       label: 'Savings',
@@ -88,11 +61,7 @@ export const Stats = ({ income, spending }: StatsProps) => {
       color: colors.savings,
       bgColor: colors.savingsBg,
       sparkline: savingsSpk,
-      icon: (
-        <svg width="12" height="12" viewBox="0 0 24 24" fill={colors.savings}>
-          <polygon points="12 2 22 12 12 22 2 12" />
-        </svg>
-      ),
+      icon: <SvgDiamond color={colors.savings} size={12} />,
     },
   ];
 
@@ -206,7 +175,7 @@ const Sparkline = ({
   const pts = data
     .map(
       (v, i) =>
-        `${(i / (data.length - 1)) * width},${height - ((v - min) / range) * height}`,
+        `${data.length > 1 ? (i / (data.length - 1)) * width : 0},${height - ((v - min) / range) * height}`,
     )
     .join(' ');
   const id = `sg${color.replace(/[^a-z0-9]/gi, '')}`;

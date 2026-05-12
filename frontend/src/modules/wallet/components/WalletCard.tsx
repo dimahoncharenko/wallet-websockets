@@ -8,14 +8,12 @@ import {
   transition,
 } from '@lib/theme';
 import { useAuth } from '@hooks/useAuth';
-import { EyeOpenIcon } from './EyeOpenIcon';
-import { CheckIcon } from './CheckIcon';
-import { CopyIcon } from './CopyIcon';
-import { EyeClosedIcon } from './EyeClosedIcon';
+import { SvgCheck, SvgCopy, SvgEyeClosed, SvgEyeOpen } from '@components/Icons';
 import { VisaIcon } from './VisaIcon';
 import { MastercardIcon } from './MastercardIcon';
 import { useAnimatedBalance } from '../hooks/useAnimatedBalance';
 import { useWalletCards } from '@hooks/useWalletCards';
+import { CARD_THEMES } from '../const';
 import { CardData } from 'types';
 
 type Props = {
@@ -23,14 +21,17 @@ type Props = {
 };
 
 export function WalletCard({ card }: Props) {
-  const { currentCard, cardTheme } = useWalletCards();
+  const { currentCard, colors: cardColors } = useWalletCards();
   const [showBalance, setShowBalance] = useState(false);
   const [showPan, setShowPan] = useState(false);
   const [copied, setCopied] = useState(false);
 
   const renderCard = card || currentCard;
 
-  const theme = cardTheme;
+  const activeColor = renderCard
+    ? (cardColors[renderCard.pan] ?? renderCard.cardColor ?? 'violet')
+    : 'violet';
+  const theme = CARD_THEMES[activeColor];
   const animatedBalance = useAnimatedBalance(renderCard?.balance);
 
   const raw = renderCard?.pan.replace(/\s/g, '') ?? '';
@@ -254,7 +255,7 @@ const CardPan = ({
         }}
         title={showPan ? 'Mask card number' : 'Reveal card number'}
       >
-        {showPan ? <EyeOpenIcon /> : <EyeClosedIcon />}
+        {showPan ? <SvgEyeOpen /> : <SvgEyeClosed />}
       </button>
       <button
         onClick={handleCopy}
@@ -270,7 +271,7 @@ const CardPan = ({
         }}
         title="Copy card number"
       >
-        {copied ? <CheckIcon /> : <CopyIcon />}
+        {copied ? <SvgCheck /> : <SvgCopy />}
       </button>
     </div>
   );
@@ -324,7 +325,7 @@ const CardBalance = ({
           }}
           aria-label={showBalance ? 'Hide balance' : 'Show balance'}
         >
-          {showBalance ? <EyeOpenIcon /> : <EyeClosedIcon />}
+          {showBalance ? <SvgEyeOpen /> : <SvgEyeClosed />}
         </button>
       </div>
       <p
