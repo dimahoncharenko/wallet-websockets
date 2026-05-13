@@ -267,7 +267,7 @@ describe('AuthenticationForm', () => {
 
   describe('loading state', () => {
     it('shows "..." and disables the button while login is in flight', async () => {
-      let resolveLogin!: (v: { error: null }) => void;
+      let resolveLogin: (v: { error: null }) => void;
       mockLogin.mockReturnValue(new Promise((r) => (resolveLogin = r)));
 
       render(<AuthenticationForm {...defaultProps} />);

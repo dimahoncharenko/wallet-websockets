@@ -10,8 +10,6 @@ describe('getGreetings', () => {
     vi.setSystemTime(new Date(2024, 0, 1, h, 0, 0));
   };
 
-  // ─── boundaries ─────────────────────────────────────────────────────────────
-
   it('returns "Good Morning" at 5am (lower boundary)', () => {
     setHour(5);
     expect(getGreetings()).toBe('Good Morning');
