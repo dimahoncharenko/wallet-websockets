@@ -14,7 +14,7 @@ export const TransferModal = ({
   const [pan, setPan] = useState('');
   const [amount, setAmount] = useState('');
 
-  const mounted = useOpenTransfers({ isOpen, onClose, setAmount, setPan });
+  const { mounted } = useOpenTransfers({ isOpen, onClose, setAmount, setPan });
 
   if (!isOpen && !mounted && !pan && !amount) return null;
 

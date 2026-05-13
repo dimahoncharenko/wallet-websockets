@@ -68,11 +68,11 @@ Add new global providers inside `AppInitializer` (if they need auth) or inside `
 
 All application state lives in three slices, configured in `frontend/src/modules/main/store.ts`:
 
-| Slice    | State fields                                              | Persisted?                              |
-| -------- | --------------------------------------------------------- | --------------------------------------- |
-| `auth`   | `session`, `initialized`                                  | No (blacklisted)                        |
-| `app`    | `activeNav`, `notifications`                              | No (blacklisted)                        |
-| `wallet` | `cards`, `activeCardIndex`, `colors`, `income`, `spending`| `colors` only (nested `persistReducer`) |
+| Slice    | State fields                                               | Persisted?                              |
+| -------- | ---------------------------------------------------------- | --------------------------------------- |
+| `auth`   | `session`, `initialized`                                   | No (blacklisted)                        |
+| `app`    | `activeNav`, `notifications`                               | No (blacklisted)                        |
+| `wallet` | `cards`, `activeCardIndex`, `colors`, `income`, `spending` | `colors` only (nested `persistReducer`) |
 
 **Wallet persistence detail:** the wallet slice uses a nested `persistReducer` with `whitelist: ['colors']`. The root persist config blacklists `wallet` so only the nested config (key `persist:wallet`) writes to localStorage. `cards`, `income`, and `spending` are always ephemeral — they come from WebSocket on connect.
 
@@ -137,18 +137,18 @@ Never duplicate type definitions across packages.
 
 ### State Ownership
 
-| State                    | Where it lives                                   |
-| ------------------------ | ------------------------------------------------ |
-| Auth session / user      | Redux `auth` slice; initialized via `AppInitializer` |
-| Active nav tab           | Redux `app` slice (`activeNav`)                  |
-| Notifications            | Redux `app` slice (`notifications`)              |
-| Card list + balances     | Redux `wallet` slice (`cards`)                   |
-| Active card index        | Redux `wallet` slice (`activeCardIndex`)          |
-| Card color overrides     | Redux `wallet` slice (`colors`), persisted       |
-| Income / spending stats  | Redux `wallet` slice (`income`, `spending`)      |
-| WebSocket connection     | `WebsocketContext` (not in Redux — not serializable) |
-| Modal visibility         | `ModalContext`                                   |
-| Auth form mode           | `auth/index.tsx` (page-local)                    |
+| State                   | Where it lives                                       |
+| ----------------------- | ---------------------------------------------------- |
+| Auth session / user     | Redux `auth` slice; initialized via `AppInitializer` |
+| Active nav tab          | Redux `app` slice (`activeNav`)                      |
+| Notifications           | Redux `app` slice (`notifications`)                  |
+| Card list + balances    | Redux `wallet` slice (`cards`)                       |
+| Active card index       | Redux `wallet` slice (`activeCardIndex`)             |
+| Card color overrides    | Redux `wallet` slice (`colors`), persisted           |
+| Income / spending stats | Redux `wallet` slice (`income`, `spending`)          |
+| WebSocket connection    | `WebsocketContext` (not in Redux — not serializable) |
+| Modal visibility        | `ModalContext`                                       |
+| Auth form mode          | `auth/index.tsx` (page-local)                        |
 
 ### Component Structure
 
@@ -182,6 +182,7 @@ All SVG icon components live in `frontend/src/components/Icons.tsx`. Never creat
 **Naming:** `Svg` prefix + PascalCase descriptor — `SvgArrowUp`, `SvgBell`, `SvgClose`.
 
 **Color prop convention:**
+
 - Icons used as standalone decorative elements (nav, stats, header) accept an optional `color?: string` prop defaulting to `colors.textPrimary`.
 - Icons used as interactive affordances inside styled containers (`SvgEyeOpen`, `SvgCopy`, `SvgCheck`, `SvgPlusCircle`, `SvgDots`) use `currentColor`, inheriting from the parent element's `color` CSS property. Do not add a `color` prop to these.
 - Most icons also accept an optional `size?: number` (defaults vary per icon).
@@ -206,7 +207,9 @@ Each `WalletCard` derives its own gradient theme from its own `card` prop — no
 ```typescript
 // ✓ correct — per-card theme
 const { colors: cardColors } = useWalletCards();
-const activeColor = card ? (cardColors[card.pan] ?? card.cardColor ?? 'violet') : 'violet';
+const activeColor = card
+  ? (cardColors[card.pan] ?? card.cardColor ?? 'violet')
+  : 'violet';
 const theme = CARD_THEMES[activeColor];
 
 // ✗ wrong — all cards share the active card's theme
@@ -230,10 +233,20 @@ type WebsocketMessage =
   | { event: 'auth_result'; success: boolean; expiresIn: number }
   | { event: 'init-cards'; cards: CardData[] }
   | { event: 'card-added'; card: CardData }
-  | { event: 'change-balance'; balance: string; creditPan: string; message?: string }
+  | {
+      event: 'change-balance';
+      balance: string;
+      creditPan: string;
+      message?: string;
+    }
   | { event: 'update-history'; transaction: Transaction }
   | { event: 'update-stats'; pan: string; income: StatData; spending: StatData }
-  | { event: 'proceed-transfer'; amount: number; debitPan: string; creditPan: string }
+  | {
+      event: 'proceed-transfer';
+      amount: number;
+      debitPan: string;
+      creditPan: string;
+    }
   | { event: 'token_refresh'; token: string }
   | { event: 'token_refreshed'; success: boolean; expiresIn: number };
 ```
@@ -268,7 +281,9 @@ For `update-stats`, the handler compares `msg.pan` against the current card's PA
 
 ```typescript
 const currentCardPanRef = useRef(currentCardPan);
-useEffect(() => { currentCardPanRef.current = currentCardPan; }, [currentCardPan]);
+useEffect(() => {
+  currentCardPanRef.current = currentCardPan;
+}, [currentCardPan]);
 ```
 
 ### Adding a New Event
@@ -304,7 +319,9 @@ useEffect(() => {
     try {
       const msg: WebsocketMessage = JSON.parse(event.data);
       if (msg.event === 'change-balance') {
-        dispatch(updateCardBalance({ pan: msg.creditPan, delta: Number(msg.balance) }));
+        dispatch(
+          updateCardBalance({ pan: msg.creditPan, delta: Number(msg.balance) }),
+        );
       }
     } catch {
       // ignore malformed messages
@@ -409,3 +426,41 @@ esbuild targets CommonJS for the server. Source maps are enabled in development 
 - Module-specific non-entity types go in the module's `types.ts`. Entity types or anything shared between packages go in the `types` monorepo package.
 - Emojis must be wrapped in `<span role="img" aria-label="description">`.
 - Prefer `const` arrow function expressions over `function` declarations for components and hooks.
+- After any change reflect this in test cases. If there is no test cases for the logic yet, create a test file (valid for compound components, logic-rich components, not dumb components, hooks, store and helpers)
+- Never comment self-explanatory code, for instance:
+  `// ─── markAllRead ───────────────────────────────────────────────────────────`
+  `describe('markAllRead', () => {`
+- There is no need for testing const files
+
+Here is how the Swift/iOS-specific rules from your image translate directly to standard React application architecture and best practices.
+
+### # React Shared UI Component Library
+
+**Pure Presentation**
+
+- **Rule:** Components are purely UI — no business logic, no API calls, and no service dependencies.
+- **React Context:** Build "dumb" or presentational components. All data should be passed in via `props`, and any interactions should trigger callback functions passed from the parent component (e.g., `onClick`, `onSubmit`).
+
+**Component Configurations**
+
+- **Rule:** Components should use a configuration-driven API with preset variants.
+- **React Context:** Instead of factory methods, use a variant-based prop pattern, typically powered by libraries like `class-variance-authority` (CVA) or styled-components.
+- _Example:_ Rather than `.callToActionProminent()`, use `<Button variant="prominent"/>`.
+- _Example:_ Rather than `.cell()`, use `<ListItem layout="cell"/>`.
+
+**Composition & Styling**
+
+- **Rule:** Provide standardized ways to layout and wrap components.
+- **React Context:** React prefers component composition and utility classes over chained modifiers.
+- _Example:_ Instead of a `.platterBackground()` modifier, create a wrapper component: `<Platter><YourComponent/></Platter>`.
+- _Example:_ Instead of `.frame(square:)`, allow standard `className` overriding using a utility merger like `tailwind-merge` or `clsx`, or provide specific size props like `<Avatar size="lg"/>`.
+
+**Presets Location**
+
+- **Rule:** Centralize design tokens and presets.
+- **React Context:** Store design tokens, constants, and theme variants in a central `theme/` or `constants/` directory. If using a utility CSS framework, these belong in your `tailwind.config.js` or equivalent theme provider object.
+
+**Platform Variants**
+
+- **Rule:** Handle environment/platform specific rendering cleanly.
+  Rely on CSS media queries for device targeting (e.g., desktop vs. mobile layouts) rather than JS-based conditionally rendered trees whenever possible.
