@@ -1,6 +1,6 @@
 import { useState, createContext, useContext } from 'react';
 
-export type ModalType = 'transferModal' | 'notificationsPanel';
+export type ModalType = 'transferModal' | 'notificationsPanel' | 'addCardModal';
 
 type ModalContextType = {
   modals: Record<ModalType, boolean>;
@@ -17,6 +17,7 @@ export const ModalProvider = ({
   const [modals, setModals] = useState<Record<ModalType, boolean>>({
     transferModal: false,
     notificationsPanel: false,
+    addCardModal: false,
   });
 
   const setModal = (type: ModalType, value: boolean) => {

@@ -4,6 +4,7 @@
     "outDir": "../dist/out-tsc",
     "types": [
       "vitest/globals",
+      "@testing-library/jest-dom",
       "vitest/importMeta",
       "vite/client",
       "node",

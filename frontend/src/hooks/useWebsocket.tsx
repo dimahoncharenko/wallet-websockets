@@ -27,6 +27,8 @@ export const WebsocketProvider = ({
   const socketRef = useRef<WebSocket | null>(null);
   const { logout, session, username } = useAuth();
 
+  const sessionUserId = session?.user.id ?? null;
+
   const connect = () => {
     if (socketRef.current || !session) return;
     const ws = new WebSocket('ws://localhost:3000');
@@ -69,7 +71,7 @@ export const WebsocketProvider = ({
   useEffect(() => {
     connect();
     return () => disconnect();
-  }, []);
+  }, [sessionUserId]);
 
   useEffect(() => {
     const {
@@ -78,9 +80,9 @@ export const WebsocketProvider = ({
       if (
         event === 'TOKEN_REFRESHED' &&
         newSession &&
-        socket?.readyState === WebSocket.OPEN
+        socketRef.current?.readyState === WebSocket.OPEN
       ) {
-        socket.send(
+        socketRef.current.send(
           JSON.stringify({
             event: 'token_refresh',
             token: newSession.access_token,

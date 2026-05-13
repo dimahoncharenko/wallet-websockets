@@ -1,25 +1,22 @@
-import { useMemo } from 'react';
 import { useAuth } from '@hooks/useAuth';
 import { useNotifications } from '@hooks/useNotifications';
 import { useModal } from '@hooks/useModal';
+import { SvgLogout, SvgSearch } from '@components/Icons';
+import { getGreetings } from '../helpers';
 
 export const Header = () => {
   const { logout, username } = useAuth();
   const { unreadCount } = useNotifications();
   const { setModal } = useModal();
 
-  const greeting = useMemo(() => {
-    const hour = new Date().getHours();
-    if (hour >= 5 && hour < 12) return 'Good morning';
-    if (hour >= 12 && hour < 18) return 'Good afternoon';
-    if (hour >= 18 && hour < 23) return 'Good evening';
-    return 'Good night';
-  }, []);
-
   const bellButton = (
     <button
       className="w-10 h-10 relative rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-lg hover:bg-white/10 transition-colors"
-      aria-label={unreadCount > 0 ? `Notifications, ${unreadCount} unread` : 'Notifications'}
+      aria-label={
+        unreadCount > 0
+          ? `Notifications, ${unreadCount} unread`
+          : 'Notifications'
+      }
       onClick={() => setModal('notificationsPanel', true)}
     >
       <span aria-hidden="true">🔔</span>
@@ -33,6 +30,8 @@ export const Header = () => {
       )}
     </button>
   );
+
+  const greeting = getGreetings();
 
   return (
     <div className="w-full max-w-sm lg:max-w-none flex justify-between items-center">
@@ -61,8 +60,8 @@ export const Header = () => {
 
       <div className="hidden lg:flex items-center gap-3">
         <div className="relative flex items-center text-white/30">
-          <span aria-hidden="true" className="absolute left-3.5 pointer-events-none">
-            <SearchIcon />
+          <span className="absolute left-3.5 pointer-events-none">
+            <SvgSearch />
           </span>
           <input
             aria-label="Search transactions"
@@ -77,25 +76,6 @@ export const Header = () => {
   );
 };
 
-const SearchIcon = () => {
-  return (
-    <svg
-      aria-hidden="true"
-      width="15"
-      height="15"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <circle cx="11" cy="11" r="8" />
-      <line x1="21" y1="21" x2="16.65" y2="16.65" />
-    </svg>
-  );
-};
-
 const LogoutButton = ({ onClick }: { onClick: () => void }) => {
   return (
     <button
@@ -104,21 +84,7 @@ const LogoutButton = ({ onClick }: { onClick: () => void }) => {
       aria-label="Logout"
       title="Logout"
     >
-      <svg
-        aria-hidden="true"
-        width="18"
-        height="18"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
-        <polyline points="16 17 21 12 16 7" />
-        <line x1="21" y1="12" x2="9" y2="12" />
-      </svg>
+      <SvgLogout size={18} />
     </button>
   );
 };

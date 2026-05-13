@@ -1,10 +1,28 @@
+import { colors } from '@lib/theme';
+
 export const Header = () => {
   return (
-    <div className="flex justify-between items-center mb-3 lg:mb-5">
-      <h2 className="text-sm font-semibold tracking-wide lg:text-base lg:font-bold">
+    <div
+      style={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginBottom: 16,
+      }}
+    >
+      <span
+        style={{ fontSize: 14, fontWeight: 700, color: colors.textPrimary }}
+      >
         Recent Transactions
-      </h2>
-      <button className="text-xs text-emerald-400 hover:text-emerald-300 transition-colors lg:text-sm">
+      </span>
+      <button
+        style={{
+          fontSize: 12,
+          fontWeight: 600,
+          color: 'rgba(167,139,250,0.8)',
+          cursor: 'pointer',
+        }}
+      >
         See all →
       </button>
     </div>

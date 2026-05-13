@@ -14,6 +14,7 @@ import {
   SvgCards,
   SvgHistory,
   SvgHome,
+  SvgPlusCircle,
   SvgProfile,
   SvgScan,
 } from '@components/Icons';
@@ -29,6 +30,7 @@ import { useNotifications } from '@hooks/useNotifications';
 import { useWalletCards } from '@hooks/useWalletCards';
 import { getGreetings } from '../helpers';
 import { useNavigation } from '@hooks/useNavigation';
+import { CardTheme } from '@modules/wallet/const';
 
 const mobileNavItems = [
   { id: 'home', label: 'Home', Icon: SvgHome },
@@ -41,10 +43,7 @@ const anim = (delay: string, duration = '0.4s') =>
   prefersReducedMotion ? undefined : `fadeUp ${duration} ease ${delay} both`;
 
 export const MobileComposition = () => {
-  const { username } = useAuth();
-  const { setModal, modals } = useModal();
   const { cardTheme, currentCard, income, spending } = useWalletCards();
-  const { unreadCount } = useNotifications();
   const { activeNav, setActiveNav } = useNavigation();
 
   const renderCardAnalytics = () => {
@@ -99,100 +98,7 @@ export const MobileComposition = () => {
           position: 'relative',
         }}
       >
-        {/* Header */}
-        <div
-          style={{
-            padding: '62px 22px 18px',
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'flex-start',
-            animation: anim('0.05s'),
-          }}
-        >
-          <div>
-            <p
-              style={{
-                fontSize: fontSize.sm,
-                fontWeight: fontWeight.medium,
-                color: colors.textSubtle,
-                letterSpacing: letterSpacing.wider,
-                textTransform: 'uppercase',
-                marginBottom: 5,
-              }}
-            >
-              {getGreetings()}
-            </p>
-            <h1
-              style={{
-                fontSize: fontSize['4xl'],
-                fontWeight: fontWeight.extrabold,
-                color: colors.textPrimary,
-                letterSpacing: letterSpacing.tighter,
-              }}
-            >
-              {username || 'Hi there'}
-            </h1>
-          </div>
-          <div style={{ display: 'flex', gap: 8, marginTop: 4 }}>
-            <button
-              aria-label={
-                unreadCount > 0
-                  ? `Notifications, ${unreadCount} unread`
-                  : 'Notifications'
-              }
-              aria-expanded={modals.notificationsPanel}
-              aria-controls="notifications-panel"
-              onClick={() =>
-                setModal('notificationsPanel', !modals.notificationsPanel)
-              }
-              style={{
-                width: 40,
-                height: 40,
-                borderRadius: radius.xl,
-                cursor: 'pointer',
-                position: 'relative',
-                background: colors.surfaceDefault,
-                border: `1px solid ${colors.borderDefault}`,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}
-            >
-              <SvgBell color={colors.textSecondary} />
-              {unreadCount > 0 && (
-                <div
-                  aria-hidden="true"
-                  style={{
-                    position: 'absolute',
-                    top: 9,
-                    right: 9,
-                    width: 7,
-                    height: 7,
-                    borderRadius: radius.full,
-                    background: colors.notificationDot,
-                    border: `1.5px solid ${colors.bgAlt}`,
-                  }}
-                />
-              )}
-            </button>
-            <button
-              aria-label="Scan QR code"
-              style={{
-                width: 40,
-                height: 40,
-                borderRadius: radius.xl,
-                background: colors.surfaceDefault,
-                border: `1px solid ${colors.borderDefault}`,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                cursor: 'pointer',
-              }}
-            >
-              <SvgScan color={colors.textSecondary} />
-            </button>
-          </div>
-        </div>
+        <Header />
 
         {currentCard ? (
           <>
@@ -233,74 +139,205 @@ export const MobileComposition = () => {
         )}
       </div>
 
-      {/* Bottom nav */}
-      <nav
-        aria-label="Main navigation"
-        style={{
-          position: 'absolute',
-          bottom: 0,
-          left: 0,
-          right: 0,
-          height: layout.bottomNavHeight,
-          background: colors.bgNavBar,
-          borderTop: `1px solid ${colors.borderSubtle}`,
-          display: 'flex',
-          alignItems: 'center',
-          paddingBottom: 8,
-          zIndex: zIndex.bottomNav,
-        }}
-      >
-        {mobileNavItems.map(({ id, label, Icon }) => {
-          const isActive = activeNav === id;
-          return (
-            <button
-              key={id}
-              onClick={() => setActiveNav(id)}
-              aria-current={isActive ? 'page' : undefined}
+      <BottomNav
+        cardTheme={cardTheme}
+        activeNav={activeNav}
+        setActiveNav={setActiveNav}
+      />
+    </div>
+  );
+};
+
+const Header = () => {
+  const { setModal, modals } = useModal();
+  const { unreadCount } = useNotifications();
+  const { username } = useAuth();
+
+  return (
+    <div
+      style={{
+        padding: '36px 24px 16px',
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'flex-start',
+        animation: 'fadeUp 0.4s ease 0.05s both',
+      }}
+    >
+      <div>
+        <div
+          style={{
+            fontSize: fontSize.sm,
+            fontWeight: fontWeight.medium,
+            color: colors.textSubtle,
+            letterSpacing: letterSpacing.wider,
+            textTransform: 'uppercase',
+            marginBottom: 5,
+          }}
+        >
+          {getGreetings()}
+        </div>
+        <div
+          style={{
+            fontSize: fontSize['4xl'],
+            fontWeight: fontWeight.extrabold,
+            color: colors.textPrimary,
+            letterSpacing: letterSpacing.tighter,
+          }}
+        >
+          {username || 'Hi there'}
+        </div>
+      </div>
+      <div style={{ display: 'flex', gap: 8, marginTop: 4 }}>
+        <button
+          type="button"
+          aria-label="Toggle notifications panel"
+          aria-pressed={modals.notificationsPanel}
+          onClick={() =>
+            setModal('notificationsPanel', !modals.notificationsPanel)
+          }
+          style={{
+            width: 40,
+            height: 40,
+            borderRadius: radius.xl,
+            cursor: 'pointer',
+            position: 'relative',
+            background: colors.surfaceDefault,
+            border: `1px solid ${colors.borderDefault}`,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <SvgBell color={colors.textSecondary} />
+          {unreadCount > 0 && (
+            <div
               style={{
-                flex: 1,
+                position: 'absolute',
+                top: 9,
+                right: 9,
+                width: 7,
+                height: 7,
+                borderRadius: radius.full,
+                background: colors.notificationDot,
+                border: `1.5px solid ${colors.bgAlt}`,
+              }}
+            />
+          )}
+        </button>
+        <button
+          aria-label="Scan"
+          type="button"
+          style={{
+            width: 40,
+            height: 40,
+            borderRadius: radius.xl,
+            background: colors.surfaceDefault,
+            border: `1px solid ${colors.borderDefault}`,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            cursor: 'pointer',
+          }}
+        >
+          <SvgScan color={colors.textSecondary} />
+        </button>
+        <button
+          aria-label="Add card"
+          type="button"
+          onClick={() => setModal('addCardModal', true)}
+          style={{
+            width: 40,
+            height: 40,
+            borderRadius: radius.xl,
+            background: colors.surfaceDefault,
+            border: `1px solid ${colors.borderDefault}`,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            cursor: 'pointer',
+            color: colors.textSecondary,
+          }}
+        >
+          <SvgPlusCircle size={16} />
+        </button>
+      </div>
+    </div>
+  );
+};
+
+const BottomNav = ({
+  cardTheme,
+  activeNav,
+  setActiveNav,
+}: {
+  cardTheme: CardTheme;
+  activeNav: string;
+  setActiveNav: (value: string) => void;
+}) => {
+  return (
+    <div
+      style={{
+        position: 'absolute',
+        bottom: 0,
+        left: 0,
+        right: 0,
+        height: layout.bottomNavHeight,
+        background: colors.bgNavBar,
+        borderTop: `1px solid ${colors.borderSubtle}`,
+        display: 'flex',
+        alignItems: 'center',
+        paddingBottom: 8,
+        zIndex: zIndex.bottomNav,
+      }}
+    >
+      {mobileNavItems.map(({ id, label, Icon }) => {
+        const isActive = activeNav === id;
+        return (
+          <button
+            key={id}
+            onClick={() => setActiveNav(id)}
+            style={{
+              flex: 1,
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: 4,
+              cursor: 'pointer',
+              padding: '8px 0',
+              background: 'none',
+              border: 'none',
+            }}
+          >
+            <div
+              style={{
+                width: 36,
+                height: 36,
+                borderRadius: radius.lg,
+                background: isActive ? `${cardTheme.dot}22` : 'transparent',
                 display: 'flex',
-                flexDirection: 'column',
                 alignItems: 'center',
-                gap: 4,
-                cursor: 'pointer',
-                padding: '8px 0',
-                background: 'none',
-                border: 'none',
+                justifyContent: 'center',
+                transition: `background ${transition.default}`,
               }}
             >
-              <div
-                aria-hidden="true"
-                style={{
-                  width: 36,
-                  height: 36,
-                  borderRadius: radius.lg,
-                  background: isActive ? `${cardTheme.dot}22` : 'transparent',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  transition: `background ${transition.default}`,
-                }}
-              >
-                <Icon
-                  color={isActive ? cardTheme.dot : colors.textSubtle}
-                  filled={isActive && id === 'home'}
-                />
-              </div>
-              <span
-                style={{
-                  fontSize: fontSize.xs,
-                  fontWeight: isActive ? fontWeight.bold : fontWeight.regular,
-                  color: isActive ? cardTheme.dot : colors.textSubtle,
-                  transition: `color ${transition.default}`,
-                }}
-              >
-                {label}
-              </span>
-            </button>
-          );
-        })}
-      </nav>
+              <Icon
+                color={isActive ? cardTheme.dot : colors.textSubtle}
+                filled={isActive && id === 'home'}
+              />
+            </div>
+            <span
+              style={{
+                fontSize: fontSize.xs,
+                fontWeight: isActive ? fontWeight.bold : fontWeight.regular,
+                color: isActive ? cardTheme.dot : colors.textSubtle,
+                transition: `color ${transition.default}`,
+              }}
+            >
+              {label}
+            </span>
+          </button>
+        );
+      })}
     </div>
   );
 };

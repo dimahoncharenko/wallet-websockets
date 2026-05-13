@@ -7,12 +7,6 @@ export const formatTime = (iso: string) => {
   });
 };
 
-export const formatSectionDate = (iso: string) => {
-  const date = new Date(iso);
-  const month = date.toLocaleDateString(undefined, { month: 'short' });
-  return `${month} ${date.getDate()}`;
-};
-
 export const groupByDate = (notifications: AppNotification[]) => {
   const today = new Date().toDateString();
   const yesterday = new Date(Date.now() - 86_400_000).toDateString();

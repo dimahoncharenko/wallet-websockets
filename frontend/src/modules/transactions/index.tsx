@@ -1,35 +1,19 @@
-import { useEffect, useState } from 'react';
-import { CardData, Transaction, WebsocketMessage } from 'types';
-import { useWebsocket } from '@hooks/useWebsocket';
+import { CardData } from 'types';
 import { TransactionItem } from './components/TransactionItem';
-import { colors } from '@lib/theme';
+import { Empty } from './components/Empty';
+import { Header } from './components/Header';
+import { useTransactions } from './hooks/useTransactions';
 
 export default function Transactions({
   currentCard,
 }: {
   currentCard: CardData;
 }) {
-  const [transactions, setTransactions] = useState<Transaction[]>([]);
-  const { socket } = useWebsocket();
-
-  const transactionsToShow = transactions.filter(
-    (tx) => tx.pan === currentCard.pan,
-  );
-
-  useEffect(() => {
-    if (!socket) return;
-    const handleMessage = (event: MessageEvent) => {
-      const message: WebsocketMessage = JSON.parse(event.data);
-      if (message.event === 'update-history') {
-        setTransactions((prev) => [...prev, message.transaction]);
-      }
-    };
-    socket.addEventListener('message', handleMessage);
-    return () => socket.removeEventListener('message', handleMessage);
-  }, [socket]);
+  const transactions = useTransactions({ currentCard });
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
+<<<<<<< HEAD
       <div
         style={{
           display: 'flex',
@@ -58,38 +42,22 @@ export default function Transactions({
           <span aria-hidden="true">→ </span>See all
         </button>
       </div>
+=======
+      <Header />
+>>>>>>> main
 
-      {transactionsToShow.length === 0 ? (
-        <div
-          style={{
-            flex: 1,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: 10,
-            padding: '32px 0',
-            opacity: 0.4,
-          }}
-        >
-          <span role="img" aria-label="card icon" style={{ fontSize: 32 }}>
-            💳
-          </span>
-          <div
-            style={{
-              fontSize: 13,
-              color: 'rgba(255,255,255,0.4)',
-              fontWeight: 500,
-            }}
-          >
-            No transactions yet
-          </div>
-        </div>
+      {transactions.length === 0 ? (
+        <Empty />
       ) : (
+<<<<<<< HEAD
         <div aria-live="polite" aria-label="Transaction list" style={{ flex: 1, overflowY: 'auto' }}>
           {transactionsToShow.map((tx, i) => (
+=======
+        <div style={{ flex: 1, overflowY: 'auto' }}>
+          {transactions.map((tx) => (
+>>>>>>> main
             <TransactionItem
-              key={i}
+              key={tx.id}
               isIncome={tx.type === 'credit'}
               transaction={tx}
             />
