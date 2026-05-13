@@ -8,10 +8,6 @@ import { CARD_THEMES } from '../const';
 import { CardData } from 'types';
 import { BaseCard, CardTopRow, CardMetaRow } from './BaseCard';
 
-const prefersReducedMotion =
-  typeof window !== 'undefined' &&
-  window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
 type Props = {
   card?: CardData;
 };
@@ -195,6 +191,10 @@ const CardBalance = ({
         </button>
       </div>
       <p
+        aria-live="polite"
+        aria-label={
+          showBalance ? `Balance: ${card.currency}${balance}` : 'Balance hidden'
+        }
         style={{
           fontSize: fontSize['5xl'],
           fontWeight: fontWeight.extrabold,

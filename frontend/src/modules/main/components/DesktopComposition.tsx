@@ -88,7 +88,7 @@ export const DesktopComposition = () => {
             }}
           >
             <div
-              aria-hidden="true"
+              aria-hidden
               style={{
                 position: 'absolute',
                 top: 0,
@@ -247,7 +247,7 @@ const TopBar = () => {
         />
         {unreadCount > 0 && (
           <div
-            aria-hidden="true"
+            aria-hidden
             style={{
               position: 'absolute',
               top: 8,

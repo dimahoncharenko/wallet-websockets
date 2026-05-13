@@ -51,12 +51,19 @@ export const TransferForm = ({
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-5">
       <div>
-        <label className="block text-[10px] uppercase tracking-widest text-white/40 font-semibold mb-2 ml-1">
+        <label
+          htmlFor="transfer-pan"
+          className="block text-[10px] uppercase tracking-widest text-white/40 font-semibold mb-2 ml-1"
+        >
           Recipient Card Number
         </label>
         <div className="relative group">
-          <div className="absolute -inset-0.5 bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-xl blur opacity-0 group-focus-within:opacity-30 transition duration-500"></div>
+          <div
+            aria-hidden
+            className="absolute -inset-0.5 bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-xl blur opacity-0 group-focus-within:opacity-30 transition duration-500"
+          ></div>
           <input
+            id="transfer-pan"
             type="text"
             value={pan}
             onChange={handlePanChange}
@@ -69,15 +76,26 @@ export const TransferForm = ({
       </div>
 
       <div>
-        <label className="block text-[10px] uppercase tracking-widest text-white/40 font-semibold mb-2 ml-1">
+        <label
+          htmlFor="transfer-amount"
+          className="block text-[10px] uppercase tracking-widest text-white/40 font-semibold mb-2 ml-1"
+        >
           Amount
         </label>
         <div className="relative group">
-          <div className="absolute -inset-0.5 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-xl blur opacity-0 group-focus-within:opacity-30 transition duration-500"></div>
-          <span className="absolute left-4 top-1/2 -translate-y-1/2 text-white/40 font-mono text-sm font-semibold z-10">
+          <div
+            aria-hidden
+            className="absolute -inset-0.5 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-xl blur opacity-0 group-focus-within:opacity-30 transition duration-500"
+          ></div>
+          <span
+            aria-hidden
+            className="absolute left-4 top-1/2 -translate-y-1/2 text-white/40 font-mono text-sm font-semibold z-10"
+          >
             $
           </span>
           <input
+            id="transfer-amount"
+            aria-label="Amount in dollars"
             type="number"
             name="amount"
             value={amount}
@@ -102,13 +120,17 @@ export const TransferForm = ({
         <button
           type="submit"
           disabled={isSubmitting || pan.length < 19 || !amount}
+          aria-busy={isSubmitting}
           className="flex-1 relative py-3.5 px-4 rounded-xl text-sm font-bold text-white shadow-lg overflow-hidden group disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
         >
           <div className="absolute inset-0 bg-gradient-to-r from-violet-600 to-fuchsia-600 group-hover:scale-105 transition-transform duration-300"></div>
           <span className="relative z-10 flex items-center justify-center gap-2">
             {isSubmitting ? (
               <>
-                <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                <div
+                  aria-hidden
+                  className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"
+                />
                 Processing...
               </>
             ) : (

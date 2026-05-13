@@ -25,7 +25,7 @@ export const TransferModal = ({
       }`}
     >
       <div
-        aria-hidden="true"
+        aria-hidden
         className="absolute inset-0 bg-slate-950/60 backdrop-blur-md"
         onClick={onClose}
       />
@@ -41,7 +41,7 @@ export const TransferModal = ({
         }`}
       >
         <div
-          aria-hidden="true"
+          aria-hidden
           className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-violet-500 via-fuchsia-500 to-emerald-500"
         />
 

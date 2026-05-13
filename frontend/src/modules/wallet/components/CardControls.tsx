@@ -115,7 +115,7 @@ export const CardControls = ({ card, balance }: Props) => {
               className="flex flex-col items-center gap-2 group cursor-pointer bg-transparent border-none p-0"
             >
               <div
-                aria-hidden="true"
+                aria-hidden
                 className="w-12 h-12 rounded-[15px] flex items-center justify-center transition-all"
                 style={
                   a.accent

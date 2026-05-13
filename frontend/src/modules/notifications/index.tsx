@@ -31,6 +31,9 @@ export function NotificationsPanel() {
   return (
     <div
       ref={ref}
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="notifications-panel-title"
       style={{
         position: 'fixed',
         top,
@@ -50,7 +53,7 @@ export function NotificationsPanel() {
       }}
     >
       <div
-        aria-hidden="true"
+        aria-hidden
         style={{
           height: 2,
           background:

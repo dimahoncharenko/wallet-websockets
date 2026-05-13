@@ -9,7 +9,7 @@ export const SvgHome = ({
   filled?: boolean;
 }) => (
   <svg
-    aria-hidden="true"
+    aria-hidden
     width="20"
     height="20"
     viewBox="0 0 24 24"
@@ -30,7 +30,7 @@ export const SvgCards = ({
   color?: string;
 }) => (
   <svg
-    aria-hidden="true"
+    aria-hidden
     width="20"
     height="20"
     viewBox="0 0 24 24"
@@ -51,7 +51,7 @@ export const SvgHistory = ({
   color?: string;
 }) => (
   <svg
-    aria-hidden="true"
+    aria-hidden
     width="20"
     height="20"
     viewBox="0 0 24 24"
@@ -72,7 +72,7 @@ export const SvgProfile = ({
   color?: string;
 }) => (
   <svg
-    aria-hidden="true"
+    aria-hidden
     width="20"
     height="20"
     viewBox="0 0 24 24"
@@ -93,7 +93,7 @@ export const SvgSettings = ({
   color?: string;
 }) => (
   <svg
-    aria-hidden="true"
+    aria-hidden
     width="16"
     height="16"
     viewBox="0 0 24 24"
@@ -110,7 +110,7 @@ export const SvgSettings = ({
 
 export const SvgBell = ({ color = colors.textPrimary }: { color?: string }) => (
   <svg
-    aria-hidden="true"
+    aria-hidden
     width="16"
     height="16"
     viewBox="0 0 24 24"
@@ -131,7 +131,7 @@ export const SvgSearch = ({
   color?: string;
 }) => (
   <svg
-    aria-hidden="true"
+    aria-hidden
     width="15"
     height="15"
     viewBox="0 0 24 24"

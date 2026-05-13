@@ -86,7 +86,7 @@ export default function Wallet({
           onClick={onAddCard}
           className="hidden lg:flex items-center gap-1.5 text-[12px] text-white/40 hover:text-white/70 transition-colors font-medium"
         >
-          <span aria-hidden="true" className="text-base leading-none">
+          <span aria-hidden className="text-base leading-none">
             +
           </span>{' '}
           Add card

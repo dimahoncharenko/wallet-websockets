@@ -116,7 +116,7 @@ export const NotificationGroups = ({ dismiss, groups }: Props) => {
           </div>
           <button
             onClick={() => dismiss(n.id)}
-            aria-label="Dismiss"
+            aria-label={`Dismiss: ${n.title}`}
             style={{
               width: 22,
               height: 22,

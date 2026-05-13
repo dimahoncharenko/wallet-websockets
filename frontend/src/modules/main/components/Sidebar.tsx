@@ -53,7 +53,7 @@ export const Sidebar = () => {
         }}
       >
         <div
-          aria-hidden="true"
+          aria-hidden
           style={{
             width: 32,
             height: 32,
@@ -150,7 +150,7 @@ const NavItems = ({
         </span>
         {isActive && (
           <div
-            aria-hidden="true"
+            aria-hidden
             style={{
               marginLeft: 'auto',
               width: 4,
@@ -178,7 +178,7 @@ const NavFooter = ({ cardTheme }: { cardTheme: CardTheme }) => {
       <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
         <span
           role="img"
-          aria-label="profile-icon"
+          aria-label="Profile icon"
           style={{
             width: 36,
             height: 36,
@@ -213,6 +213,7 @@ const NavFooter = ({ cardTheme }: { cardTheme: CardTheme }) => {
         </div>
         <button
           onClick={logout}
+          aria-label="Log out"
           style={{
             background: 'none',
             border: 'none',

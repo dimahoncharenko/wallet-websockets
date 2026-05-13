@@ -19,10 +19,10 @@ export const Header = () => {
       }
       onClick={() => setModal('notificationsPanel', true)}
     >
-      <span aria-hidden="true">🔔</span>
+      <span aria-hidden>🔔</span>
       {unreadCount > 0 && (
         <span
-          aria-hidden="true"
+          aria-hidden
           className="absolute -top-1 text-[10px] -right-2 size-5 flex items-center justify-center rounded-full bg-rose-500"
         >
           {unreadCount > 99 ? '99+' : unreadCount}
@@ -40,7 +40,7 @@ export const Header = () => {
           {greeting}
         </p>
         <h1 className="text-xl font-bold tracking-wide mt-0.5">
-          {username || 'Guest'} <span aria-hidden="true">✦</span>
+          {username || 'Guest'} <span aria-hidden>✦</span>
         </h1>
       </div>
 

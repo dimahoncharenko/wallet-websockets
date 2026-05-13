@@ -69,7 +69,11 @@ export const AuthenticationForm = ({ mode, onModeChange }: Props) => {
 
   return (
     <div className="flex flex-col gap-5">
-      <div role="group" aria-label="Authentication mode" className="flex bg-white/[0.05] border border-white/10 rounded-xl p-1 gap-1">
+      <div
+        role="group"
+        aria-label="Authentication mode"
+        className="flex bg-white/[0.05] border border-white/10 rounded-xl p-1 gap-1"
+      >
         {renderHeader()}
       </div>
 
@@ -111,7 +115,11 @@ export const AuthenticationForm = ({ mode, onModeChange }: Props) => {
       </div>
 
       {error && (
-        <p role="alert" aria-live="assertive" className="text-rose-400 text-xs ml-1 -mt-2">
+        <p
+          role="alert"
+          aria-live="assertive"
+          className="text-rose-400 text-xs ml-1 -mt-2"
+        >
           {error}
         </p>
       )}
@@ -123,7 +131,10 @@ export const AuthenticationForm = ({ mode, onModeChange }: Props) => {
         aria-busy={loading}
         className="w-full bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-semibold py-3.5 rounded-xl shadow-lg shadow-emerald-500/20 hover:scale-[1.02] active:scale-[0.98] disabled:opacity-60 disabled:scale-100 transition-all relative overflow-hidden group"
       >
-        <div aria-hidden="true" className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+        <div
+          aria-hidden
+          className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"
+        />
         <span className="relative">{heading}</span>
       </button>
     </div>

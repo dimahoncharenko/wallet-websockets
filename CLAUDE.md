@@ -253,6 +253,22 @@ type WebsocketMessage =
 
 Add new message types to `types/src/lib/ws-message.ts` before implementing handlers. Use `event` values in kebab-case to match existing convention.
 
+### WebSocket & Accessibility
+
+Real-time WebSocket updates (balance changes, transaction confirmations, connection errors) must be announced to screen readers. Use `aria-live` regions to surface these changes:
+
+```tsx
+// Balance update announced to screen readers
+<div aria-live="polite" aria-atomic="true">
+  Balance: ${balance}
+</div>
+
+// Connection error announced assertively
+<div aria-live="assertive" role="alert">
+  {connectionError}
+</div>
+```
+
 ### Connection Lifecycle
 
 ```
@@ -420,6 +436,186 @@ esbuild targets CommonJS for the server. Source maps are enabled in development 
 
 ---
 
+## Accessibility (a11y)
+
+Accessibility is a first-class requirement. Every component must be usable with keyboard-only navigation and understandable through assistive technologies (screen readers). Think in terms of the **Accessibility Tree**, not just the visual DOM.
+
+### The Accessibility Tree Mental Model
+
+When the browser renders JSX, it builds an Accessibility Tree alongside the DOM. Each node in this tree exposes three things to assistive technology:
+
+| Property               | Source                                                 | Example                     |
+| ---------------------- | ------------------------------------------------------ | --------------------------- |
+| **Role**               | Implicit from the element or explicit `role` attribute | `button`, `dialog`, `alert` |
+| **Accessible Name**    | Text content, `aria-label`, `aria-labelledby`          | `"Save changes"`            |
+| **State / Properties** | ARIA attributes                                        | `aria-expanded="true"`      |
+
+Purely decorative elements (`<div>`, `<span>` used for layout) are ignored by the tree. Mark decorative images with `alt=""` and decorative icons with `aria-hidden="true"`.
+
+### Semantic HTML First
+
+Always use native HTML elements for interactive controls: `<button>`, `<a>`, `<input>`, `<select>`, `<textarea>`, `<dialog>`, `<details>`. Never attach `onClick` to a `<div>` or `<span>` to simulate a button or link. Native elements provide built-in keyboard support (focus, `Enter`/`Space` activation) and correct roles in the Accessibility Tree for free.
+
+```tsx
+// ❌ Bad
+<div className="btn" onClick={handleClick}>Save</div>
+
+// ✅ Good
+<button className="btn" onClick={handleClick}>Save</button>
+```
+
+### ARIA Attributes
+
+Use ARIA only when native HTML semantics are insufficient (e.g., custom compound widgets):
+
+- Every interactive element must have an **accessible name** — via visible text content, `aria-label`, or `aria-labelledby`.
+- Reflect component state with ARIA properties: `aria-expanded`, `aria-selected`, `aria-checked`, `aria-invalid`, `aria-disabled`, `aria-pressed`.
+- Use `role` sparingly. Prefer a native element with the correct implicit role. If you must use `role`, pair it with all required ARIA states and keyboard interactions for that role (see WAI-ARIA Authoring Practices).
+- Use `aria-live` regions (`polite` or `assertive`) for dynamic content that sighted users see but screen readers would otherwise miss — toasts, inline validation errors, WebSocket-driven balance updates, loading states.
+
+```tsx
+// Custom disclosure widget — ARIA required because there is no single native element
+<button aria-expanded={isOpen} aria-controls="panel-1">
+  Section Title
+</button>
+<div id="panel-1" role="region" hidden={!isOpen}>
+  {content}
+</div>
+```
+
+### Emoji Accessibility
+
+Emojis must be wrapped in a `<span>` with `role="img"` and a descriptive `aria-label`:
+
+```tsx
+// ❌ Bad
+<p>Transfer complete 🎉</p>
+
+// ✅ Good
+<p>Transfer complete <span role="img" aria-label="celebration">🎉</span></p>
+```
+
+### Accessible Forms
+
+- Every `<input>` must have an associated `<label>` via `htmlFor`/`id` pairing or by nesting the input inside the label.
+- Group related fields with `<fieldset>` and `<legend>`.
+- Validation errors must be programmatically linked to their field using `aria-describedby` and announced with `aria-invalid="true"`.
+
+```tsx
+<label htmlFor="email">Email</label>
+<input
+  id="email"
+  type="email"
+  aria-invalid={!!errors.email}
+  aria-describedby={errors.email ? "email-error" : undefined}
+/>
+{errors.email && <span id="email-error" role="alert">{errors.email}</span>}
+```
+
+### Keyboard Navigation
+
+- All interactive elements must be reachable via `Tab` and activatable via `Enter` or `Space`.
+- Composite widgets (tabs, menus, grids) must implement arrow-key navigation within the group and a single `Tab` stop for the container.
+- Never remove `:focus-visible` outlines without providing an equivalent visible focus indicator.
+- Manage focus intentionally: when the transfer modal opens, move focus into it; when it closes, return focus to the trigger element.
+
+### A11y Checklist (pre-merge)
+
+Before merging any component, verify:
+
+- [ ] Uses semantic HTML elements (no `<div>` buttons).
+- [ ] All interactive elements have an accessible name.
+- [ ] Form inputs are associated with labels.
+- [ ] Emojis are wrapped in `<span role="img" aria-label="...">`.
+- [ ] Dynamic state is communicated via ARIA attributes.
+- [ ] Component is fully operable with keyboard alone.
+- [ ] Focus management is handled for modals, drawers, and route changes.
+- [ ] Tests use `getByRole` / `getByLabelText` as primary queries.
+- [ ] `vitest-axe` audit passes with no violations.
+- [ ] Decorative elements are hidden from the accessibility tree.
+
+### Animations
+
+- Respect `prefers-reduced-motion`. Wrap non-essential animations (card tilt, sparkles, animated counter) in a media query check and provide an instant-value fallback:
+
+```typescript
+const prefersReducedMotion = window.matchMedia(
+  '(prefers-reduced-motion: reduce)',
+).matches;
+// Skip rAF loop and set final value directly when true
+```
+
+- Never convey information solely through animation. If a balance change triggers a counter animation, the final numeric value must always be present in the DOM for assistive technology.
+
+### Focus Indicators
+
+Never remove or hide `:focus-visible` outlines globally. If the default browser outline clashes with the glassmorphism design, replace it with a visible custom focus ring — do not delete it:
+
+```css
+/* ✅ Acceptable override */
+:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+```
+
+Ensure sufficient contrast (3:1 minimum against adjacent colors per WCAG 2.1).
+
+### Semantic Query Priority
+
+Use `@testing-library/react` query methods. Prefer semantic queries that mirror how assistive technology finds elements — never query by class names or DOM structure:
+
+1. `getByRole` — asserts both role and accessible name in one call. **Default choice.**
+2. `getByLabelText` — verifies label-input association. **Preferred for form fields.**
+3. `getByPlaceholderText`, `getByDisplayValue` — for inputs without visible labels (last resort).
+4. `getByText` — for non-interactive text content.
+5. `getByTestId` — **only** when no semantic query is possible.
+
+```ts
+// ❌ Avoid
+screen.getByTestId('submit-btn');
+
+// ✅ Prefer
+screen.getByRole('button', { name: /submit/i });
+```
+
+### Semantic Matchers
+
+Use matchers from `@testing-library/jest-dom` to assert accessibility state:
+
+- `toBeRequired()` — checks `aria-required` or the `required` attribute.
+- `toBeInvalid()` — checks `aria-invalid`.
+- `toHaveAccessibleDescription()` — checks `aria-describedby` resolution.
+- `toHaveAccessibleName()` — checks the computed accessible name.
+
+### Automated A11y Audits
+
+Every new component test file must include a `vitest-axe` audit:
+
+```ts
+import { axe, toHaveNoViolations } from "vitest-axe";
+expect.extend(toHaveNoViolations);
+
+it("has no a11y violations", async () => {
+  const { container } = render(<MyComponent />);
+  expect(await axe(container)).toHaveNoViolations();
+});
+```
+
+### Manual Screen Reader Testing
+
+Automated tools catch roughly 30–50% of accessibility issues. Supplement with manual testing:
+
+| Platform    | Screen Reader        |
+| ----------- | -------------------- |
+| macOS / iOS | VoiceOver (built-in) |
+| Windows     | NVDA (free) or JAWS  |
+| Android     | TalkBack (built-in)  |
+
+When possible, involve real users with disabilities in usability testing (e.g., via Fable).
+
+---
+
 ## Code Guidelines
 
 - Never use nested ternary operators
@@ -431,8 +627,13 @@ esbuild targets CommonJS for the server. Source maps are enabled in development 
   `// ─── markAllRead ───────────────────────────────────────────────────────────`
   `describe('markAllRead', () => {`
 - There is no need for testing const files
-
-Here is how the Swift/iOS-specific rules from your image translate directly to standard React application architecture and best practices.
+- Every interactive element must use a semantic HTML tag — no `<div>` or `<span>` buttons.
+- All form inputs must be associated with a `<label>`.
+- Dynamic UI state must be communicated via ARIA attributes (`aria-expanded`, `aria-invalid`, `aria-live`, etc.).
+- Real-time updates from WebSocket must be surfaced to assistive technology via `aria-live` regions.
+- Non-essential animations must respect `prefers-reduced-motion`.
+- Tests must use `getByRole` / `getByLabelText` as primary queries — avoid `getByTestId` unless no semantic query is possible.
+- Every component test must include a `vitest-axe` no-violations assertion.
 
 ### # React Shared UI Component Library
 

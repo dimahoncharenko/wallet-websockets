@@ -275,7 +275,8 @@ const BottomNav = ({
   setActiveNav: (value: string) => void;
 }) => {
   return (
-    <div
+    <nav
+      aria-label="Main navigation"
       style={{
         position: 'absolute',
         bottom: 0,
@@ -292,10 +293,12 @@ const BottomNav = ({
     >
       {mobileNavItems.map(({ id, label, Icon }) => {
         const isActive = activeNav === id;
+
         return (
           <button
             key={id}
             onClick={() => setActiveNav(id)}
+            aria-current={isActive ? 'page' : undefined}
             style={{
               flex: 1,
               display: 'flex',
@@ -309,6 +312,7 @@ const BottomNav = ({
             }}
           >
             <div
+              aria-hidden
               style={{
                 width: 36,
                 height: 36,
@@ -338,6 +342,6 @@ const BottomNav = ({
           </button>
         );
       })}
-    </div>
+    </nav>
   );
 };
