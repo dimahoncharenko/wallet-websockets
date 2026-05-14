@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useRootActions, type AddCardData } from '@hooks/useRootActions';
 import type { CardColor } from 'types';
 import { detectNetwork, luhn, validateExpiry } from '../helpers';
@@ -25,14 +25,19 @@ export const useAddCardModal = (isOpen: boolean, onClose: () => void) => {
   const { sendAddCard } = useRootActions();
   const [mounted, setMounted] = useState(false);
   const [step, setStep] = useState<1 | 2 | 3>(1);
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<Element | null>(null);
   const [form, setForm] = useState<FormData>(INITIAL);
   const [touched, setTouched] = useState<Set<string>>(new Set());
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (isOpen) {
+      triggerRef.current = document.activeElement;
       requestAnimationFrame(() => setMounted(true));
     } else {
+      (triggerRef.current as HTMLElement)?.focus();
+      triggerRef.current = null;
       setMounted(false);
 
       const t = setTimeout(() => {
@@ -45,6 +50,12 @@ export const useAddCardModal = (isOpen: boolean, onClose: () => void) => {
       return () => clearTimeout(t);
     }
   }, [isOpen]);
+
+  useEffect(() => {
+    if (isOpen && mounted) {
+      dialogRef.current?.focus();
+    }
+  }, [isOpen, mounted]);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -86,6 +97,7 @@ export const useAddCardModal = (isOpen: boolean, onClose: () => void) => {
   };
 
   return {
+    dialogRef,
     mounted,
     step,
     form,

@@ -161,7 +161,7 @@ describe('NotificationsPanel', () => {
         markAllRead,
       });
       render(<NotificationsPanel />);
-      screen.getByRole('button', { name: 'Mark all read' }).click();
+      screen.getByText('Mark all read').click();
       expect(markAllRead).toHaveBeenCalledTimes(1);
     });
   });

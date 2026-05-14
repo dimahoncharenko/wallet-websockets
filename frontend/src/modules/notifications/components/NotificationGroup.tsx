@@ -56,6 +56,7 @@ export const NotificationGroups = ({ dismiss, groups }: Props) => {
             />
           )}
           <div
+            aria-hidden
             style={{
               width: 36,
               height: 36,

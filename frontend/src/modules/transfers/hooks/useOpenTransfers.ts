@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 type Props = {
   isOpen: boolean;
@@ -14,11 +14,16 @@ export const useOpenTransfers = ({
   onClose,
 }: Props) => {
   const [mounted, setMounted] = useState(false);
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<Element | null>(null);
 
   useEffect(() => {
     if (isOpen) {
+      triggerRef.current = document.activeElement;
       requestAnimationFrame(() => setMounted(true));
     } else {
+      (triggerRef.current as HTMLElement)?.focus();
+      triggerRef.current = null;
       setMounted(false);
       setTimeout(() => {
         setPan('');
@@ -26,6 +31,12 @@ export const useOpenTransfers = ({
       }, 300);
     }
   }, [isOpen, setAmount, setPan]);
+
+  useEffect(() => {
+    if (isOpen && mounted) {
+      dialogRef.current?.focus();
+    }
+  }, [isOpen, mounted]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -36,6 +47,7 @@ export const useOpenTransfers = ({
   }, [isOpen, onClose]);
 
   return {
+    dialogRef,
     mounted,
   };
 };

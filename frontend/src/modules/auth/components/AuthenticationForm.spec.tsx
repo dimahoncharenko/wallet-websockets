@@ -266,15 +266,18 @@ describe('AuthenticationForm', () => {
   });
 
   describe('loading state', () => {
-    it('shows "..." and disables the button while login is in flight', async () => {
+    it('disables the button and sets aria-busy while login is in flight', async () => {
       let resolveLogin: (v: { error: null }) => void;
       mockLogin.mockReturnValue(new Promise((r) => (resolveLogin = r)));
 
       render(<AuthenticationForm {...defaultProps} />);
-      fireEvent.click(screen.getByRole('button', { name: 'Access Wallet' }));
+      const btn = screen.getByRole('button', { name: 'Access Wallet' });
+      fireEvent.click(btn);
 
-      const loadingBtn = await screen.findByRole('button', { name: '...' });
-      expect(loadingBtn).toBeDisabled();
+      await waitFor(() => {
+        expect(btn).toBeDisabled();
+        expect(btn).toHaveAttribute('aria-busy', 'true');
+      });
 
       await act(async () => {
         resolveLogin({ error: null });

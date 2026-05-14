@@ -200,7 +200,7 @@ describe('NotificationGroups', () => {
           dismiss={vi.fn()}
         />,
       );
-      expect(screen.getAllByRole('button', { name: 'Dismiss' })).toHaveLength(
+      expect(screen.getAllByRole('button', { name: /Dismiss/ })).toHaveLength(
         3,
       );
     });
@@ -213,7 +213,9 @@ describe('NotificationGroups', () => {
           dismiss={dismiss}
         />,
       );
-      fireEvent.click(screen.getByRole('button', { name: 'Dismiss' }));
+      fireEvent.click(
+        screen.getByRole('button', { name: 'Dismiss: Sign-in detected' }),
+      );
       expect(dismiss).toHaveBeenCalledWith('notif-42');
     });
 
@@ -230,7 +232,9 @@ describe('NotificationGroups', () => {
           dismiss={dismiss}
         />,
       );
-      const [btnA, btnB] = screen.getAllByRole('button', { name: 'Dismiss' });
+      const [btnA, btnB] = screen.getAllByRole('button', {
+        name: 'Dismiss: Sign-in detected',
+      });
       fireEvent.click(btnA);
       expect(dismiss).toHaveBeenCalledWith('aaa');
       fireEvent.click(btnB);

@@ -14,7 +14,7 @@ export const TransferModal = ({
   const [pan, setPan] = useState('');
   const [amount, setAmount] = useState('');
 
-  const { mounted } = useOpenTransfers({ isOpen, onClose, setAmount, setPan });
+  const { dialogRef, mounted } = useOpenTransfers({ isOpen, onClose, setAmount, setPan });
 
   if (!isOpen && !mounted && !pan && !amount) return null;
 
@@ -31,9 +31,11 @@ export const TransferModal = ({
       />
 
       <div
+        ref={dialogRef}
         role="dialog"
         aria-modal="true"
         aria-labelledby="transfer-modal-title"
+        tabIndex={-1}
         className={`relative w-full max-w-sm bg-slate-900 border border-white/10 rounded-3xl shadow-2xl overflow-hidden transition-all duration-300 transform ${
           isOpen && mounted
             ? 'scale-100 translate-y-0'

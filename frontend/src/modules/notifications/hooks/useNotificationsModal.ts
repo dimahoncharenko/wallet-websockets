@@ -5,7 +5,20 @@ export const useNotificationsModal = () => {
   const { modals, setModal } = useModal();
   const panelRef = useRef<HTMLDivElement>(null);
   const deferredTimeoutRef = useRef<number | null>(null);
+  const triggerRef = useRef<Element | null>(null);
   const isOpen = modals.notificationsPanel;
+
+  useEffect(() => {
+    if (isOpen) {
+      triggerRef.current = document.activeElement;
+      requestAnimationFrame(() => {
+        panelRef.current?.focus();
+      });
+    } else {
+      (triggerRef.current as HTMLElement)?.focus();
+      triggerRef.current = null;
+    }
+  }, [isOpen]);
 
   useEffect(() => {
     if (!isOpen) return;

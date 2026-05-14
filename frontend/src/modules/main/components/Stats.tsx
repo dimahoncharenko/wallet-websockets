@@ -9,6 +9,7 @@ import { JSX } from 'react';
 import { StatData } from 'types';
 import { percentageChange } from '../helpers';
 import { SvgArrowDown, SvgArrowUp, SvgDiamond } from '@components/Icons';
+import { VisuallyHidden } from '@components/VisuallyHidden';
 
 type StatItem = {
   label: string;
@@ -68,7 +69,7 @@ export const Stats = ({ income, spending }: StatsProps) => {
   ];
 
   return (
-    <div className="grid grid-cols-3 gap-3 w-full">
+    <div role="list" className="grid grid-cols-3 gap-3 w-full">
       <StatsList list={statsList} />
     </div>
   );
@@ -78,7 +79,11 @@ const StatsList = ({ list }: { list: StatItem[] }) => {
   return list.map(
     ({ label, value, change, positive, color, bgColor, sparkline, icon }) => (
       <div
+        role="listitem"
+        aria-labelledby={`${label.replace(/\s+/g, '-')}-stat`}
         key={label}
+        tabIndex={0}
+        className="group"
         style={{
           background: colors.surfaceFaint,
           border: `1px solid ${colors.borderSubtle}`,
@@ -88,7 +93,11 @@ const StatsList = ({ list }: { list: StatItem[] }) => {
           overflow: 'hidden',
         }}
       >
+        <VisuallyHidden id={`${label.replace(/\s+/g, '-')}-stat`}>
+          {label}: {value}, {change} change
+        </VisuallyHidden>
         <div
+          aria-hidden
           style={{
             display: 'flex',
             justifyContent: 'space-between',
@@ -123,6 +132,7 @@ const StatsList = ({ list }: { list: StatItem[] }) => {
           </div>
         </div>
         <div
+          aria-hidden
           style={{
             fontSize: fontSize['3xl'],
             fontWeight: fontWeight.extrabold,
@@ -134,6 +144,7 @@ const StatsList = ({ list }: { list: StatItem[] }) => {
           {value}
         </div>
         <div
+          aria-hidden
           style={{
             fontSize: fontSize.sm,
             fontWeight: fontWeight.medium,
@@ -146,12 +157,9 @@ const StatsList = ({ list }: { list: StatItem[] }) => {
           {label}
         </div>
         <div
-          style={{
-            position: 'absolute',
-            bottom: 0,
-            right: 0,
-            opacity: 0.65,
-          }}
+          aria-hidden
+          className="opacity-[0.65] group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity duration-300"
+          style={{ position: 'absolute', bottom: 0, right: 0 }}
         >
           <Sparkline data={sparkline} color={color} width={100} height={36} />
         </div>

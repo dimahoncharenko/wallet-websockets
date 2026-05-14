@@ -29,6 +29,7 @@ export const AddCardModal = ({
   onClose: () => void;
 }) => {
   const {
+    dialogRef,
     mounted,
     step,
     form,
@@ -81,6 +82,7 @@ export const AddCardModal = ({
           )}
           <div>
             <h2
+              id="add-card-modal-title"
               style={{
                 fontSize: fontSize['2xl'],
                 fontWeight: fontWeight.bold,
@@ -104,6 +106,7 @@ export const AddCardModal = ({
           </div>
         </div>
         <button
+          data-testid="close-btn"
           onClick={onClose}
           aria-label="Close"
           style={{
@@ -186,6 +189,7 @@ export const AddCardModal = ({
       }}
     >
       <div
+        aria-hidden
         style={{
           position: 'absolute',
           inset: 0,
@@ -196,6 +200,11 @@ export const AddCardModal = ({
       />
 
       <div
+        ref={dialogRef}
+        role="dialog"
+        aria-modal
+        aria-labelledby="add-card-modal-title"
+        tabIndex={-1}
         style={{
           position: 'relative',
           width: '100%',
@@ -223,12 +232,15 @@ export const AddCardModal = ({
         <ProgressBar step={step} />
 
         <div
+          aria-hidden
           className="modal-scroll"
           style={{ padding: '20px 22px 24px', overflowY: 'auto', flex: 1 }}
         >
           {renderHeader()}
 
-          <CardPreview form={form} network={network} />
+          <div aria-hidden>
+            <CardPreview form={form} network={network} />
+          </div>
 
           {renderContent()}
           {renderFooter()}
@@ -415,14 +427,18 @@ const Step1 = ({
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
       <div>
-        <label style={labelStyle}>Card Number</label>
+        <label htmlFor="add-card-pan" style={labelStyle}>
+          Card Number
+        </label>
         <input
+          id="add-card-pan"
           ref={panRef}
           inputMode="numeric"
-          placeholder="0000 0000 0000 0000"
           value={form.pan}
           onBlur={() => touch('pan')}
           onChange={handlePanChange}
+          aria-invalid={panError}
+          aria-describedby={panError ? 'add-card-pan-error' : undefined}
           style={{
             ...inputBase,
             borderColor: panError ? colors.spending : colors.borderDefault,
@@ -430,6 +446,8 @@ const Step1 = ({
         />
         {panError && (
           <span
+            id="add-card-pan-error"
+            role="alert"
             style={{
               fontSize: fontSize.xs,
               color: colors.spending,
@@ -444,8 +462,11 @@ const Step1 = ({
 
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
         <div>
-          <label style={labelStyle}>Expiry</label>
+          <label htmlFor="add-card-expiry" style={labelStyle}>
+            Expiry
+          </label>
           <input
+            id="add-card-expiry"
             inputMode="numeric"
             placeholder="MM/YY"
             value={form.expiry}
@@ -453,6 +474,8 @@ const Step1 = ({
             onChange={(e) =>
               setForm((f) => ({ ...f, expiry: formatExpiry(e.target.value) }))
             }
+            aria-invalid={expiryError}
+            aria-describedby={expiryError ? 'add-card-expiry-error' : undefined}
             style={{
               ...inputBase,
               borderColor: expiryError ? colors.spending : colors.borderDefault,
@@ -460,6 +483,8 @@ const Step1 = ({
           />
           {expiryError && (
             <span
+              id="add-card-expiry-error"
+              role="alert"
               style={{
                 fontSize: fontSize.xs,
                 color: colors.spending,
@@ -472,9 +497,12 @@ const Step1 = ({
           )}
         </div>
         <div>
-          <label style={labelStyle}>CVV</label>
+          <label htmlFor="add-card-cvv" style={labelStyle}>
+            CVV
+          </label>
           <div style={{ position: 'relative' }}>
             <input
+              id="add-card-cvv"
               type="password"
               inputMode="numeric"
               placeholder="···"
@@ -514,6 +542,7 @@ const Step1 = ({
                 type="button"
                 aria-label={color}
                 onClick={() => setForm((f) => ({ ...f, cardColor: color }))}
+                className="focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-[#08080f]"
                 style={{
                   width: 28,
                   height: 28,
@@ -546,8 +575,11 @@ const Step2 = ({
 }) => (
   <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
     <div>
-      <label style={labelStyle}>Cardholder Name</label>
+      <label htmlFor="add-card-holder" style={labelStyle}>
+        Cardholder Name
+      </label>
       <input
+        id="add-card-holder"
         placeholder="As printed on card"
         value={form.holderName}
         onChange={(e) => setForm((f) => ({ ...f, holderName: e.target.value }))}
@@ -556,7 +588,7 @@ const Step2 = ({
       />
     </div>
     <div>
-      <label style={labelStyle}>
+      <label htmlFor="add-card-nickname" style={labelStyle}>
         Nickname{' '}
         <span
           style={{
@@ -569,6 +601,7 @@ const Step2 = ({
         </span>
       </label>
       <input
+        id="add-card-nickname"
         placeholder="e.g. Travel card, Backup"
         value={form.nickname}
         onChange={(e) => setForm((f) => ({ ...f, nickname: e.target.value }))}
@@ -677,6 +710,7 @@ const ActionButton = ({
       {step < 3 ? (
         <button
           disabled={!valid[step]}
+          aria-disabled={!valid[step]}
           onClick={handleNext}
           style={{
             width: '100%',
@@ -699,6 +733,7 @@ const ActionButton = ({
       ) : (
         <button
           disabled={loading}
+          aria-disabled={loading}
           onClick={handleConfirm}
           style={{
             width: '100%',
