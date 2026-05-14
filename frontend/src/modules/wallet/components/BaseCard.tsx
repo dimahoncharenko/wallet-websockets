@@ -3,7 +3,7 @@ import {
   fontSize,
   fontWeight,
   letterSpacing,
-  prefersReducedMotion,
+  getPrefersReducedMotion,
   radius,
   transition,
 } from '@lib/theme';
@@ -57,7 +57,7 @@ export const BaseCard = ({
         background:
           'linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.07) 50%, transparent 60%)',
         backgroundSize: '200% 100%',
-        animation: prefersReducedMotion
+        animation: getPrefersReducedMotion()
           ? undefined
           : 'shimmer 3.5s linear infinite',
         pointerEvents: 'none',

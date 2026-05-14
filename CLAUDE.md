@@ -488,11 +488,14 @@ Use ARIA only when native HTML semantics are insufficient (e.g., custom compound
 Emojis must be wrapped in a `<span>` with `role="img"` and a descriptive `aria-label`:
 
 ```tsx
-// ❌ Bad
-<p>Transfer complete 🎉</p>
+// Decorative emoji (information conveyed by adjacent text)
+<p>Transfer complete <span aria-hidden="true">🎉</span></p>
 
-// ✅ Good
-<p>Transfer complete <span role="img" aria-label="celebration">🎉</span></p>
+// Meaningful emoji (conveys unique information)
+<button>
+  <span role="img" aria-label="celebration">🎉</span>
+  <VisuallyHidden>Success</VisuallyHidden>
+</button>
 ```
 
 ### Accessible Forms

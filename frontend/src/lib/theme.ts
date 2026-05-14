@@ -123,6 +123,6 @@ export const mediaQueries = {
   tablet: '(min-width: 764px)',
 } as const;
 
-export const prefersReducedMotion =
+export const getPrefersReducedMotion = (): boolean =>
   typeof window !== 'undefined' &&
   window.matchMedia('(prefers-reduced-motion: reduce)').matches;

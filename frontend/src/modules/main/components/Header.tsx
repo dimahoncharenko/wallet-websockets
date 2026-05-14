@@ -3,6 +3,7 @@ import { useNotifications } from '@hooks/useNotifications';
 import { useModal } from '@hooks/useModal';
 import { SvgLogout, SvgSearch } from '@components/Icons';
 import { getGreetings } from '../helpers';
+import { VisuallyHidden } from '@components/VisuallyHidden';
 
 export const Header = () => {
   const { logout, username } = useAuth();
@@ -60,11 +61,14 @@ export const Header = () => {
 
       <div className="hidden lg:flex items-center gap-3">
         <div className="relative flex items-center text-white/30">
+          <VisuallyHidden as="label" htmlFor="header-search">
+            Search transactions
+          </VisuallyHidden>
           <span className="absolute left-3.5 pointer-events-none">
             <SvgSearch />
           </span>
           <input
-            aria-label="Search transactions"
+            id="header-search"
             placeholder="Search transactions..."
             className="bg-white/[0.05] border border-white/10 rounded-full pl-10 pr-5 py-2.5 text-sm text-white/70 placeholder-white/30 focus:outline-none focus:border-white/20 w-60 transition-colors"
           />
