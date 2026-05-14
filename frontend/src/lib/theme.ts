@@ -74,6 +74,9 @@ export const letterSpacing = {
   normal: '0.08em',
   wide: '0.1em',
   wider: '0.14em',
+
+  metaLabel: '0.12em',
+  cardLabel: '0.18em',
 } as const;
 
 export const spacing = {
@@ -119,3 +122,7 @@ export const mediaQueries = {
   laptop: '(min-width: 1024px)',
   tablet: '(min-width: 764px)',
 } as const;
+
+export const prefersReducedMotion =
+  typeof window !== 'undefined' &&
+  window.matchMedia('(prefers-reduced-motion: reduce)').matches;

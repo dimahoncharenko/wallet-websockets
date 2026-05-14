@@ -1,53 +1,34 @@
-import { useState, useEffect, createContext, useContext } from 'react';
-import { AppNotification, NotificationType } from 'types';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import toast from 'react-hot-toast';
 import { useWebsocket } from './useWebsocket';
-
-type NotificationsContextType = {
-  notifications: AppNotification[];
-  unreadCount: number;
-  addNotification: (type: NotificationType, title: string, description: string) => void;
-  markAllRead: () => void;
-  dismiss: (id: string) => void;
-};
-
-const context = createContext<NotificationsContextType | undefined>(undefined);
-
-function makeNotification(
-  type: NotificationType,
-  title: string,
-  description: string,
-): AppNotification {
-  return {
-    id: `${Date.now()}-${Math.random()}`,
-    type,
-    title,
-    description,
-    timestamp: new Date().toISOString(),
-    interacted: false,
-  };
-}
+import {
+  addNotification as addNotificationAction,
+  markAllRead as markAllReadAction,
+  dismissNotification,
+} from '@modules/app/store';
+import type { RootState, AppDispatch } from '../modules/main/store';
+import { NotificationType } from 'types';
 
 export const NotificationsProvider = ({
   children,
 }: {
   children: React.ReactNode;
 }) => {
+  const dispatch = useDispatch<AppDispatch>();
   const { socket } = useWebsocket();
-  const [notifications, setNotifications] = useState<AppNotification[]>([]);
 
   useEffect(() => {
     if (!socket) return;
 
     const onOpen = () => {
-      setNotifications((prev) => [
-        makeNotification(
+      dispatch(
+        addNotificationAction(
           'signin',
           'New sign-in detected',
           'Your account was accessed from this device.',
         ),
-        ...prev,
-      ]);
+      );
     };
 
     const onMessage = (event: MessageEvent) => {
@@ -56,7 +37,8 @@ export const NotificationsProvider = ({
         if (data.event !== 'change-balance') return;
 
         const msg: string = data.message ?? 'Balance changed.';
-        const isIncoming = !msg.toLowerCase().includes('sent') &&
+        const isIncoming =
+          !msg.toLowerCase().includes('sent') &&
           !msg.toLowerCase().includes('transfer') &&
           !msg.toLowerCase().includes('debit');
 
@@ -66,14 +48,13 @@ export const NotificationsProvider = ({
           toast.success(msg);
         }
 
-        setNotifications((prev) => [
-          makeNotification(
+        dispatch(
+          addNotificationAction(
             isIncoming ? 'money_received' : 'money_sent',
             isIncoming ? 'Money received' : 'Transfer sent',
             msg,
           ),
-          ...prev,
-        ]);
+        );
       } catch {
         // ignore malformed messages
       }
@@ -91,33 +72,27 @@ export const NotificationsProvider = ({
       socket.removeEventListener('open', onOpen);
       socket.removeEventListener('message', onMessage);
     };
-  }, [socket]);
+  }, [socket, dispatch]);
 
-  const unreadCount = notifications.filter((n) => !n.interacted).length;
-
-  const addNotification = (type: NotificationType, title: string, description: string) => {
-    setNotifications((prev) => [makeNotification(type, title, description), ...prev]);
-  };
-
-  const markAllRead = () => {
-    setNotifications((prev) => prev.map((n) => ({ ...n, interacted: true })));
-  };
-
-  const dismiss = (id: string) => {
-    setNotifications((prev) => prev.filter((n) => n.id !== id));
-  };
-
-  return (
-    <context.Provider value={{ notifications, unreadCount, addNotification, markAllRead, dismiss }}>
-      {children}
-    </context.Provider>
-  );
+  return children;
 };
 
 export const useNotifications = () => {
-  const value = useContext(context);
-  if (!value) {
-    throw new Error('useNotifications must be used within a NotificationsProvider');
-  }
-  return value;
+  const dispatch = useDispatch<AppDispatch>();
+  const notifications = useSelector(
+    (state: RootState) => state.app.notifications,
+  );
+  const unreadCount = notifications.filter((n) => !n.interacted).length;
+
+  return {
+    notifications,
+    unreadCount,
+    addNotification: (
+      type: NotificationType,
+      title: string,
+      description: string,
+    ) => dispatch(addNotificationAction(type, title, description)),
+    markAllRead: () => dispatch(markAllReadAction()),
+    dismiss: (id: string) => dispatch(dismissNotification(id)),
+  };
 };

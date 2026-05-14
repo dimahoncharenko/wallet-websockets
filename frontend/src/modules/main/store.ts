@@ -10,16 +10,23 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import walletReducer from '../modules/wallet/store';
+import walletReducer from '../wallet/store';
+import authReducer from '../auth/store';
+import appReducer from '../app/store';
+
+const walletPersistConfig = { key: 'wallet', storage, whitelist: ['colors'] };
 
 const rootReducer = combineReducers({
-  wallet: walletReducer,
+  wallet: persistReducer(walletPersistConfig, walletReducer),
+  auth: authReducer,
+  app: appReducer,
 });
 
 const persistConfig = {
   key: 'root',
   version: 1,
   storage,
+  blacklist: ['auth', 'app', 'wallet'],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

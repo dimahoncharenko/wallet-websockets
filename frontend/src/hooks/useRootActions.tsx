@@ -1,39 +1,28 @@
-import { createContext, ReactNode, useContext, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { updateCardBalance } from '@modules/wallet/store';
+import { useWebsocket } from './useWebsocket';
+import type { AppDispatch } from '../modules/main/store';
+import type { CardColor, CardNetwork } from 'types';
 
-export type RootActions = {
-  updateBalance: (pan: string, delta: number) => void;
-  sendAddCard: () => void;
+export type AddCardData = {
+  pan: string;
+  expiry: string;
+  holderName: string;
+  cardNetwork: CardNetwork;
+  cardColor: CardColor;
 };
-
-type Context = RootActions & {
-  setRootActions: (actions: Omit<RootActions, 'setRootActions'>) => void;
-};
-
-const context = createContext<Context | undefined>(undefined);
 
 export const useRootActions = () => {
-  const contextValue = useContext(context);
-  if (!contextValue) {
-    throw new Error(
-      'useRootActions should be used withing RootActionsProvider',
-    );
-  }
-  return contextValue;
-};
+  const dispatch = useDispatch<AppDispatch>();
+  const { socket } = useWebsocket();
 
-export const RootActionsProvider = ({ children }: { children: ReactNode }) => {
-  const [rootActions, setRootActions] = useState<RootActions>({
-    updateBalance: () => {
-      return;
+  return {
+    updateBalance: (pan: string, delta: number) =>
+      dispatch(updateCardBalance({ pan, delta })),
+    sendAddCard: (data: AddCardData) => {
+      if (socket?.readyState === WebSocket.OPEN) {
+        socket.send(JSON.stringify({ event: 'add-card', ...data }));
+      }
     },
-    sendAddCard: () => {
-      return;
-    },
-  });
-
-  return (
-    <context.Provider value={{ ...rootActions, setRootActions }}>
-      {children}
-    </context.Provider>
-  );
+  };
 };

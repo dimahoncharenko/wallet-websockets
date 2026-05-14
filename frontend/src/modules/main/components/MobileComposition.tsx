@@ -7,12 +7,14 @@ import {
   layout,
   zIndex,
   transition,
+  prefersReducedMotion,
 } from '@lib/theme';
 import {
   SvgBell,
   SvgCards,
   SvgHistory,
   SvgHome,
+  SvgPlusCircle,
   SvgProfile,
   SvgScan,
 } from '@components/Icons';
@@ -37,6 +39,9 @@ const mobileNavItems = [
   { id: 'profile', label: 'Profile', Icon: SvgProfile },
 ];
 
+const anim = (delay: string, duration = '0.4s') =>
+  prefersReducedMotion ? undefined : `fadeUp ${duration} ease ${delay} both`;
+
 export const MobileComposition = () => {
   const { cardTheme, currentCard, income, spending } = useWalletCards();
   const { activeNav, setActiveNav } = useNavigation();
@@ -52,7 +57,7 @@ export const MobileComposition = () => {
           style={{
             padding: '0 16px',
             marginBottom: 16,
-            animation: 'fadeUp 0.4s ease 0.2s both',
+            animation: anim('0.2s'),
           }}
         >
           <Stats income={income} spending={spending} />
@@ -61,7 +66,7 @@ export const MobileComposition = () => {
           style={{
             padding: '0 16px',
             marginBottom: 16,
-            animation: 'fadeUp 0.4s ease 0.24s both',
+            animation: anim('0.24s'),
           }}
         >
           <BudgetBar
@@ -101,7 +106,7 @@ export const MobileComposition = () => {
               style={{
                 padding: '0 22px',
                 marginBottom: 16,
-                animation: 'fadeUp 0.5s ease 0.1s both',
+                animation: anim('0.1s', '0.5s'),
               }}
             >
               <WalletCard />
@@ -110,7 +115,7 @@ export const MobileComposition = () => {
               style={{
                 padding: '0 22px',
                 marginBottom: 24,
-                animation: 'fadeUp 0.4s ease 0.16s both',
+                animation: anim('0.16s'),
               }}
             >
               <CardControls card={currentCard} balance={currentCard.balance} />
@@ -121,7 +126,7 @@ export const MobileComposition = () => {
             <div
               style={{
                 padding: '0 22px 16px',
-                animation: 'fadeUp 0.4s ease 0.28s both',
+                animation: anim('0.28s'),
               }}
             >
               <Transactions currentCard={currentCard} />
@@ -236,6 +241,25 @@ const Header = () => {
         >
           <SvgScan color={colors.textSecondary} />
         </button>
+        <button
+          aria-label="Add card"
+          type="button"
+          onClick={() => setModal('addCardModal', true)}
+          style={{
+            width: 40,
+            height: 40,
+            borderRadius: radius.xl,
+            background: colors.surfaceDefault,
+            border: `1px solid ${colors.borderDefault}`,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            cursor: 'pointer',
+            color: colors.textSecondary,
+          }}
+        >
+          <SvgPlusCircle size={16} />
+        </button>
       </div>
     </div>
   );
@@ -251,7 +275,8 @@ const BottomNav = ({
   setActiveNav: (value: string) => void;
 }) => {
   return (
-    <div
+    <nav
+      aria-label="Main navigation"
       style={{
         position: 'absolute',
         bottom: 0,
@@ -268,10 +293,12 @@ const BottomNav = ({
     >
       {mobileNavItems.map(({ id, label, Icon }) => {
         const isActive = activeNav === id;
+
         return (
           <button
             key={id}
             onClick={() => setActiveNav(id)}
+            aria-current={isActive ? 'page' : undefined}
             style={{
               flex: 1,
               display: 'flex',
@@ -285,6 +312,7 @@ const BottomNav = ({
             }}
           >
             <div
+              aria-hidden
               style={{
                 width: 36,
                 height: 36,
@@ -314,6 +342,6 @@ const BottomNav = ({
           </button>
         );
       })}
-    </div>
+    </nav>
   );
 };

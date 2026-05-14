@@ -1,39 +1,10 @@
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useState,
-  ReactNode,
-} from 'react';
-import { Session } from '@supabase/supabase-js';
-import { getSession, supabase } from '@lib/supabase';
-
-type AuthContextValue = {
-  session: Session | null;
-};
-
-const AuthContext = createContext<AuthContextValue | undefined>(undefined);
-
-export const AuthProvider = ({ children }: { children: ReactNode }) => {
-  const [session, setSession] = useState<Session | null | undefined>(undefined);
-
-  useEffect(() => {
-    const subscription = getSession(setSession);
-    return () => subscription.unsubscribe();
-  }, []);
-
-  if (session === undefined) return null;
-
-  return (
-    <AuthContext.Provider value={{ session }}>{children}</AuthContext.Provider>
-  );
-};
+import { useSelector } from 'react-redux';
+import { supabase } from '@lib/supabase';
+import type { RootState } from '../modules/main/store';
 
 export const useAuth = () => {
-  const ctx = useContext(AuthContext);
-  if (!ctx) throw new Error('useAuth must be used within AuthProvider');
+  const session = useSelector((state: RootState) => state.auth.session);
 
-  const { session } = ctx;
   return {
     isAuthenticated: !!session,
     username:

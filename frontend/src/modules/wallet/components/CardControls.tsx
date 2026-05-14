@@ -6,6 +6,12 @@ import { useWebsocket } from '@hooks/useWebsocket';
 import { CardData } from 'types';
 import { useRootActions } from '@hooks/useRootActions';
 import { useWalletCards } from '@hooks/useWalletCards';
+import {
+  SvgArrowDown,
+  SvgArrowUp,
+  SvgDots,
+  SvgPlusCircle,
+} from '@components/Icons';
 
 type Props = {
   card: CardData;
@@ -40,79 +46,27 @@ export const CardControls = ({ card, balance }: Props) => {
     {
       label: 'Send',
       accent: true,
-      icon: (
-        <svg
-          width="18"
-          height="18"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2.2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <line x1="12" y1="19" x2="12" y2="5" />
-          <polyline points="5 12 12 5 19 12" />
-        </svg>
-      ),
+      icon: <SvgArrowUp />,
       onClick: () => setIsTransferOpen(true),
     },
-    {
-      label: 'Receive',
-      icon: (
-        <svg
-          width="18"
-          height="18"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2.2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <line x1="12" y1="5" x2="12" y2="19" />
-          <polyline points="19 12 12 19 5 12" />
-        </svg>
-      ),
-    },
-    {
-      label: 'Top Up',
-      icon: (
-        <svg
-          width="18"
-          height="18"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2.2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <circle cx="12" cy="12" r="10" />
-          <line x1="12" y1="8" x2="12" y2="16" />
-          <line x1="8" y1="12" x2="16" y2="12" />
-        </svg>
-      ),
-    },
-    {
-      label: 'More',
-      icon: (
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-          <circle cx="5" cy="12" r="2" />
-          <circle cx="12" cy="12" r="2" />
-          <circle cx="19" cy="12" r="2" />
-        </svg>
-      ),
-    },
+    { label: 'Receive', icon: <SvgArrowDown /> },
+    { label: 'Top Up', icon: <SvgPlusCircle /> },
+    { label: 'More', icon: <SvgDots /> },
   ];
 
   const colorPicker = (
-    <div className="flex items-center gap-3 bg-white/5 p-2 rounded-full border border-white/5">
+    <div
+      role="radiogroup"
+      aria-label="Card color theme"
+      className="flex items-center gap-3 bg-white/5 p-2 rounded-full border border-white/5"
+    >
       {COLOR_OPTIONS.map(({ color, bg, ring }) => (
         <button
           key={color}
+          role="radio"
+          aria-checked={currentCard?.cardColor === color}
           onClick={() => setColor(card.pan, color)}
-          aria-label={`Switch to ${color} card`}
+          aria-label={`${color} theme`}
           className={`
             w-6 h-6 rounded-full transition-all duration-200
             ${bg}
@@ -143,19 +97,7 @@ export const CardControls = ({ card, balance }: Props) => {
             }}
           />
           <span className="relative flex items-center justify-center w-5 h-5 rounded-full bg-white/20">
-            <svg
-              width="12"
-              height="12"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="3"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <line x1="12" y1="19" x2="12" y2="5" />
-              <polyline points="5 12 12 5 19 12" />
-            </svg>
+            <SvgArrowUp size={12} strokeWidth={3} />
           </span>
           <span className="relative">Transfer</span>
         </button>
@@ -166,12 +108,14 @@ export const CardControls = ({ card, balance }: Props) => {
       <div className="hidden lg:flex items-center justify-between w-full pt-2">
         <div className="flex items-center gap-5">
           {actions.map((a) => (
-            <div
+            <button
               key={a.label}
-              className="flex flex-col items-center gap-2 group cursor-pointer"
+              type="button"
               onClick={a.onClick}
+              className="flex flex-col items-center gap-2 group cursor-pointer bg-transparent border-none p-0"
             >
               <div
+                aria-hidden
                 className="w-12 h-12 rounded-[15px] flex items-center justify-center transition-all"
                 style={
                   a.accent
@@ -192,7 +136,7 @@ export const CardControls = ({ card, balance }: Props) => {
               <span className="text-[11px] font-medium text-white/35 group-hover:text-white/70 transition-colors">
                 {a.label}
               </span>
-            </div>
+            </button>
           ))}
         </div>
         {colorPicker}

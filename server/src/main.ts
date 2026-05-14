@@ -160,7 +160,15 @@ wss.on('connection', (socket: AuthWebSocket) => {
     }
 
     if (payload.event === 'add-card') {
-      const card = UserManager.makeCard(socket.holderName);
+      const card = {
+        holderName: payload.holderName,
+        pan: payload.pan,
+        balance: 0,
+        currency: '$',
+        expiry: payload.expiry,
+        cardNetwork: payload.cardNetwork,
+        cardColor: payload.cardColor,
+      };
       userManager.addCard(socket, card);
       userManager.send(socket, { event: 'card-added', card });
       userManager.send(socket, {

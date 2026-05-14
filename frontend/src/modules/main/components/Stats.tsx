@@ -8,6 +8,8 @@ import {
 import { JSX } from 'react';
 import { StatData } from 'types';
 import { percentageChange } from '../helpers';
+import { SvgArrowDown, SvgArrowUp, SvgDiamond } from '@components/Icons';
+import { VisuallyHidden } from '@components/VisuallyHidden';
 
 type StatItem = {
   label: string;
@@ -40,21 +42,7 @@ export const Stats = ({ income, spending }: StatsProps) => {
       color: colors.income,
       bgColor: colors.incomeBg,
       sparkline: income.sparkline,
-      icon: (
-        <svg
-          width="13"
-          height="13"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke={colors.income}
-          strokeWidth="2.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <line x1="12" y1="19" x2="12" y2="5" />
-          <polyline points="5 12 12 5 19 12" />
-        </svg>
-      ),
+      icon: <SvgArrowUp color={colors.income} size={13} strokeWidth={2.5} />,
     },
     {
       label: 'Total Spending',
@@ -65,19 +53,7 @@ export const Stats = ({ income, spending }: StatsProps) => {
       bgColor: colors.spendingBg,
       sparkline: spending.sparkline,
       icon: (
-        <svg
-          width="13"
-          height="13"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke={colors.spending}
-          strokeWidth="2.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <line x1="12" y1="5" x2="12" y2="19" />
-          <polyline points="19 12 12 19 5 12" />
-        </svg>
+        <SvgArrowDown color={colors.spending} size={13} strokeWidth={2.5} />
       ),
     },
     {
@@ -88,16 +64,12 @@ export const Stats = ({ income, spending }: StatsProps) => {
       color: colors.savings,
       bgColor: colors.savingsBg,
       sparkline: savingsSpk,
-      icon: (
-        <svg width="12" height="12" viewBox="0 0 24 24" fill={colors.savings}>
-          <polygon points="12 2 22 12 12 22 2 12" />
-        </svg>
-      ),
+      icon: <SvgDiamond color={colors.savings} size={12} />,
     },
   ];
 
   return (
-    <div className="grid grid-cols-3 gap-3 w-full">
+    <div role="list" className="grid grid-cols-3 gap-3 w-full">
       <StatsList list={statsList} />
     </div>
   );
@@ -107,7 +79,11 @@ const StatsList = ({ list }: { list: StatItem[] }) => {
   return list.map(
     ({ label, value, change, positive, color, bgColor, sparkline, icon }) => (
       <div
+        role="listitem"
+        aria-labelledby={`${label.replace(/\s+/g, '-')}-stat`}
         key={label}
+        tabIndex={0}
+        className="group"
         style={{
           background: colors.surfaceFaint,
           border: `1px solid ${colors.borderSubtle}`,
@@ -117,7 +93,11 @@ const StatsList = ({ list }: { list: StatItem[] }) => {
           overflow: 'hidden',
         }}
       >
+        <VisuallyHidden id={`${label.replace(/\s+/g, '-')}-stat`}>
+          {label}: {value}, {change} change
+        </VisuallyHidden>
         <div
+          aria-hidden
           style={{
             display: 'flex',
             justifyContent: 'space-between',
@@ -152,6 +132,7 @@ const StatsList = ({ list }: { list: StatItem[] }) => {
           </div>
         </div>
         <div
+          aria-hidden
           style={{
             fontSize: fontSize['3xl'],
             fontWeight: fontWeight.extrabold,
@@ -163,6 +144,7 @@ const StatsList = ({ list }: { list: StatItem[] }) => {
           {value}
         </div>
         <div
+          aria-hidden
           style={{
             fontSize: fontSize.sm,
             fontWeight: fontWeight.medium,
@@ -175,12 +157,9 @@ const StatsList = ({ list }: { list: StatItem[] }) => {
           {label}
         </div>
         <div
-          style={{
-            position: 'absolute',
-            bottom: 0,
-            right: 0,
-            opacity: 0.65,
-          }}
+          aria-hidden
+          className="opacity-[0.65] group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity duration-300"
+          style={{ position: 'absolute', bottom: 0, right: 0 }}
         >
           <Sparkline data={sparkline} color={color} width={100} height={36} />
         </div>
@@ -206,7 +185,7 @@ const Sparkline = ({
   const pts = data
     .map(
       (v, i) =>
-        `${(i / (data.length - 1)) * width},${height - ((v - min) / range) * height}`,
+        `${data.length > 1 ? (i / (data.length - 1)) * width : 0},${height - ((v - min) / range) * height}`,
     )
     .join(' ');
   const id = `sg${color.replace(/[^a-z0-9]/gi, '')}`;

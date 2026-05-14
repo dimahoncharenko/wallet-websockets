@@ -2,6 +2,7 @@ import { AppNotification } from 'types';
 import { formatTime } from '../helpers';
 import { colors } from '@lib/theme';
 import { NOTIFICATION_ICONS } from '../const';
+import { SvgClose } from '@components/Icons';
 
 type Props = {
   dismiss: (id: string) => void;
@@ -55,6 +56,7 @@ export const NotificationGroups = ({ dismiss, groups }: Props) => {
             />
           )}
           <div
+            aria-hidden
             style={{
               width: 36,
               height: 36,
@@ -115,7 +117,7 @@ export const NotificationGroups = ({ dismiss, groups }: Props) => {
           </div>
           <button
             onClick={() => dismiss(n.id)}
-            aria-label="Dismiss"
+            aria-label={`Dismiss: ${n.title}`}
             style={{
               width: 22,
               height: 22,
@@ -130,28 +132,10 @@ export const NotificationGroups = ({ dismiss, groups }: Props) => {
               marginTop: 2,
             }}
           >
-            <CloseIcon />
+            <SvgClose />
           </button>
         </div>
       ))}
     </div>
   ));
-};
-
-const CloseIcon = () => {
-  return (
-    <svg
-      aria-hidden
-      width="11"
-      height="11"
-      viewBox="0 0 14 14"
-      fill="none"
-      stroke="rgba(255,255,255,0.5)"
-      strokeWidth="2"
-      strokeLinecap="round"
-    >
-      <line x1="1" y1="1" x2="13" y2="13" />
-      <line x1="13" y1="1" x2="1" y2="13" />
-    </svg>
-  );
 };
