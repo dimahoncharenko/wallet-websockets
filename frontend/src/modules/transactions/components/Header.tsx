@@ -22,14 +22,14 @@ export const Header = () => {
       </h2>
       <button
         type="button"
+        onClick={() => {
+          /* navigate to all transactions */
+        }}
         style={{
           fontSize: 12,
           fontWeight: 600,
           color: 'rgba(167,139,250,0.8)',
           cursor: 'pointer',
-          background: 'none',
-          border: 'none',
-          padding: 0,
         }}
       >
         <span aria-hidden>→ </span>See all

@@ -7,7 +7,7 @@ import {
   layout,
   zIndex,
   transition,
-  prefersReducedMotion,
+  getPrefersReducedMotion,
 } from '@lib/theme';
 import {
   SvgBell,
@@ -40,7 +40,9 @@ const mobileNavItems = [
 ];
 
 const anim = (delay: string, duration = '0.4s') =>
-  prefersReducedMotion ? undefined : `fadeUp ${duration} ease ${delay} both`;
+  getPrefersReducedMotion()
+    ? undefined
+    : `fadeUp ${duration} ease ${delay} both`;
 
 export const MobileComposition = () => {
   const { cardTheme, currentCard, income, spending } = useWalletCards();
@@ -160,7 +162,7 @@ const Header = () => {
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'flex-start',
-        animation: 'fadeUp 0.4s ease 0.05s both',
+        animation: anim('0.05s'),
       }}
     >
       <div>
