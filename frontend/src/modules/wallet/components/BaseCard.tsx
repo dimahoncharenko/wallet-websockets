@@ -3,6 +3,7 @@ import {
   fontSize,
   fontWeight,
   letterSpacing,
+  prefersReducedMotion,
   radius,
   transition,
 } from '@lib/theme';
@@ -56,13 +57,16 @@ export const BaseCard = ({
         background:
           'linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.07) 50%, transparent 60%)',
         backgroundSize: '200% 100%',
-        animation: 'shimmer 3.5s linear infinite',
+        animation: prefersReducedMotion
+          ? undefined
+          : 'shimmer 3.5s linear infinite',
         pointerEvents: 'none',
         borderRadius: radius.card,
       }}
     />
     {/* Decorative circle */}
     <div
+      aria-hidden
       style={{
         position: 'absolute',
         bottom: -55,
@@ -89,6 +93,7 @@ export const BaseCard = ({
 
 const NfcChip = () => (
   <div
+    aria-hidden
     style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 7px)', gap: 3.5 }}
   >
     {Array(9)

@@ -56,6 +56,7 @@ export const NotificationGroups = ({ dismiss, groups }: Props) => {
             />
           )}
           <div
+            aria-hidden
             style={{
               width: 36,
               height: 36,
@@ -116,7 +117,7 @@ export const NotificationGroups = ({ dismiss, groups }: Props) => {
           </div>
           <button
             onClick={() => dismiss(n.id)}
-            aria-label="Dismiss"
+            aria-label={`Dismiss: ${n.title}`}
             style={{
               width: 22,
               height: 22,
@@ -138,4 +139,3 @@ export const NotificationGroups = ({ dismiss, groups }: Props) => {
     </div>
   ));
 };
-

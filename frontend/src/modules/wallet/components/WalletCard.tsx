@@ -1,10 +1,5 @@
 import { Dispatch, MouseEvent, SetStateAction, useState } from 'react';
-import {
-  colors,
-  fontSize,
-  fontWeight,
-  letterSpacing,
-} from '@lib/theme';
+import { colors, fontSize, fontWeight, letterSpacing } from '@lib/theme';
 import { useAuth } from '@hooks/useAuth';
 import { SvgCheck, SvgCopy, SvgEyeClosed, SvgEyeOpen } from '@components/Icons';
 import { useAnimatedBalance } from '../hooks/useAnimatedBalance';
@@ -196,6 +191,10 @@ const CardBalance = ({
         </button>
       </div>
       <p
+        aria-live="polite"
+        aria-label={
+          showBalance ? `Balance: ${card.currency}${balance}` : 'Balance hidden'
+        }
         style={{
           fontSize: fontSize['5xl'],
           fontWeight: fontWeight.extrabold,

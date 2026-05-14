@@ -14,7 +14,7 @@ export const TransferModal = ({
   const [pan, setPan] = useState('');
   const [amount, setAmount] = useState('');
 
-  const { mounted } = useOpenTransfers({ isOpen, onClose, setAmount, setPan });
+  const { dialogRef, mounted } = useOpenTransfers({ isOpen, onClose, setAmount, setPan });
 
   if (!isOpen && !mounted && !pan && !amount) return null;
 
@@ -25,21 +25,33 @@ export const TransferModal = ({
       }`}
     >
       <div
+        aria-hidden
         className="absolute inset-0 bg-slate-950/60 backdrop-blur-md"
         onClick={onClose}
       />
 
       <div
+        ref={dialogRef}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="transfer-modal-title"
+        tabIndex={-1}
         className={`relative w-full max-w-sm bg-slate-900 border border-white/10 rounded-3xl shadow-2xl overflow-hidden transition-all duration-300 transform ${
           isOpen && mounted
             ? 'scale-100 translate-y-0'
             : 'scale-95 translate-y-4'
         }`}
       >
-        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-violet-500 via-fuchsia-500 to-emerald-500" />
+        <div
+          aria-hidden
+          className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-violet-500 via-fuchsia-500 to-emerald-500"
+        />
 
         <div className="p-6">
-          <h2 className="text-xl font-bold tracking-wide text-white mb-1">
+          <h2
+            id="transfer-modal-title"
+            className="text-xl font-bold tracking-wide text-white mb-1"
+          >
             Transfer Funds
           </h2>
           <p className="text-sm text-white/50 mb-6">

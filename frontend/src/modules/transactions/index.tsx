@@ -18,7 +18,11 @@ export default function Transactions({
       {transactions.length === 0 ? (
         <Empty />
       ) : (
-        <div style={{ flex: 1, overflowY: 'auto' }}>
+        <div
+          aria-live="polite"
+          aria-label="Transaction list"
+          style={{ flex: 1, overflowY: 'auto' }}
+        >
           {transactions.map((tx) => (
             <TransactionItem
               key={tx.id}

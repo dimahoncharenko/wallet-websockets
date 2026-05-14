@@ -6,7 +6,12 @@ import { useWebsocket } from '@hooks/useWebsocket';
 import { CardData } from 'types';
 import { useRootActions } from '@hooks/useRootActions';
 import { useWalletCards } from '@hooks/useWalletCards';
-import { SvgArrowDown, SvgArrowUp, SvgDots, SvgPlusCircle } from '@components/Icons';
+import {
+  SvgArrowDown,
+  SvgArrowUp,
+  SvgDots,
+  SvgPlusCircle,
+} from '@components/Icons';
 
 type Props = {
   card: CardData;
@@ -38,19 +43,30 @@ export const CardControls = ({ card, balance }: Props) => {
   };
 
   const actions = [
-    { label: 'Send', accent: true, icon: <SvgArrowUp />, onClick: () => setIsTransferOpen(true) },
+    {
+      label: 'Send',
+      accent: true,
+      icon: <SvgArrowUp />,
+      onClick: () => setIsTransferOpen(true),
+    },
     { label: 'Receive', icon: <SvgArrowDown /> },
     { label: 'Top Up', icon: <SvgPlusCircle /> },
     { label: 'More', icon: <SvgDots /> },
   ];
 
   const colorPicker = (
-    <div className="flex items-center gap-3 bg-white/5 p-2 rounded-full border border-white/5">
+    <div
+      role="radiogroup"
+      aria-label="Card color theme"
+      className="flex items-center gap-3 bg-white/5 p-2 rounded-full border border-white/5"
+    >
       {COLOR_OPTIONS.map(({ color, bg, ring }) => (
         <button
           key={color}
+          role="radio"
+          aria-checked={currentCard?.cardColor === color}
           onClick={() => setColor(card.pan, color)}
-          aria-label={`Switch to ${color} card`}
+          aria-label={`${color} theme`}
           className={`
             w-6 h-6 rounded-full transition-all duration-200
             ${bg}
@@ -92,12 +108,14 @@ export const CardControls = ({ card, balance }: Props) => {
       <div className="hidden lg:flex items-center justify-between w-full pt-2">
         <div className="flex items-center gap-5">
           {actions.map((a) => (
-            <div
+            <button
               key={a.label}
-              className="flex flex-col items-center gap-2 group cursor-pointer"
+              type="button"
               onClick={a.onClick}
+              className="flex flex-col items-center gap-2 group cursor-pointer bg-transparent border-none p-0"
             >
               <div
+                aria-hidden
                 className="w-12 h-12 rounded-[15px] flex items-center justify-center transition-all"
                 style={
                   a.accent
@@ -118,7 +136,7 @@ export const CardControls = ({ card, balance }: Props) => {
               <span className="text-[11px] font-medium text-white/35 group-hover:text-white/70 transition-colors">
                 {a.label}
               </span>
-            </div>
+            </button>
           ))}
         </div>
         {colorPicker}

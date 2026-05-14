@@ -1,4 +1,5 @@
 import { colors, fontSize, fontWeight, radius, transition } from '@lib/theme';
+import { VisuallyHidden } from '@components/VisuallyHidden';
 import { useBudget } from '../hooks/useBudget';
 
 export const BudgetBar = ({
@@ -14,6 +15,9 @@ export const BudgetBar = ({
 
   return (
     <div
+      role="group"
+      aria-labelledby="budget-stat"
+      tabIndex={0}
       style={{
         background: colors.surfaceBare,
         border: `1px solid ${colors.borderSubtle}`,
@@ -21,9 +25,16 @@ export const BudgetBar = ({
         padding: '20px 24px',
       }}
     >
-      <BudgetHeader dot={dot} spending={spending} budget={budget} />
-      <ProgressBar percentage={percentage} dot={dot} />
-      <BudgetFooter remaining={remaining} percentage={percentage} />
+      <VisuallyHidden id="budget-stat">
+        Monthly Budget: ${spending.toLocaleString('en-US')} of $
+        {budget.toLocaleString('en-US')} spent, {percentage}% used this month,
+        ${remaining.toLocaleString('en-US')} left
+      </VisuallyHidden>
+      <div aria-hidden>
+        <BudgetHeader dot={dot} spending={spending} budget={budget} />
+        <ProgressBar percentage={percentage} dot={dot} />
+        <BudgetFooter remaining={remaining} percentage={percentage} />
+      </div>
     </div>
   );
 };
